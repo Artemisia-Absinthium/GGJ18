@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114870490577754772}
   - component: {fileID: 114854797602270084}
   - component: {fileID: 114130909568760472}
-  - component: {fileID: 114235716924395426}
+  - component: {fileID: 114373180275505360}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -55,7 +55,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69481a814de9250428815c9adbca6d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114235716924395426
+--- !u!114 &114373180275505360
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -63,74 +63,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1934026223825872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aafeaba024e3684398954abaecbf885, type: 3}
+  m_Script: {fileID: 11500000, guid: 285a2c092a60c074bb6436825f6c7bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actions:
-  - m_id: 0
-    m_keyboardKey: 13
-    m_joystickInput:
-      m_isAxis: 0
-      m_button: 0
-      m_axis: 
-      m_isAxisPositive: 0
-      m_axisDeadZone: 0
-      m_rawAxis: 0
-    m_policy: 0
-  - m_id: 1
-    m_keyboardKey: 27
-    m_joystickInput:
-      m_isAxis: 0
-      m_button: 0
-      m_axis: 
-      m_isAxisPositive: 0
-      m_axisDeadZone: 0
-      m_rawAxis: 0
-    m_policy: 0
-  - m_id: 2
-    m_keyboardKey: 273
-    m_joystickInput:
-      m_isAxis: 0
-      m_button: 0
-      m_axis: 
-      m_isAxisPositive: 0
-      m_axisDeadZone: 0
-      m_rawAxis: 0
-    m_policy: 0
-  - m_id: 3
-    m_keyboardKey: 274
-    m_joystickInput:
-      m_isAxis: 0
-      m_button: 0
-      m_axis: 
-      m_isAxisPositive: 0
-      m_axisDeadZone: 0
-      m_rawAxis: 0
-    m_policy: 0
-  - m_id: 4
-    m_keyboardKey: 276
-    m_joystickInput:
-      m_isAxis: 0
-      m_button: 0
-      m_axis: 
-      m_isAxisPositive: 0
-      m_axisDeadZone: 0
-      m_rawAxis: 0
-    m_policy: 0
-  - m_id: 5
-    m_keyboardKey: 275
-    m_joystickInput:
-      m_isAxis: 0
-      m_button: 0
-      m_axis: 
-      m_isAxisPositive: 0
-      m_axisDeadZone: 0
-      m_rawAxis: 0
-    m_policy: 0
-  m_joystickHorizontalName: AxisX
+  m_actions: []
+  m_joystickHorizontalName: 
   m_joystickHorizontalDeadZone: 0.2
   m_joystickHorizontalIsInverted: 0
-  m_joystickVerticalName: AxisY
+  m_joystickVerticalName: 
   m_joystickVerticalDeadZone: 0.2
   m_joystickVerticalIsInverted: 0
   m_XMLConfiguration: 
@@ -156,6 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ff0aac99f272a4a9bf60b2eaa50dc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_showCachedObjects: 0
+  m_debugObjects: []
 --- !u!114 &114870490577754772
 MonoBehaviour:
   m_ObjectHideFlags: 1
