@@ -32,12 +32,12 @@ namespace Engine
 #pragma warning disable 649
 	[System.Serializable]
 	[ComVisible( true )]
-	public abstract class InputManager<T, U> : MonoBehaviour where T : InputAction<U>, new()
+	public class InputManager : MonoBehaviour
 	{
 		#region Fields
 		[SerializeField]
 		[Tooltip( "The list of actions of this manager" )]
-		private T[] m_actions;
+		private InputAction[] m_actions;
 		[SerializeField]
 		[Tooltip( "Horizontal axis for joystick camera movement" )]
 		private string m_joystickHorizontalName = "";
@@ -57,8 +57,7 @@ namespace Engine
 		[Tooltip( "Is the vertical axs inverted" )]
 		private bool m_joystickVerticalIsInverted = false;
 		[SerializeField]
-		[TextArea( 5, 15 )]
-		[Tooltip( "An xml representation of the configuration that override previously defined configurations" )]
+		[Tooltip( "Name of the xml file defining bindings in a Resource folder ( without extension )" )]
 		private string m_XMLConfiguration = null;
 		#endregion
 
@@ -67,13 +66,17 @@ namespace Engine
 		private Vector2 m_mousePosition;
 		private Vector2 m_joystickDelta;
 
-		private static InputManager<T, U> s_instance = null;
+		private static InputManager s_instance = null;
 		#endregion
 
 		#region Properties
-		public static InputManager<T, U> Instance
+		public static InputManager Instance
 		{
 			get { return s_instance; }
+		}
+		public InputAction this[ string _index ]
+		{
+			get { return GetAction( _index ); }
 		}
 		#endregion
 
@@ -136,33 +139,35 @@ namespace Engine
 			{
 				try
 				{
-					InputXMLParser.Inputs xmlInputs = null;
 					XmlSerializer serializer = new XmlSerializer( typeof( InputXMLParser.Inputs ) );
-					TextReader reader = new StringReader( m_XMLConfiguration );
-					xmlInputs = ( InputXMLParser.Inputs )serializer.Deserialize( reader );
+					TextAsset xmlAsset = Resources.Load<TextAsset>( m_XMLConfiguration );
+					if ( xmlAsset == null )
+					{
+						Debug.LogError( "Unable to open xml file \"" + m_XMLConfiguration + "\"" );
+						return;
+					}
+					TextReader reader = new StringReader( xmlAsset.text );
+					InputXMLParser.Inputs xmlInputs = ( InputXMLParser.Inputs )serializer.Deserialize( reader );
 					if ( xmlInputs != null )
 					{
 						if ( xmlInputs.Actions != null )
 						{
-							int size = GetIntValue( xmlInputs.Actions.Size );
-							if ( size > 0 && xmlInputs.Actions.Action.Count == size )
+							int size = xmlInputs.Actions.Action.Count;
+							if ( size > 0 )
 							{
-								m_actions = new T[ size ];
+								m_actions = new InputAction[ size ];
 								for ( int i = 0; i < size; ++i )
 								{
 									InputXMLParser.Action action = xmlInputs.Actions.Action[ i ];
 									try
 									{
-										m_actions[ i ] = new T();
-										m_actions[ i ].ID = ( U )Enum.Parse( typeof( U ), GetStringValue( action.Id ) );
-										if ( !Enum.IsDefined( typeof( U ), m_actions[ i ].ID ) )
-										{
-											Debug.LogError( "Invalid ID \"" + action.Id + "\" in xml" );
-										}
+										m_actions[ i ] = new InputAction();
+										m_actions[ i ].ID = GetStringValue( action.Id );
 										m_actions[ i ].KeyboardCode = ( KeyCode )Enum.Parse( typeof( KeyCode ), GetStringValue( action.Keyboardkey ) );
 										if ( !Enum.IsDefined( typeof( KeyCode ), m_actions[ i ].KeyboardCode ) )
 										{
 											Debug.LogError( "Invalid Keyboard key \"" + action.Keyboardkey + "\" in xml" );
+											return;
 										}
 										m_actions[ i ].JoystickIsAxis = GetBoolValue( action.Joystick.IsAxis );
 										if ( m_actions[ i ].JoystickIsAxis )
@@ -177,23 +182,27 @@ namespace Engine
 											if ( !Enum.IsDefined( typeof( KeyCode ), m_actions[ i ].JoystickButton ) )
 											{
 												Debug.LogError( "Invalid Joystick button \"" + action.Joystick.Button + "\" in xml" );
+												return;
 											}
 										}
 									}
 									catch ( Exception _e )
 									{
 										Debug.LogError( _e );
+										return;
 									}
 								}
 							}
 							else
 							{
 								Debug.LogError( "Actions informations size is not valide in xml" );
+								return;
 							}
 						}
 						else
 						{
 							Debug.LogError( "No actions informations provided in xml" );
+							return;
 						}
 						if ( xmlInputs.Joysticks != null )
 						{
@@ -206,6 +215,7 @@ namespace Engine
 							else
 							{
 								Debug.LogError( "No horizontal joysticks informations provided in xml" );
+								return;
 							}
 							if ( xmlInputs.Joysticks.Vertical != null )
 							{
@@ -216,11 +226,13 @@ namespace Engine
 							else
 							{
 								Debug.LogError( "No vertical joysticks informations provided in xml" );
+								return;
 							}
 						}
 						else
 						{
 							Debug.LogError( "No joysticks informations provided in xml" );
+							return;
 						}
 					}
 				}
@@ -263,14 +275,13 @@ namespace Engine
 			}
 		}
 
-		public T GetAction( U _action )
+		public InputAction GetAction( string _actionId )
 		{
-			int index = ( int )( object )_action;
-			for ( int i = 0; i < m_actions.Length; ++i )
+			foreach( InputAction ia in m_actions )
 			{
-				if ( ( m_actions[ i ] != null ) && ( ( int )( object )( m_actions[ i ].ID ) == index ) )
+				if ( ( ia != null ) && ( ia.ID == _actionId ) )
 				{
-					return m_actions[ i ];
+					return ia;
 				}
 			}
 			return null;

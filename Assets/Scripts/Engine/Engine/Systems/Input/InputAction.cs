@@ -28,12 +28,12 @@ namespace Engine
 {
 	[System.Serializable]
 	[ComVisible( true )]
-	public class InputAction<T>
+	public class InputAction
 	{
 		#region Fields
 		[SerializeField]
 		[Tooltip("The id of the input action")]
-		private T m_id = default( T );
+		private string m_id = "";
 		[SerializeField]
 		[Tooltip("The keyboard code associated with this action")]
 		private KeyCode m_keyboardKey = KeyCode.None;
@@ -54,7 +54,7 @@ namespace Engine
 		#endregion
 
 		#region Properties
-		public T ID
+		public string ID
 		{
 			get { return m_id; }
 			set { m_id = value; }
@@ -123,7 +123,6 @@ namespace Engine
 		#region Methods
 		public void Update()
 		{
-			Debug.Assert( typeof( T ).IsEnum );
 			switch ( m_policy )
 			{
 			case InputUpdatePolicy.ONLY_KEYBOARD:

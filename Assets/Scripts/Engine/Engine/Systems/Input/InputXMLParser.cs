@@ -69,8 +69,6 @@ namespace Engine
 		{
 			[XmlElement( ElementName = "action" )]
 			public List<Action> Action { get; set; }
-			[XmlAttribute( AttributeName = "size" )]
-			public string Size { get; set; }
 		}
 
 		[XmlRoot( ElementName = "horizontal" )]
