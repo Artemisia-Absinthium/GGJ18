@@ -43,22 +43,25 @@ namespace Engine
 			if ( s_instance != null )
 			{
 				Destroy( this );
+				return;
 			}
 			DontDestroyOnLoad( this );
+			s_instance = this;
 			s_tweens = new Dictionary<uint, Tween>();
 			s_tweenPool = new ObjectPoolT<Tween>();
 		}
 
-		public static Tween CreateTween( float _startValue, float _endValue, float _duration, TweenEase _ease )
+		public static Tween CreateTween( float _startValue, float _endValue, float _duration, TweenEase _ease, bool _ignoreTimeScale = false )
 		{
 			Tween t = s_tweenPool.Unpool();
 			t.m_id = s_id;
 			s_id++;
 			t.m_ease = _ease;
-			t.m_time = Time.time;
+			t.m_time = _ignoreTimeScale ? Time.unscaledTime : Time.time;
 			t.m_duration = _duration;
 			t.m_startValue = _startValue;
 			t.m_endValue = _endValue;
+			t.m_ignoreScale = _ignoreTimeScale;
 			s_tweens.Add( t.m_id, t );
 			return t;
 		}

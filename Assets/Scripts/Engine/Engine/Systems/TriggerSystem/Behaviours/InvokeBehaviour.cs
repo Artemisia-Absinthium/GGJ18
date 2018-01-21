@@ -27,29 +27,35 @@ namespace Engine
 {
 #pragma warning disable 649
 	[System.Serializable]
-	[AddComponentMenu( "Engine/Systems/Trigger System/Triggers/Timed Trigger" )]
-	public class TimedTrigger : TriggerBase
+	[AddComponentMenu( "Engine/Systems/Trigger System/Behaviours/Invoke Behaviour" )]
+	public class InvokeBehaviour : BehaviourBase
 	{
 		#region Fields
 		[SerializeField]
-		[Tooltip( "The time before the behaviour is triggered, in seconds" )]
-		private float m_time;
+		[Tooltip( "The MonoBehaviour script on wich to invoke the method" )]
+		private MonoBehaviour m_script = null;
+		[SerializeField]
+		[Tooltip( "The method o invoke on the script" )]
+		private string m_method = "Update";
+		[SerializeField]
+		[Tooltip( "Delay to call the method" )]
+		private float m_invokeDelay = 0.0f;
 		#endregion
 
 		#region Methods
-		public override void OnTrigger()
+		public override void Trigger( TriggerBase _trigger, Object _data )
 		{
-
-		}
-
-		void Start()
-		{
-			Invoke( "OnTrigger_internal", m_time );
-		}
-
-		public void CancelTrigger()
-		{
-			CancelInvoke( "OnTrigger_internal" );
+			if ( m_script && ( m_method != null ) )
+			{
+				try
+				{
+					m_script.Invoke( m_method, m_invokeDelay >= 0.0f ? m_invokeDelay : 0.0f );
+				}
+				catch( System.Exception e)
+				{
+					Debug.Log( "Invoke failed: " + e );
+				}
+			}
 		}
 		#endregion
 	}

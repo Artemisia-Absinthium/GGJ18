@@ -67,10 +67,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actions: []
-  m_joystickHorizontalName: 
+  m_joystickHorizontalName: AxisX
   m_joystickHorizontalDeadZone: 0.2
   m_joystickHorizontalIsInverted: 0
-  m_joystickVerticalName: 
+  m_joystickVerticalName: AxisY
   m_joystickVerticalDeadZone: 0.2
   m_joystickVerticalIsInverted: 0
   m_XMLConfiguration: 

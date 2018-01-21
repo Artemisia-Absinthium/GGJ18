@@ -186,7 +186,6 @@ namespace Engine
 		{
 			if ( m_receiver == null )
 			{
-				Debug.Assert( false );
 				return;
 			}
 

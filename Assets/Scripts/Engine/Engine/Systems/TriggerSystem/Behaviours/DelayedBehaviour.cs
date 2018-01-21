@@ -27,24 +27,36 @@ namespace Engine
 {
 #pragma warning disable 649
 	[System.Serializable]
-	[AddComponentMenu( "Engine/Systems/Trigger System/Triggers/Delayed Trigger" )]
-	public class DelayedTrigger : TriggerBase
+	[AddComponentMenu( "Engine/Systems/Trigger System/Behaviours/Delayed Behaviour" )]
+	public class DelayedBehaviour : BehaviourBase
 	{
 		#region Fields
 		[SerializeField]
-		[Tooltip( "The time between the triggering of this trigger and the triggering of the behaviour, in seconds" )]
+		[Tooltip( "The time between the triggering of this behaviour and the triggering of the target behaviour, in seconds" )]
 		private float m_delay;
+		[SerializeField]
+		[Tooltip( "The behaviour to trig when delay is over" )]
+		private BehaviourBase m_target;
+		#endregion
+
+		#region Members
+		private Object m_data = null;
+		private TriggerBase m_trigger = null;
 		#endregion
 
 		#region Methods
-		public override void OnTrigger()
+		public override void Trigger( TriggerBase _trigger, Object _data )
 		{
-			Invoke( "OnTrigger_internal", m_delay );
+			m_trigger = _trigger;
+			m_data = _data;
+			Invoke( "Delayed", m_delay >= 0.0f ? m_delay : 0.0f );
 		}
-
-		public void CancelTrigger()
+		private void Delayed()
 		{
-			CancelInvoke( "OnTrigger_internal" );
+			if ( m_target != null )
+			{
+				m_target.Trigger( m_trigger, m_data );
+			}
 		}
 		#endregion
 	}

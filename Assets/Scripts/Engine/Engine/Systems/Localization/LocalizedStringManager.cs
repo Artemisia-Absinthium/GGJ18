@@ -38,6 +38,11 @@ namespace Engine
 		private static int s_count = 0;
 		public const string kBinPath = kResourcesPath + kBinName + ".bytes";
 
+		public static LocalizedStringManager<T> Instance
+		{
+			get { return s_instance; }
+		}
+
 		public string Get<U>( U _index ) where U : struct, System.IConvertible
 		{
 			int index = System.Convert.ToInt32( _index );
@@ -62,19 +67,15 @@ namespace Engine
 			DontDestroyOnLoad( this );
 			s_instance = this;
 			s_count = ( int )System.Enum.Parse( typeof( T ), "COUNT" );
+			m_strings = new string[ s_count ];
 
-			User currentUser = User.Instance;
+			User currentUser = UserManager.Instance.Current;
 			LocalizedString.Lang currentLang = LocalizedString.Lang.ENGLISH;
 			if ( currentUser != null )
 			{
 				currentLang = UserGeneralOptions.SystemLanguageToLang( currentUser.Options.General.Language );
 			}
 			LoadLang( currentLang );
-		}
-
-		public LocalizedStringManager()
-		{
-			m_strings = new string[ s_count ];
 		}
 
 		public void LoadLang( LocalizedString.Lang _lang )
@@ -113,7 +114,7 @@ namespace Engine
 				}
 			}
 
-			// Mode to offset by 1024 byte steps
+			// Move to offset by 1024 byte steps
 			offset -= baseOffset;
 			byte[] buffer = new byte[ 1024 ];
 			while ( offset > 1024 )

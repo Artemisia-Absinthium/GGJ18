@@ -35,6 +35,7 @@ namespace Engine
 		public float m_duration;
 		public float m_startValue;
 		public float m_endValue;
+		public bool m_ignoreScale;
 		#endregion
 
 		#region Properties
@@ -42,14 +43,16 @@ namespace Engine
 		{
 			get
 			{
-				return TweenFunctions.Ease( m_ease, Time.time - m_time, m_startValue, m_endValue - m_startValue, m_duration );
+				float time = m_ignoreScale ? Time.unscaledTime : Time.time;
+				return TweenFunctions.Ease( m_ease, time - m_time, m_startValue, m_endValue - m_startValue, m_duration );
 			}
 		}
 		public bool Complete
 		{
 			get
 			{
-				return Time.time - m_time >= m_duration;
+				float time = m_ignoreScale ? Time.unscaledTime : Time.time;
+				return time - m_time >= m_duration;
 			}
 		}
 		#endregion

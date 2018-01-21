@@ -25,15 +25,22 @@ using UnityEngine;
 
 namespace Engine
 {
+#pragma warning disable 649
 	[System.Serializable]
-	[AddComponentMenu("Engine/Utilities/Debugging/Workshop Loader")]
-	public class WorkshopLoader : MonoBehaviour
+	[AddComponentMenu( "Engine/Systems/Trigger System/Triggers/Start Trigger" )]
+	public class StartTrigger : TriggerBase
 	{
 		#region Methods
-		void Awake()
+		public override void OnTrigger()
 		{
-			UserManager.Instance.Create( "Workshop", true );
+
+		}
+
+		void Start()
+		{
+			OnTrigger_internal();
 		}
 		#endregion
 	}
+#pragma warning restore 649
 }

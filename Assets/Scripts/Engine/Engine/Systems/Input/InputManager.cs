@@ -133,8 +133,8 @@ namespace Engine
 				Destroy( this );
 				return;
 			}
-			s_instance = this;
 			DontDestroyOnLoad( this );
+			s_instance = this;
 			if ( m_XMLConfiguration != null && m_XMLConfiguration.Length != 0 )
 			{
 				try

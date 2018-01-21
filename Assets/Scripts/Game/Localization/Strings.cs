@@ -14,6 +14,8 @@ namespace Game
 		SETTINGS,
 		EXIT,
 
+		GAME_TITLE,
+
 		COUNT
 	}
 }
