@@ -25,7 +25,6 @@ using UnityEngine;
 
 namespace Engine
 {
-#pragma warning disable 649
 	[System.Serializable]
 	[AddComponentMenu( "Engine/Systems/Trigger System/Behaviours/Delayed Behaviour" )]
 	public class DelayedBehaviour : BehaviourBase
@@ -33,10 +32,10 @@ namespace Engine
 		#region Fields
 		[SerializeField]
 		[Tooltip( "The time between the triggering of this behaviour and the triggering of the target behaviour, in seconds" )]
-		private float m_delay;
+		private float m_delay = 0.0f;
 		[SerializeField]
 		[Tooltip( "The behaviour to trig when delay is over" )]
-		private BehaviourBase m_target;
+		private BehaviourBase m_target = null;
 		#endregion
 
 		#region Members
@@ -60,5 +59,4 @@ namespace Engine
 		}
 		#endregion
 	}
-#pragma warning restore 649
 }

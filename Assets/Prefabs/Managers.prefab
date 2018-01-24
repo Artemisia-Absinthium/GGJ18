@@ -66,7 +66,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 285a2c092a60c074bb6436825f6c7bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actions: []
+  m_actions:
+  - m_id: Confirm
+    m_keyboardKey: 13
+    m_joystickInput:
+      m_isAxis: 0
+      m_button: 330
+      m_axis: 
+      m_isAxisPositive: 0
+      m_axisDeadZone: 0
+      m_rawAxis: 0
+    m_policy: 2
+  - m_id: Cancel
+    m_keyboardKey: 27
+    m_joystickInput:
+      m_isAxis: 0
+      m_button: 331
+      m_axis: 
+      m_isAxisPositive: 0
+      m_axisDeadZone: 0
+      m_rawAxis: 0
+    m_policy: 2
+  - m_id: Menu Up
+    m_keyboardKey: 273
+    m_joystickInput:
+      m_isAxis: 0
+      m_button: 332
+      m_axis: 
+      m_isAxisPositive: 0
+      m_axisDeadZone: 0
+      m_rawAxis: 0
+    m_policy: 2
+  - m_id: Menu Down
+    m_keyboardKey: 274
+    m_joystickInput:
+      m_isAxis: 0
+      m_button: 333
+      m_axis: 
+      m_isAxisPositive: 0
+      m_axisDeadZone: 0
+      m_rawAxis: 0
+    m_policy: 2
+  - m_id: Menu Left
+    m_keyboardKey: 276
+    m_joystickInput:
+      m_isAxis: 0
+      m_button: 334
+      m_axis: 
+      m_isAxisPositive: 0
+      m_axisDeadZone: 0
+      m_rawAxis: 0
+    m_policy: 2
+  - m_id: Menu Right
+    m_keyboardKey: 275
+    m_joystickInput:
+      m_isAxis: 0
+      m_button: 335
+      m_axis: 
+      m_isAxisPositive: 0
+      m_axisDeadZone: 0
+      m_rawAxis: 0
+    m_policy: 2
   m_joystickHorizontalName: AxisX
   m_joystickHorizontalDeadZone: 0.2
   m_joystickHorizontalIsInverted: 0

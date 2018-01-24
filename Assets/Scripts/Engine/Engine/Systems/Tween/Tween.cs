@@ -39,6 +39,10 @@ namespace Engine
 		#endregion
 
 		#region Properties
+		public uint ID
+		{
+			get { return m_id; }
+		}
 		public float Value
 		{
 			get

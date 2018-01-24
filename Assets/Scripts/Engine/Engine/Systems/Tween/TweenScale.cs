@@ -46,7 +46,7 @@ namespace Engine
 			}
 			m_origin = transform.localScale;
 			m_target = m_destination.localScale;
-			m_tween = TweenManager.CreateTween( 0.0f, 1.0f, m_duration, m_ease );
+			m_tween = TweenManager.Instance.CreateTween( 0.0f, 1.0f, m_duration, m_ease );
 			m_launched = true;
 		}
 
@@ -57,7 +57,7 @@ namespace Engine
 				float value = m_tween.Value;
 				if ( m_tween.Complete )
 				{
-					TweenManager.RemoveTween( m_tween.m_id );
+					TweenManager.Instance.RemoveTween( m_tween.ID );
 					m_launched = false;
 					switch ( m_axis )
 					{

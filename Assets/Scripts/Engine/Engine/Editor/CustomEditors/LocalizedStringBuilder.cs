@@ -56,8 +56,7 @@ namespace Engine
 
 		private string[][] m_array = null;
 		private bool[] m_folders = null;
-
-		private static System.Type s_type;
+		
 		private static int s_count = 0;
 
 		//[MenuItem( "Engine/Localized strings" )]
@@ -115,8 +114,16 @@ namespace Engine
 				{
 					string key = reader.ReadString();
 					string value = reader.ReadString();
-					int index = ( int )System.Enum.Parse( typeof( T ), key );
-					m_array[ index ][ lang ] = value;
+					try
+					{
+						int index = ( int )System.Enum.Parse( typeof( T ), key );
+						m_array[ index ][ lang ] = value;
+					}
+					catch
+					{
+						Debug.Log( "Warning! The string " + key + " is no more a part of the enum..." );
+						Debug.Log( "If you want to recover it, read this value to the " + typeof(T).Name + " enum" );
+					}
 				}
 				reader.Close();
 			}

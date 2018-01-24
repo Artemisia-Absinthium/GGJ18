@@ -21,28 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using UnityEngine;
-
-namespace Engine
+public interface ICutSceneSupervisorBase
 {
-	[System.Serializable]
-	[AddComponentMenu( "Engine/Systems/Trigger System/Behaviours/Disable Behaviour Behaviour" )]
-	public class DisableBehaviourBehaviour : BehaviourBase
-	{
-		#region Fields
-		[SerializeField]
-		[Tooltip( "The behaviour to disable" )]
-		private Behaviour m_behaviour = null;
-		#endregion
-
-		#region Methods
-		public override void Trigger( TriggerBase _trigger, Object _data )
-		{
-			if ( m_behaviour )
-			{
-				m_behaviour.enabled = false;
-			}
-		}
-		#endregion
-	}
+	void OnCutSceneTransitionOk( string _cutSceneName, int _previousSnapshot, int _newSnapshot );
+	void OnCutSceneTransitionTime( string _cutSceneName, int _previousSnapshot, int _newSnapshot );
+	void OnCutSceneTransitionChoice( string _cutSceneName, int _previousSnapshot, int _newSnapshot, int _choiceIndex );
+	bool OnOverrideSceneTransition( out int _nextScene );
 }

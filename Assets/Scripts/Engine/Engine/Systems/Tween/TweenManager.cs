@@ -31,10 +31,17 @@ namespace Engine
 	public class TweenManager : MonoBehaviour
 	{
 		#region Members
-		private static Dictionary<uint, Tween> s_tweens;
-		private static ObjectPoolT<Tween> s_tweenPool;
-		private static uint s_id = 0;
+		private Dictionary<uint, Tween> m_tweens;
+		private ObjectPoolT<Tween> m_tweenPool;
+		private uint m_id = 0;
 		private static TweenManager s_instance = null;
+		#endregion
+
+		#region Properties
+		public static TweenManager Instance
+		{
+			get { return s_instance; }
+		}
 		#endregion
 
 		#region Methods
@@ -47,42 +54,42 @@ namespace Engine
 			}
 			DontDestroyOnLoad( this );
 			s_instance = this;
-			s_tweens = new Dictionary<uint, Tween>();
-			s_tweenPool = new ObjectPoolT<Tween>();
+			m_tweens = new Dictionary<uint, Tween>();
+			m_tweenPool = new ObjectPoolT<Tween>();
 		}
 
-		public static Tween CreateTween( float _startValue, float _endValue, float _duration, TweenEase _ease, bool _ignoreTimeScale = false )
+		public Tween CreateTween( float _startValue, float _endValue, float _duration, TweenEase _ease, bool _ignoreTimeScale = false )
 		{
-			Tween t = s_tweenPool.Unpool();
-			t.m_id = s_id;
-			s_id++;
+			Tween t = m_tweenPool.Unpool();
+			t.m_id = m_id;
+			m_id++;
 			t.m_ease = _ease;
 			t.m_time = _ignoreTimeScale ? Time.unscaledTime : Time.time;
 			t.m_duration = _duration;
 			t.m_startValue = _startValue;
 			t.m_endValue = _endValue;
 			t.m_ignoreScale = _ignoreTimeScale;
-			s_tweens.Add( t.m_id, t );
+			m_tweens.Add( t.m_id, t );
 			return t;
 		}
 
-		public static Tween GetTween( uint _id )
+		public Tween GetTween( uint _id )
 		{
 			Tween t;
-			if ( s_tweens.TryGetValue( _id, out t ) )
+			if ( m_tweens.TryGetValue( _id, out t ) )
 			{
 				return t;
 			}
 			return null;
 		}
 
-		public static void RemoveTween( uint _id )
+		public void RemoveTween( uint _id )
 		{
 			Tween t = GetTween( _id );
 			if ( t != null )
 			{
-				s_tweens.Remove( _id );
-				s_tweenPool.Pool( ref t );
+				m_tweens.Remove( _id );
+				m_tweenPool.Pool( ref t );
 			}
 		}
 		#endregion

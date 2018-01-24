@@ -25,7 +25,6 @@ using UnityEngine;
 
 namespace Engine
 {
-#pragma warning disable 649
 	[System.Serializable]
 	[AddComponentMenu( "Engine/Systems/Trigger System/Behaviours/Tween Launcher Behaviour" )]
 	public class TweenLauncherBehaviour : BehaviourBase
@@ -33,7 +32,7 @@ namespace Engine
 		#region Fields
 		[SerializeField]
 		[Tooltip( "The tween to launch" )]
-		private TweenAction m_tweenAction;
+		private TweenAction m_tweenAction = null;
 		#endregion
 
 		#region Methods
@@ -46,5 +45,4 @@ namespace Engine
 		}
 		#endregion
 	}
-#pragma warning restore 649
 }

@@ -25,7 +25,6 @@ using UnityEngine;
 
 namespace Engine
 {
-#pragma warning disable 649
 	[System.Serializable]
 	[AddComponentMenu( "Engine/Systems/Trigger System/Triggers/Start Trigger" )]
 	public class StartTrigger : TriggerBase
@@ -42,5 +41,4 @@ namespace Engine
 		}
 		#endregion
 	}
-#pragma warning restore 649
 }

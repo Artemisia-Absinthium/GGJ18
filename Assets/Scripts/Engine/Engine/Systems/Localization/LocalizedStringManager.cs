@@ -162,6 +162,7 @@ namespace Engine
 				m_dlcs = new string[ 1000 ][];
 				if ( _index >= 0 && _index < 1000 )
 				{
+					m_dlcs[ _index ] = new string[ _strings.Length ];
 					System.Array.Copy( _strings, m_dlcs[ _index ], _strings.Length );
 				}
 			}

@@ -25,7 +25,6 @@ using UnityEngine;
 
 namespace Engine
 {
-#pragma warning disable 649
 	[System.Serializable]
 	[AddComponentMenu( "Engine/Systems/Trigger System/Behaviours/Enable Behaviour Behaviour" )]
 	public class EnableBehaviourBehaviour : BehaviourBase
@@ -33,7 +32,7 @@ namespace Engine
 		#region Fields
 		[SerializeField]
 		[Tooltip( "The behaviour to enable" )]
-		private Behaviour m_behaviour;
+		private Behaviour m_behaviour = null;
 		#endregion
 
 		#region Methods
@@ -46,5 +45,4 @@ namespace Engine
 		}
 		#endregion
 	}
-#pragma warning restore 649
 }
