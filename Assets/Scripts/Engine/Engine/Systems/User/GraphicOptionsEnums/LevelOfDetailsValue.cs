@@ -30,6 +30,6 @@ namespace Engine
 		HighQuality = 150,
 		MediumQuality = 100,
 		LowQuality = 75,
-		LowestQulity = 50
+		LowestQuality = 50
 	}
 }

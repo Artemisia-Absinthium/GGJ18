@@ -50,6 +50,15 @@ namespace Engine
 				}
 			}
 		}
+		public static SystemLanguage[] SupportedLanguages
+		{
+			get
+			{
+				SystemLanguage[] array = new SystemLanguage[ s_supportedLanguages.Length ];
+				System.Array.Copy( s_supportedLanguages, array, s_supportedLanguages.Length );
+				return array;
+			}
+		}
 		#endregion
 
 		#region Methods

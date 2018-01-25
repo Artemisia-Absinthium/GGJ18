@@ -41,22 +41,22 @@ namespace Engine
 		public float MouseXSensibility
 		{
 			get { return m_mouseXSensibility; }
-			set { m_mouseXSensibility = 0.1f + 0.9f * Mathf.Clamp01( value ); }
+			set { m_mouseXSensibility = Mathf.Clamp( value, 0.1f, 1.0f ); }
 		}
 		public float MouseYSensibility
 		{
 			get { return m_mouseYSensibility; }
-			set { m_mouseYSensibility = 0.1f + 0.9f * Mathf.Clamp01( value ); }
+			set { m_mouseYSensibility = Mathf.Clamp( value, 0.1f, 1.0f ); }
 		}
 		public float JoystickXSensibility
 		{
 			get { return m_joystickXSensibility; }
-			set { m_joystickXSensibility = 0.1f + 0.9f * Mathf.Clamp01( value ); }
+			set { m_joystickXSensibility = Mathf.Clamp( value, 0.1f, 1.0f ); }
 		}
 		public float JoystickYSensibility
 		{
 			get { return m_joystickYSensibility; }
-			set { m_joystickYSensibility = 0.1f + 0.9f * Mathf.Clamp01( value ); }
+			set { m_joystickYSensibility = Mathf.Clamp( value, 0.1f, 1.0f ); }
 		}
 		public bool InvertJoystickXAxis
 		{

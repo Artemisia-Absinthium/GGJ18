@@ -23,6 +23,8 @@ namespace Game
 		private float m_timer = 0.0f;
 		private CutScene m_currentCutScene = null;
 		private int m_currentSnapshot = -1;
+		private int m_nextSnapshot = -1;
+		private bool m_start = false;
 
 		private ICutSceneSupervisorBase m_currentSupervisor = null;
 
@@ -79,11 +81,20 @@ namespace Game
 			m_parser.Update();
 			if ( m_isPlaying )
 			{
-				if ( m_currentSnapshot == -1 )
+				if ( m_nextSnapshot != -1 )
 				{
-					m_currentSnapshot = m_currentCutScene.Input;
+					int old = m_currentSnapshot;
+					m_currentSnapshot = m_nextSnapshot;
+					m_nextSnapshot = -1;
+
 					m_adapter.StartSnapshot( m_currentSnapshot );
-					SetSnapshot( -1 );
+					SetSnapshot( old, m_currentSnapshot );
+				}
+				else if ( m_start )
+				{
+					m_start = false;
+					m_adapter.StartSnapshot( m_currentSnapshot );
+					SetSnapshot( -1, m_currentSnapshot );
 				}
 				else
 				{
@@ -91,13 +102,15 @@ namespace Game
 					CutSceneSnapshot snap = m_currentCutScene[ m_currentSnapshot ];
 					m_timer += Time.deltaTime;
 					int choice;
+					int overrideTransition = -1;
+					bool doOverride = false;
 					if ( ( snap.OutTime >= 0.0f ) && ( m_timer >= snap.OutTime ) )
 					{
 						if ( m_currentSupervisor != null )
 						{
 							m_adapter.EndSnapshot();
 							transition = snap.TimeTarget;
-							m_currentSupervisor.OnCutSceneTransitionTime( m_currentCutScene.Name, m_currentSnapshot, transition );
+							doOverride = m_currentSupervisor.OnCutSceneTransitionTime( m_currentCutScene.Name, m_currentSnapshot, transition, ref overrideTransition );
 							m_timer = 0.0f;
 						}
 					}
@@ -107,7 +120,7 @@ namespace Game
 						{
 							m_adapter.EndSnapshot();
 							transition = snap.OkTarget;
-							m_currentSupervisor.OnCutSceneTransitionOk( m_currentCutScene.Name, m_currentSnapshot, transition );
+							doOverride = m_currentSupervisor.OnCutSceneTransitionOk( m_currentCutScene.Name, m_currentSnapshot, transition, ref overrideTransition );
 							m_timer = 0.0f;
 						}
 					}
@@ -117,14 +130,13 @@ namespace Game
 						{
 							m_adapter.EndSnapshot();
 							transition = snap.ChoiceTarget( choice );
-							m_currentSupervisor.OnCutSceneTransitionChoice( m_currentCutScene.Name, m_currentSnapshot, transition, choice );
+							doOverride = m_currentSupervisor.OnCutSceneTransitionChoice( m_currentCutScene.Name, m_currentSnapshot, transition, choice, ref overrideTransition );
 							m_timer = 0.0f;
 						}
 					}
 					if ( transition != m_currentSnapshot )
 					{
-						int overrideTransition;
-						if ( m_currentSupervisor.OnOverrideSceneTransition( out overrideTransition ) )
+						if ( doOverride )
 						{
 							transition = overrideTransition;
 						}
@@ -138,11 +150,7 @@ namespace Game
 						}
 						else
 						{
-							int old = m_currentSnapshot;
-							m_currentSnapshot = transition;
-
-							m_adapter.StartSnapshot( m_currentSnapshot );
-							SetSnapshot( old );
+							m_nextSnapshot = transition;
 						}
 					}
 				}
@@ -190,10 +198,21 @@ namespace Game
 
 			m_currentSupervisor = _supervisor;
 
+			int transition = -1;
+			bool overrideTransition = false;
 			if ( m_currentSupervisor != null )
 			{
-				m_currentSupervisor.OnCutSceneTransitionOk( m_currentCutScene.Name, -1, m_currentCutScene.Input );
+				overrideTransition = m_currentSupervisor.OnCutSceneTransitionOk( m_currentCutScene.Name, -1, m_currentCutScene.Input, ref transition );
 			}
+			if ( overrideTransition )
+			{
+				m_currentSnapshot = transition;
+			}
+			else
+			{
+				m_currentSnapshot = m_currentCutScene.Input;
+			}
+			m_start = true;
 			m_adapter.StartCutScene( m_currentCutScene.Name );
 
 			m_arguments = new object[ kMaxArgumentCount + 1 ];
@@ -218,14 +237,14 @@ namespace Game
 			return true;
 		}
 
-		private void SetSnapshot( int previous )
+		private void SetSnapshot( int _previous, int _new )
 		{
-			CutSceneSnapshot snap = m_currentCutScene[ m_currentSnapshot ];
+			CutSceneSnapshot snap = m_currentCutScene[ _new ];
 
 			string format = string.Format( snap.Text, m_arguments );
 
 			m_adapter.SetText( format, snap.IsChoice );
-			if ( previous == -1 )
+			if ( _previous == -1 )
 			{
 				m_adapter.SetSprite( snap.LeftPicture, 0 );
 				m_adapter.SetSprite( snap.RightPicture, 1 );
@@ -233,15 +252,15 @@ namespace Game
 			}
 			else
 			{
-				if ( snap.LeftPicture != m_currentCutScene[ previous ].LeftPicture )
+				if ( snap.LeftPicture != m_currentCutScene[ _previous ].LeftPicture )
 				{
 					m_adapter.SetSprite( snap.LeftPicture, 0 );
 				}
-				if ( snap.RightPicture != m_currentCutScene[ previous ].RightPicture )
+				if ( snap.RightPicture != m_currentCutScene[ _previous ].RightPicture )
 				{
 					m_adapter.SetSprite( snap.RightPicture, 1 );
 				}
-				if ( snap.CenterPicture != m_currentCutScene[ previous ].CenterPicture )
+				if ( snap.CenterPicture != m_currentCutScene[ _previous ].CenterPicture )
 				{
 					m_adapter.SetSprite( snap.CenterPicture, 2 );
 				}

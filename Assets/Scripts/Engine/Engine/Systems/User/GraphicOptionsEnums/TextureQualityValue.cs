@@ -27,7 +27,7 @@ namespace Engine
 	public enum TextureQualityValue
 	{
 		HighQuality = 0,
-		MediumQUality = 1,
+		MediumQuality = 1,
 		LowQuality = 2,
 		LowestQuality = 3
 	}

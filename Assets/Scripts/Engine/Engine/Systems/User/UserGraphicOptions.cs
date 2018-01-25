@@ -29,7 +29,9 @@ namespace Engine
 	public class UserGraphicOptions : ISerializeRW
 	{
 		#region Members
-		private AnisotropicFiltering m_anisotropicFiltering = AnisotropicFiltering.Enable;
+		private Resolution m_resolution = new Resolution();
+		private bool m_fullscreen = true;
+		private AnisotropicFiltering m_anisotropicFiltering = UnityEngine.AnisotropicFiltering.Enable;
 		private AntiAliasingValue m_antiAliasing = AntiAliasingValue.X4;
 		private LevelOfDetailsValue m_levelOfDetails = LevelOfDetailsValue.HighQuality;
 		private TextureQualityValue m_textureQuality = TextureQualityValue.HighQuality;
@@ -44,10 +46,100 @@ namespace Engine
 		private GraphicAPI m_graphicApi = GraphicAPI.DirectX11;
 		#endregion
 
+		#region Properties
+		public int Width
+		{
+			get { return m_resolution.width; }
+			set { m_resolution.width = value; }
+		}
+		public int Height
+		{
+			get { return m_resolution.height; }
+			set { m_resolution.height = value; }
+		}
+		public int RefreshRate
+		{
+			get { return m_resolution.refreshRate; }
+			set { m_resolution.refreshRate = value; }
+		}
+		public bool FullScreen
+		{
+			get { return m_fullscreen; }
+			set { m_fullscreen = value; }
+		}
+		public AnisotropicFiltering AnisotropicFiltering
+		{
+			get { return m_anisotropicFiltering; }
+			set { m_anisotropicFiltering = value; }
+		}
+		public AntiAliasingValue AntiAliasing
+		{
+			get { return m_antiAliasing; }
+			set { m_antiAliasing = value; }
+		}
+		public LevelOfDetailsValue LevelOfDetails
+		{
+			get { return m_levelOfDetails; }
+			set { m_levelOfDetails = value; }
+		}
+		public TextureQualityValue TextureQuality
+		{
+			get { return m_textureQuality; }
+			set { m_textureQuality = value; }
+		}
+		public ShadersQualityValue ShadersQuality
+		{
+			get { return m_shadersQuality; }
+			set { m_shadersQuality = value; }
+		}
+		public PhysicParticleValue PhysicParticle
+		{
+			get { return m_physicParticleQuality; }
+			set { m_physicParticleQuality = value; }
+		}
+		public bool RealtimeReflections
+		{
+			get { return m_realtimeReflections; }
+			set { m_realtimeReflections = value; }
+		}
+		public ShadowsDistanceValue ShadowsDistance
+		{
+			get { return m_shadowDistance; }
+			set { m_shadowDistance = value; }
+		}
+		public ShadowResolution ShadowResolution
+		{
+			get { return m_shadowResolution; }
+			set { m_shadowResolution = value; }
+		}
+		public ShadowQuality ShadowQuality
+		{
+			get { return m_shadowQuality; }
+			set { m_shadowQuality = value; }
+		}
+		public ParticlesQualityValue ParticlesQuality
+		{
+			get { return m_particlesQuality; }
+			set { m_particlesQuality = value; }
+		}
+		public VSyncValue VSync
+		{
+			get { return m_vSyncEnabled; }
+			set { m_vSyncEnabled = value; }
+		}
+		public GraphicAPI GraphicAPI
+		{
+			get { return m_graphicApi; }
+			set { m_graphicApi = value; }
+		}
+		#endregion
+
 		#region Methods
 		public void New()
 		{
-			m_anisotropicFiltering = AnisotropicFiltering.Enable;
+			m_resolution = Screen.resolutions[ 0 ];
+			m_fullscreen = true;
+			m_anisotropicFiltering = UnityEngine.AnisotropicFiltering.Enable;
 			m_antiAliasing = AntiAliasingValue.X4;
 			m_levelOfDetails = LevelOfDetailsValue.HighQuality;
 			m_textureQuality = TextureQualityValue.HighQuality;
@@ -64,6 +156,10 @@ namespace Engine
 
 		public void SerializeR( System.IO.BinaryReader _reader )
 		{
+			m_resolution.width = _reader.ReadInt16();
+			m_resolution.height = _reader.ReadInt16();
+			m_resolution.refreshRate = _reader.ReadInt16();
+			m_fullscreen = _reader.ReadBoolean();
 			m_anisotropicFiltering = (AnisotropicFiltering)_reader.ReadInt32();
 			m_antiAliasing = (AntiAliasingValue)_reader.ReadByte();
 			m_levelOfDetails = (LevelOfDetailsValue)_reader.ReadInt16();
@@ -81,6 +177,10 @@ namespace Engine
 
 		public void SerializeW( System.IO.BinaryWriter _writer )
 		{
+			_writer.Write( ( short )m_resolution.width );
+			_writer.Write( ( short )m_resolution.height );
+			_writer.Write( ( short )m_resolution.refreshRate );
+			_writer.Write( m_fullscreen );
 			_writer.Write( (int)m_anisotropicFiltering );
 			_writer.Write( (byte)m_antiAliasing );
 			_writer.Write( (short)m_levelOfDetails );

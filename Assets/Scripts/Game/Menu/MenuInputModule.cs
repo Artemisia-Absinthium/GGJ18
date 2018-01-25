@@ -3,7 +3,6 @@
  */
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class MenuInputModule : PointerInputModule
@@ -388,15 +387,5 @@ public class MenuInputModule : PointerInputModule
 				HandlePointerExitAndEnter( pointerEvent, currentOverGo );
 			}
 		}
-	}
-
-	public void PlayGame( string _sceneName )
-	{
-		SceneManager.LoadScene( _sceneName );
-	}
-
-	public void QuitGame()
-	{
-		Application.Quit();
 	}
 }

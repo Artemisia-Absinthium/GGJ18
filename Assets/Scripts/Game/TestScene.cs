@@ -32,25 +32,20 @@ public class TestScene : MonoBehaviour, ICutSceneSupervisorBase
 	}
 	
 	// Methods from ICutSceneSupervisorBase
-	public void OnCutSceneTransitionOk( string _cutSceneName, int _previousSnapshot, int _newSnapshot )
+	public bool OnCutSceneTransitionOk( string _cutSceneName, int _previousSnapshot, int _newSnapshot, ref int _nextScene )
 	{
-		
+		return false;
 	}
-	public void OnCutSceneTransitionTime( string _cutSceneName, int _previousSnapshot, int _newSnapshot )
+	public bool OnCutSceneTransitionTime( string _cutSceneName, int _previousSnapshot, int _newSnapshot, ref int _nextScene )
 	{
-		
+		return false;
 	}
-	public void OnCutSceneTransitionChoice( string _cutSceneName, int _previousSnapshot, int _newSnapshot, int _choiceIndex )
+	public bool OnCutSceneTransitionChoice( string _cutSceneName, int _previousSnapshot, int _newSnapshot, int _choiceIndex, ref int _nextScene )
 	{
 		if ( _newSnapshot == 2 )
 		{
 			CutScenePlayer.Instance.SetArgument( cutSceneInstance, 2, System.DateTime.Now.Hour );
 		}
-	}
-
-	public bool OnOverrideSceneTransition( out int _nextScene )
-	{
-		_nextScene = -1;
 		return false;
 	}
 }

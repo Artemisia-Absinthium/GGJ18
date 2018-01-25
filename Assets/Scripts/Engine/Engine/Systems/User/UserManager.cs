@@ -105,6 +105,7 @@ namespace Engine
 			{
 				return;
 			}
+			m_users = new List<User>();
 			m_currentUser = _reader.ReadInt32();
 			int userCount = _reader.ReadInt32();
 			for ( int i = 0; i < userCount; ++i )
@@ -122,6 +123,34 @@ namespace Engine
 			{
 				m_users[ i ].SerializeW( _writer );
 			}
+		}
+		public bool Load()
+		{
+			string userFile = Application.persistentDataPath + "/users.sav";
+			if ( File.Exists( userFile ) )
+			{
+				FileStream file = File.Open( userFile, FileMode.Open );
+				CryptoStream stream = new CryptoStream( file, new Encrypter( 8081 ), CryptoStreamMode.Read );
+				BinaryReader reader = new BinaryReader( stream );
+				SerializeR( reader );
+				reader.Close();
+				return true;
+			}
+			return false;
+		}
+		public void Save()
+		{
+			string userFile = Application.persistentDataPath + "/users.sav";
+			if ( m_users.Count == 0 )
+			{
+				Create( User.kGlobalName, true );
+			}
+			Directory.CreateDirectory( Application.persistentDataPath );
+			FileStream file = File.Create( userFile );
+			CryptoStream stream = new CryptoStream( file, new Encrypter( 8081 ), CryptoStreamMode.Write );
+			BinaryWriter writer = new BinaryWriter( stream );
+			SerializeW( writer );
+			writer.Close();
 		}
 
 		public string[] GetNames()

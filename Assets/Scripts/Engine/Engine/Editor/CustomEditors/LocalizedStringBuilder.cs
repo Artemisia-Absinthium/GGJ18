@@ -130,7 +130,7 @@ namespace Engine
 		}
 		private void BinSave( int _lang, string _path)
 		{
-			FileStream fileStream = new FileStream( _path, FileMode.OpenOrCreate );
+			FileStream fileStream = new FileStream( _path, FileMode.Create );
 			BinaryWriter writer = new BinaryWriter( fileStream );
 			writer.Write( 'B' );
 			writer.Write( 'I' );
@@ -190,7 +190,7 @@ namespace Engine
 		}
 		private void TxtSave( int _lang, string _path )
 		{
-			FileStream fileStream = new FileStream( _path, FileMode.OpenOrCreate );
+			FileStream fileStream = new FileStream( _path, FileMode.Create );
 			StreamWriter writer = new StreamWriter( fileStream );
 			writer.WriteLine( "TXT" );
 			for ( int str = 0; str < m_array.Length; ++str )
