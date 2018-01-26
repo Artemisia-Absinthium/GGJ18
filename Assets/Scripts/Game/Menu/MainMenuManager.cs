@@ -67,7 +67,7 @@ namespace Game
 		private Toggle f_invertY;
 
 		[SerializeField]
-		private Text t_resolution;
+		private TMPro.TextMeshProUGUI t_resolution;
 		[SerializeField]
 		private TextSwitcherGroup t_anisotropicFiltering;
 		[SerializeField]
@@ -89,13 +89,13 @@ namespace Game
 		[SerializeField]
 		private TextSwitcherGroup t_particlesQuality;
 		[SerializeField]
-		private Text t_generalVolume;
+		private TMPro.TextMeshProUGUI t_generalVolume;
 		[SerializeField]
-		private Text t_musicVolume;
+		private TMPro.TextMeshProUGUI t_musicVolume;
 		[SerializeField]
-		private Text t_effectsVolume;
+		private TMPro.TextMeshProUGUI t_effectsVolume;
 		[SerializeField]
-		private Text t_voicesVolume;
+		private TMPro.TextMeshProUGUI t_voicesVolume;
 		#endregion
 
 		// General
@@ -132,7 +132,7 @@ namespace Game
 		private bool m_tempIX;
 		private bool m_tempIY;
 
-		private Text m_graveyardText = null;
+		private TMPro.TextMeshProUGUI m_graveyardText = null;
 		private Slider m_graveyardSlider;
 		private Toggle m_graveyardToggle;
 		private TextSwitcherGroup m_graveyardTextSwitcherGroup;
@@ -149,7 +149,7 @@ namespace Game
 			{
 				GameObject g = new GameObject( "Graveyard Text" );
 				g.transform.parent = transform;
-				m_graveyardText = g.AddComponent<Text>();
+				m_graveyardText = g.AddComponent<TMPro.TextMeshProUGUI>();
 				g = new GameObject( "Graveyard Slider" );
 				g.transform.parent = transform;
 				m_graveyardSlider = g.AddComponent<Slider>();
@@ -356,6 +356,11 @@ namespace Game
 		public void QuitGame()
 		{
 			Application.Quit();
+		}
+		public void OnNavigation( GameObject _target )
+		{
+			UnityEngine.EventSystems.EventSystem es = UnityEngine.EventSystems.EventSystem.current;
+			es.SetSelectedGameObject( _target );
 		}
 		public void OnLanguageChanged()
 		{
