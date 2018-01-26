@@ -25,7 +25,7 @@ public class TestScene : MonoBehaviour, ICutSceneSupervisorBase
 			}
 			else
 			{
-				cutSceneInstance = CutScenePlayer.Instance.Play( "Test Scene", this );
+				cutSceneInstance = CutScenePlayer.Instance.Play( "Unnamed cutscene", this );
 				CutScenePlayer.Instance.SetArgument( cutSceneInstance, 1, speakerName );
 			}
 		}
