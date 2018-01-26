@@ -11,7 +11,7 @@ namespace Game
 		[SerializeField]
 		private MonoBehaviour m_adapterObject = null;
 
-		public const int kMaxArgumentCount = 10;
+		public const int kMaxArgumentCount = 20;
 
 		private int m_instanceCounter = -1;
 		private int m_currentInstance = -1;

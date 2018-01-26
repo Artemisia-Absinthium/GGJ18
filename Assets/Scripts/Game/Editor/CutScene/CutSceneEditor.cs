@@ -726,7 +726,7 @@ namespace Game
 				}
 				else if ( ext == ".cut" )
 				{
-					FileStream stream = new FileStream( fileName,FileMode.Open );
+					FileStream stream = new FileStream( fileName, FileMode.Open );
 					if ( stream != null )
 					{
 						StreamReader reader = new StreamReader( stream );
@@ -782,7 +782,8 @@ namespace Game
 
 			CheckLoadSprites();
 
-			float width = ( position.width - 106 ) / 5.0f;
+			int divider = ( int )Mathf.Min( Mathf.Max( 1.0f, ( position.width / 150.0f ) ), 5.0f );
+			float width = ( position.width - 106 ) / divider;
 			float height = width * 0.75f;
 
 			GUILayoutOption maxWidth = GUILayout.Width( width );
@@ -809,8 +810,16 @@ namespace Game
 				Sprite sprite = ( Sprite )EditorGUILayout.ObjectField( cached.Sprite, typeof( Sprite ), false, maxWidth );
 				if ( sprite != cached.Sprite )
 				{
-					cached.Sprite = sprite;
-					cached.Path = AssetDatabase.GetAssetPath( sprite );
+					string path = AssetDatabase.GetAssetPath( sprite );
+					if ( path.Contains( "/Resources/" ) )
+					{
+						cached.Sprite = sprite;
+						cached.Path = path;
+					}
+					else
+					{
+						EditorUtility.DisplayDialog( "Error", "The sprite you selected is not in a Resources folder", "OK" );
+					}
 				}
 				EditorGUILayout.TextField( cached.Path, GUI.skin.label, maxWidth );
 
@@ -835,7 +844,7 @@ namespace Game
 
 				GUILayout.EndVertical();
 				++x;
-				if ( x == 5 )
+				if ( x == divider )
 				{
 					GUILayout.EndHorizontal();
 					GUILayout.BeginHorizontal();
@@ -846,9 +855,9 @@ namespace Game
 					s_sprites[ i ] = cached;
 				}
 			}
-			if ( x != 0 )
+			if ( x != 0 && divider != 1 )
 			{
-				for ( ; x < 5; ++x )
+				for ( ; x < divider; ++x )
 				{
 					GUILayout.BeginVertical();
 					GUILayout.Label( "", maxWidth );
