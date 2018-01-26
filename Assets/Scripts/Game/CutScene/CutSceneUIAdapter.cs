@@ -23,9 +23,9 @@ namespace Game
 		private Image m_centerSprite = null;
 
 		[SerializeField]
-		private Text m_text = null;
+		private TMPro.TextMeshProUGUI m_text = null;
 		[SerializeField]
-		private Text[] m_choiceTexts = null;
+		private TMPro.TextMeshProUGUI[] m_choiceTexts = null;
 		[SerializeField]
 		private Button[] m_choiceButtons = null;
 		[SerializeField]
@@ -46,7 +46,7 @@ namespace Game
 			Debug.Assert( m_text );
 			Debug.Assert( m_choiceTexts != null );
 			Debug.Assert( m_choiceTexts.Length >= 4 );
-			foreach ( Text t in m_choiceTexts )
+			foreach ( TMPro.TextMeshProUGUI t in m_choiceTexts )
 			{
 				Debug.Assert( t );
 			}
@@ -77,11 +77,11 @@ namespace Game
 			m_text.text = _text;
 			if ( _forChoice )
 			{
-				m_text.alignment = TextAnchor.UpperCenter;
+				m_text.alignment = TMPro.TextAlignmentOptions.Top;
 			}
 			else
 			{
-				m_text.alignment = TextAnchor.MiddleCenter;
+				m_text.alignment = TMPro.TextAlignmentOptions.Center;
 			}
 		}
 
@@ -105,11 +105,11 @@ namespace Game
 			case 1:
 				if ( _sprite == null )
 				{
-					m_leftSprite.enabled = false;
+					m_rightSprite.enabled = false;
 				}
 				else
 				{
-					m_leftSprite.enabled = true;
+					m_rightSprite.enabled = true;
 					m_rightSprite.sprite = _sprite;
 					m_rightSprite.SetNativeSize();
 					m_rightSprite.rectTransform.anchoredPosition = new Vector2( -300, 540 );
@@ -118,11 +118,11 @@ namespace Game
 			case 2:
 				if ( _sprite == null )
 				{
-					m_leftSprite.enabled = false;
+					m_centerSprite.enabled = false;
 				}
 				else
 				{
-					m_leftSprite.enabled = true;
+					m_centerSprite.enabled = true;
 					m_centerSprite.sprite = _sprite;
 					m_centerSprite.SetNativeSize();
 					m_centerSprite.rectTransform.anchoredPosition = new Vector2( 0, 540 );
@@ -135,7 +135,7 @@ namespace Game
 		{
 			if ( _choices == null )
 			{
-				foreach ( Text t in m_choiceTexts )
+				foreach ( TMPro.TextMeshProUGUI t in m_choiceTexts )
 				{
 					t.gameObject.SetActive( false );
 				}
