@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class GameMusicManager : MonoBehaviour {
 
+    public float m_SwitchSpeed = 0.01f;
+
     public enum EGameMusicManagerState
     {
-        eMainMenu,
-        eBaseVillage,
-        eHappyCharacter,
-        eSadCharacter
+        eNone = -1,
+        eBaseVillage = 0,
+        eLara = 1,
+        eKozbee = 2,
+        eLapin = 3,
+        eFaucheuse = 4
     };
 
     public EGameMusicManagerState m_StartMusicState = EGameMusicManagerState.eBaseVillage;
@@ -27,8 +31,8 @@ public class GameMusicManager : MonoBehaviour {
 
     public EMusicSwitchState m_SwitchState = EMusicSwitchState.eNone;
 
-    public int m_ActualMusic = 0;
-    public int m_NextMusic;
+    public EGameMusicManagerState m_ActualMusic = 0;
+    public EGameMusicManagerState m_NextMusic = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -40,14 +44,8 @@ public class GameMusicManager : MonoBehaviour {
         {
             Debug.Log("No music in Music Manager's Audio Source");
 
-            if(m_Musics.Length <= 0)
-            {
-                Debug.Log("No music configured in the game");
-            }else
-            {
-                m_AudioSource.clip = m_Musics[0];
-                m_ActualMusic = 0;
-            }
+            m_AudioSource.clip = m_Musics[(int)m_NextMusic];
+            m_ActualMusic = 0;
             
         }
 
@@ -64,18 +62,18 @@ public class GameMusicManager : MonoBehaviour {
 
         if(m_SwitchState == EMusicSwitchState.eFadeOut)
         {
-            m_AudioSource.volume -= 0.05f;
+            m_AudioSource.volume -= m_SwitchSpeed;
             if(m_AudioSource.volume <= 0.0f)
             {
                 m_SwitchState = EMusicSwitchState.eFadeIn;
                 m_AudioSource.Stop();
-                m_AudioSource.clip = m_Musics[m_NextMusic];
+                m_AudioSource.clip = m_Musics[(int)m_NextMusic];
                 m_AudioSource.Play();
                 m_ActualMusic = m_NextMusic;
             }
         }else if(m_SwitchState == EMusicSwitchState.eFadeIn)
         {
-            m_AudioSource.volume += 0.05f;
+            m_AudioSource.volume += m_SwitchSpeed;
             if (m_AudioSource.volume >= 1.0f)
             {
                 m_SwitchState = EMusicSwitchState.eNone;
@@ -84,26 +82,26 @@ public class GameMusicManager : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.P) && m_SwitchState == EMusicSwitchState.eNone)
         {
-            if(m_ActualMusic == 0)
+            if(m_ActualMusic == EGameMusicManagerState.eBaseVillage)
             {
-                ChangeMusic(1);
+                ChangeMusic(EGameMusicManagerState.eFaucheuse);
             }else
             {
-                ChangeMusic(0);
+                ChangeMusic(EGameMusicManagerState.eBaseVillage);
             }
             
         }
 	}
 
     //
-    void ChangeMusic(int n)
+    void ChangeMusic(EGameMusicManagerState music)
     {
-        if(m_AudioSource.isPlaying == false)
+        if (m_AudioSource.isPlaying == false)
         {
-            m_AudioSource.clip = m_Musics[n];
+            m_AudioSource.clip = m_Musics[(int)music];
         }else
         {
-            m_NextMusic = n;
+            m_NextMusic = music;
             m_SwitchState = EMusicSwitchState.eFadeOut;
         }
     }

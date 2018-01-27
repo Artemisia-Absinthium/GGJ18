@@ -113,7 +113,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -288,11 +288,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2a9f91997f25a4e88b3a3711bb6d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SwitchSpeed: 0.01
   m_StartMusicState: 0
   m_Musics:
-  - {fileID: 8300000, guid: 613666133e28e3644a856d5c08a694c1, type: 3}
   - {fileID: 8300000, guid: 6d713d5921836d743bfd1e8cdc938a6f, type: 3}
-  m_AudioSource: {fileID: 0}
+  - {fileID: 8300000, guid: f217e3f3bcb349a43b24a000189153f6, type: 3}
+  - {fileID: 8300000, guid: c47cf80960b997445a2c71576009cbe7, type: 3}
+  - {fileID: 8300000, guid: 4084efa76a6cd2949ba2c85156345362, type: 3}
+  - {fileID: 8300000, guid: b99cff5eec9f822469e12eb52a1df4fb, type: 3}
+  m_AudioSource: {fileID: 82064902304362610}
   m_SwitchState: 2
   m_ActualMusic: 0
   m_NextMusic: 0
