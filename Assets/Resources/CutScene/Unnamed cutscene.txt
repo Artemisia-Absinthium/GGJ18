@@ -1,0 +1,16 @@
+# Unnamed cutscene
+0 {
+	left:BOY_A_LEFT
+	right:none
+	center:none
+	text:TEXTURE_QUALITY
+	ok:1
+}
+1 {
+	left:BOY_A_LEFT
+	right:none
+	center:none
+	text:ANISOTROPIC_FILTERING
+	choice:GAME_TITLE,end
+	choice:EXIT,0
+}

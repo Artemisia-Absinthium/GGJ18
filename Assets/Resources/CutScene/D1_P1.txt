@@ -1,0 +1,29 @@
+# D1_P1
+0 {
+	left:none
+	right:none
+	center:PEASANT_GRANDMOTHER
+	text:D1_P1_a1
+	ok:end
+}
+1 {
+	left:none
+	right:none
+	center:PEASANT_GRANDMOTHER
+	text:D1_P1_a2
+	ok:end
+}
+2 {
+	left:none
+	right:none
+	center:PEASANT_GRANDMOTHER
+	text:D1_P1_a3
+	ok:end
+}
+3 {
+	left:none
+	right:none
+	center:PEASANT_GRANDMOTHER
+	text:D1_P1_a4
+	ok:end
+}

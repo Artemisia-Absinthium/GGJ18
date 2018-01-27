@@ -1,0 +1,31 @@
+# Test Scene
+0 {
+	left:GIRL_A_LEFT
+	right:none
+	center:none
+	text:TEST_DIALOG_0
+	ok:1
+}
+1 {
+	left:GIRL_A_LEFT
+	right:none
+	center:BOY_A_RIGHT
+	text:TEST_DIALOG_1
+	choice:TEST_DIALOG_CHOICE_0,2
+	choice:TEST_DIALOG_CHOICE_1,3
+	time:10.000,3
+}
+2 {
+	left:GIRL_A_LEFT
+	right:none
+	center:BOY_A_RIGHT
+	text:TEST_DIALOG_2
+	ok:end
+}
+3 {
+	left:GIRL_A_LEFT
+	right:none
+	center:BOY_A_RIGHT
+	text:TEST_DIALOG_3
+	ok:end
+}

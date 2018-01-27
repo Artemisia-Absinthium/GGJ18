@@ -910,177 +910,193 @@ namespace Game
 			}
 			else
 			{
-				int select = GUILayout.Toolbar( m_currentTab, m_toolbar, s_bigButton );
-				GUILayout.Space( 25 );
-				if ( ( select < m_tabs.Count ) && ( select != m_currentTab ) )
+				if ( GUILayout.Button( "New" ) )
 				{
-					// Change snapshot
-					m_currentTab = select;
-					ResetSearch();
-				}
-				else if ( select == m_tabs.Count )
-				{
-					// Create new snapshot
-					CutSceneSnapshotEditor csse = new CutSceneSnapshotEditor( m_tabs[ m_tabs.Count - 1 ] );
-					m_tabs.Add( csse );
-					System.Array.Resize( ref m_toolbar, m_toolbar.Length + 1 );
-					m_toolbar[ m_toolbar.Length - 2 ] = ( m_toolbar.Length - 2 ).ToString();
-					m_toolbar[ m_toolbar.Length - 1 ] = "+";
-					m_currentTab = m_toolbar.Length - 2;
+					m_currentTab = 0;
+					m_tabs = null;
+					m_toolbar = null;
+					m_cutsceneName = "Unnamed cutscene";
+					m_cutSceneFile = null;
 
-					ResetSearch();
+					m_searchLeft = "none";
+					m_searchRight = "none";
+					m_searchCenter = "none";
+					m_searchText = "";
 				}
-
-				// Move & delete
-				GUILayout.BeginHorizontal();
-				EditorGUI.BeginDisabledGroup( m_currentTab == 0 );
-				if ( GUILayout.Button( "<< Move snapshot position", s_bigButton ) )
+				else
 				{
-					MoveSnapshot( -1 );
-				}
-				EditorGUI.EndDisabledGroup();
-				if ( GUILayout.Button( "Delete snapshot", s_bigButton ) )
-				{
-					if ( EditorUtility.DisplayDialog( "Confirm deletion?", "You really want to delete this Snapshot?", "Yes", "No" ) )
+					int select = GUILayout.Toolbar( m_currentTab, m_toolbar, s_bigButton );
+					GUILayout.Space( 25 );
+					if ( ( select < m_tabs.Count ) && ( select != m_currentTab ) )
 					{
-						if ( m_tabs.Count == 1 )
-						{
-							m_tabs = null;
-							m_toolbar = null;
-							return;
-						}
-						System.Array.Resize( ref m_toolbar, m_toolbar.Length - 1 );
-						m_toolbar[ m_toolbar.Length - 1 ] = "+";
-						m_tabs.RemoveAt( m_currentTab );
-						RemoveSnapshot( m_currentTab );
-						if ( m_currentTab > 0 )
-						{
-							--m_currentTab;
-						}
+						// Change snapshot
+						m_currentTab = select;
 						ResetSearch();
 					}
-				}
-				EditorGUI.BeginDisabledGroup( m_currentTab == ( m_tabs.Count - 1 ) );
-				if ( GUILayout.Button( "Move snapshot position >>", s_bigButton ) )
-				{
-					MoveSnapshot( 1 );
-				}
-				EditorGUI.EndDisabledGroup();
-				GUILayout.EndHorizontal();
-
-				// Sprites
-				CheckLoadSprites();
-				float sizeW = ( position.width - 104 ) / 3.0f;
-				float sizeH = sizeW * 0.75f;
-				GUILayout.BeginHorizontal();
-				DrawSnapshotSprite( ref m_tabs[ m_currentTab ].Left, ref m_searchLeft, "Left", sizeW, sizeH );
-				DrawSnapshotSprite( ref m_tabs[ m_currentTab ].Center, ref m_searchCenter, "Center", sizeW, sizeH );
-				DrawSnapshotSprite( ref m_tabs[ m_currentTab ].Right, ref m_searchRight, "Right", sizeW, sizeH );
-				GUILayout.EndHorizontal();
-
-				// Text
-				if ( s_stringsEnumNames == null )
-				{
-					s_stringsEnumNames = System.Enum.GetNames( typeof( Strings ) );
-				}
-				TextFinder( ref m_tabs[ m_currentTab ].Text, ref m_searchText, "Text", s_stringsEnumNames );
-
-				// Choices
-				if ( m_tabs[ m_currentTab ].Choices.Count < 4 )
-				{
-					if ( GUILayout.Button( "Add choice" ) )
+					else if ( select == m_tabs.Count )
 					{
-						GUI.FocusControl( "" );
-						m_tabs[ m_currentTab ].Choices.Add( "NONE" );
-						m_tabs[ m_currentTab ].ChoiceTargets.Add( -1 );
-						m_searchChoices.Add( "NONE" );
+						// Create new snapshot
+						CutSceneSnapshotEditor csse = new CutSceneSnapshotEditor( m_tabs[ m_tabs.Count - 1 ] );
+						m_tabs.Add( csse );
+						System.Array.Resize( ref m_toolbar, m_toolbar.Length + 1 );
+						m_toolbar[ m_toolbar.Length - 2 ] = ( m_toolbar.Length - 2 ).ToString();
+						m_toolbar[ m_toolbar.Length - 1 ] = "+";
+						m_currentTab = m_toolbar.Length - 2;
+
+						ResetSearch();
 					}
-				}
-				int choiceToDelete = -1;
-				for ( int i = 0; i < m_tabs[ m_currentTab ].Choices.Count; ++i )
-				{
+
+					// Move & delete
 					GUILayout.BeginHorizontal();
-
-					string choice = m_tabs[ m_currentTab ].Choices[ i ];
-					string search = m_searchChoices[ i ];
-					if ( TextFinder( ref choice, ref search, "Choice " + ( i + 1 ), s_stringsEnumNames ) )
+					EditorGUI.BeginDisabledGroup( m_currentTab == 0 );
+					if ( GUILayout.Button( "<< Move snapshot position", s_bigButton ) )
 					{
-						m_tabs[ m_currentTab ].Choices[ i ] = choice;
+						MoveSnapshot( -1 );
 					}
-					m_searchChoices[ i ] = search;
-
-					GUILayout.Label( "Target", s_textFinderStyle );
-					m_tabs[ m_currentTab ].ChoiceTargets[ i ] = EditorGUILayout.IntField( m_tabs[ m_currentTab ].ChoiceTargets[ i ] );
-
-					if ( GUILayout.Button( "Delete" ) )
+					EditorGUI.EndDisabledGroup();
+					if ( GUILayout.Button( "Delete snapshot", s_bigButton ) )
 					{
-						if ( EditorUtility.DisplayDialog( "Confirm deletion?", "You really want to delete this choice?", "Yes", "No" ) )
+						if ( EditorUtility.DisplayDialog( "Confirm deletion?", "You really want to delete this Snapshot?", "Yes", "No" ) )
 						{
-							choiceToDelete = i;
+							if ( m_tabs.Count == 1 )
+							{
+								m_tabs = null;
+								m_toolbar = null;
+								return;
+							}
+							System.Array.Resize( ref m_toolbar, m_toolbar.Length - 1 );
+							m_toolbar[ m_toolbar.Length - 1 ] = "+";
+							m_tabs.RemoveAt( m_currentTab );
+							RemoveSnapshot( m_currentTab );
+							if ( m_currentTab > 0 )
+							{
+								--m_currentTab;
+							}
+							ResetSearch();
 						}
 					}
+					EditorGUI.BeginDisabledGroup( m_currentTab == ( m_tabs.Count - 1 ) );
+					if ( GUILayout.Button( "Move snapshot position >>", s_bigButton ) )
+					{
+						MoveSnapshot( 1 );
+					}
+					EditorGUI.EndDisabledGroup();
+					GUILayout.EndHorizontal();
+
+					// Sprites
+					CheckLoadSprites();
+					float sizeW = ( position.width - 104 ) / 3.0f;
+					float sizeH = sizeW * 0.75f;
+					GUILayout.BeginHorizontal();
+					DrawSnapshotSprite( ref m_tabs[ m_currentTab ].Left, ref m_searchLeft, "Left", sizeW, sizeH );
+					DrawSnapshotSprite( ref m_tabs[ m_currentTab ].Center, ref m_searchCenter, "Center", sizeW, sizeH );
+					DrawSnapshotSprite( ref m_tabs[ m_currentTab ].Right, ref m_searchRight, "Right", sizeW, sizeH );
+					GUILayout.EndHorizontal();
+
+					// Text
+					if ( s_stringsEnumNames == null )
+					{
+						s_stringsEnumNames = System.Enum.GetNames( typeof( Strings ) );
+					}
+					TextFinder( ref m_tabs[ m_currentTab ].Text, ref m_searchText, "Text", s_stringsEnumNames );
+
+					// Choices
+					if ( m_tabs[ m_currentTab ].Choices.Count < 4 )
+					{
+						if ( GUILayout.Button( "Add choice" ) )
+						{
+							GUI.FocusControl( "" );
+							m_tabs[ m_currentTab ].Choices.Add( "NONE" );
+							m_tabs[ m_currentTab ].ChoiceTargets.Add( -1 );
+							m_searchChoices.Add( "NONE" );
+						}
+					}
+					int choiceToDelete = -1;
+					for ( int i = 0; i < m_tabs[ m_currentTab ].Choices.Count; ++i )
+					{
+						GUILayout.BeginHorizontal();
+
+						string choice = m_tabs[ m_currentTab ].Choices[ i ];
+						string search = m_searchChoices[ i ];
+						if ( TextFinder( ref choice, ref search, "Choice " + ( i + 1 ), s_stringsEnumNames ) )
+						{
+							m_tabs[ m_currentTab ].Choices[ i ] = choice;
+						}
+						m_searchChoices[ i ] = search;
+
+						GUILayout.Label( "Target", s_textFinderStyle );
+						m_tabs[ m_currentTab ].ChoiceTargets[ i ] = EditorGUILayout.IntField( m_tabs[ m_currentTab ].ChoiceTargets[ i ] );
+
+						if ( GUILayout.Button( "Delete" ) )
+						{
+							if ( EditorUtility.DisplayDialog( "Confirm deletion?", "You really want to delete this choice?", "Yes", "No" ) )
+							{
+								choiceToDelete = i;
+							}
+						}
+
+						GUILayout.EndHorizontal();
+					}
+					if ( choiceToDelete >= 0 )
+					{
+						m_tabs[ m_currentTab ].Choices.RemoveAt( choiceToDelete );
+						m_tabs[ m_currentTab ].ChoiceTargets.RemoveAt( choiceToDelete );
+						m_searchChoices.RemoveAt( choiceToDelete );
+					}
+
+					// Ok & Time targets
+					GUILayout.BeginHorizontal();
+
+					GUILayout.BeginVertical();
+					m_tabs[ m_currentTab ].Ok = GUILayout.Toggle( m_tabs[ m_currentTab ].Ok, "Enable snapshot transition when pressing OK button" );
+					m_tabs[ m_currentTab ].Timed = GUILayout.Toggle( m_tabs[ m_currentTab ].Timed, "Enable snapshot transition when time is elapsed" );
+					GUILayout.EndVertical();
+
+					GUILayout.BeginVertical();
+					GUILayout.BeginHorizontal();
+					EditorGUI.BeginDisabledGroup( !m_tabs[ m_currentTab ].Ok );
+					GUILayout.Label( "OK Target", s_textFinderStyle );
+					m_tabs[ m_currentTab ].OkTarget = EditorGUILayout.IntField( m_tabs[ m_currentTab ].OkTarget );
+					EditorGUI.EndDisabledGroup();
+					GUILayout.EndHorizontal();
+					GUILayout.BeginHorizontal();
+					EditorGUI.BeginDisabledGroup( !m_tabs[ m_currentTab ].Timed );
+					GUILayout.Label( "Time Target", s_textFinderStyle );
+					m_tabs[ m_currentTab ].TimeTarget = EditorGUILayout.IntField( m_tabs[ m_currentTab ].TimeTarget );
+					EditorGUI.EndDisabledGroup();
+					GUILayout.EndHorizontal();
+					GUILayout.EndVertical();
+
+					GUILayout.BeginVertical();
+					GUILayout.Label( "" );
+					GUILayout.BeginHorizontal();
+					EditorGUI.BeginDisabledGroup( !m_tabs[ m_currentTab ].Timed );
+					GUILayout.Label( "Delay (sec)", s_textFinderStyle );
+					m_tabs[ m_currentTab ].Time = EditorGUILayout.FloatField( m_tabs[ m_currentTab ].Time );
+					if ( m_tabs[ m_currentTab ].Time < 0.0f )
+					{
+						m_tabs[ m_currentTab ].Time = 0.0f;
+					}
+					EditorGUI.EndDisabledGroup();
+					GUILayout.EndHorizontal();
+					GUILayout.EndVertical();
 
 					GUILayout.EndHorizontal();
-				}
-				if ( choiceToDelete >= 0 )
-				{
-					m_tabs[ m_currentTab ].Choices.RemoveAt( choiceToDelete );
-					m_tabs[ m_currentTab ].ChoiceTargets.RemoveAt( choiceToDelete );
-					m_searchChoices.RemoveAt( choiceToDelete );
-				}
 
-				// Ok & Time targets
-				GUILayout.BeginHorizontal();
-
-				GUILayout.BeginVertical();
-				m_tabs[ m_currentTab ].Ok = GUILayout.Toggle( m_tabs[ m_currentTab ].Ok, "Enable snapshot transition when pressing OK button" );
-				m_tabs[ m_currentTab ].Timed = GUILayout.Toggle( m_tabs[ m_currentTab ].Timed, "Enable snapshot transition when time is elapsed" );
-				GUILayout.EndVertical();
-
-				GUILayout.BeginVertical();
-				GUILayout.BeginHorizontal();
-				EditorGUI.BeginDisabledGroup( !m_tabs[ m_currentTab ].Ok );
-				GUILayout.Label( "OK Target", s_textFinderStyle );
-				m_tabs[ m_currentTab ].OkTarget = EditorGUILayout.IntField( m_tabs[ m_currentTab ].OkTarget );
-				EditorGUI.EndDisabledGroup();
-				GUILayout.EndHorizontal();
-				GUILayout.BeginHorizontal();
-				EditorGUI.BeginDisabledGroup( !m_tabs[ m_currentTab ].Timed );
-				GUILayout.Label( "Time Target", s_textFinderStyle );
-				m_tabs[ m_currentTab ].TimeTarget = EditorGUILayout.IntField( m_tabs[ m_currentTab ].TimeTarget );
-				EditorGUI.EndDisabledGroup();
-				GUILayout.EndHorizontal();
-				GUILayout.EndVertical();
-
-				GUILayout.BeginVertical();
-				GUILayout.Label( "" );
-				GUILayout.BeginHorizontal();
-				EditorGUI.BeginDisabledGroup( !m_tabs[ m_currentTab ].Timed );
-				GUILayout.Label( "Delay (sec)", s_textFinderStyle );
-				m_tabs[ m_currentTab ].Time = EditorGUILayout.FloatField( m_tabs[ m_currentTab ].Time );
-				if ( m_tabs[ m_currentTab ].Time < 0.0f )
-				{
-					m_tabs[ m_currentTab ].Time = 0.0f;
-				}
-				EditorGUI.EndDisabledGroup();
-				GUILayout.EndHorizontal();
-				GUILayout.EndVertical();
-
-				GUILayout.EndHorizontal();
-
-				if ( !( m_tabs[ m_currentTab ].Ok || m_tabs[ m_currentTab ].Timed ) && ( m_tabs[ m_currentTab ].Choices.Count == 0 ) )
-				{
-					Color oldColor = GUI.contentColor;
-					GUI.contentColor = Color.red;
-					GUILayout.Label( "At least one option should be chosen: Choice, OK or Time" );
-					GUI.contentColor = oldColor;
-				}
-				if ( m_tabs[ m_currentTab ].Ok && m_tabs[ m_currentTab ].Choices.Count > 0 )
-				{
-					Color oldColor = GUI.contentColor;
-					GUI.contentColor = Color.red;
-					GUILayout.Label( "Ok target should not be enabled when using choices" );
-					GUI.contentColor = oldColor;
+					if ( !( m_tabs[ m_currentTab ].Ok || m_tabs[ m_currentTab ].Timed ) && ( m_tabs[ m_currentTab ].Choices.Count == 0 ) )
+					{
+						Color oldColor = GUI.contentColor;
+						GUI.contentColor = Color.red;
+						GUILayout.Label( "At least one option should be chosen: Choice, OK or Time" );
+						GUI.contentColor = oldColor;
+					}
+					if ( m_tabs[ m_currentTab ].Ok && m_tabs[ m_currentTab ].Choices.Count > 0 )
+					{
+						Color oldColor = GUI.contentColor;
+						GUI.contentColor = Color.red;
+						GUILayout.Label( "Ok target should not be enabled when using choices" );
+						GUI.contentColor = oldColor;
+					}
 				}
 			}
 		}

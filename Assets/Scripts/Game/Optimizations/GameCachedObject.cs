@@ -7,7 +7,10 @@ namespace Game
 	[System.Serializable]
 	public enum GameCacheObjects
 	{
-		Player
+		Player,
+		PlayerCamera,
+
+		Count
 	}
 
 	[System.Serializable]

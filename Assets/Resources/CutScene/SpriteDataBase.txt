@@ -1,0 +1,6 @@
+BARTENDER_MOTHER|Assets/Resources/Sprites/Characters/Aubergiste_femme.png
+BARTENDER_TWINS|Assets/Resources/Sprites/Characters/Aubergiste_jumeaux.png
+DOG|Assets/Resources/Sprites/Characters/Chien.png
+PEASANT_GRANDMOTHER|Assets/Resources/Sprites/Characters/Paysan_mamie.png
+PEASANT_CREEPY|Assets/Resources/Sprites/Characters/Paysan_petitcreepy.png
+PEASANT_GRANDFATHER|Assets/Resources/Sprites/Characters/Paysan_vieux.png
