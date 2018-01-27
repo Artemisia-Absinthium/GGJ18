@@ -42,7 +42,7 @@ namespace Game
 		public int TimeTarget { get { return m_timeTarget; } }
 		public int ChoiceTarget( int _index )
 		{
-			if ( ( m_choices != null ) && ( _index >= 0 ) && ( _index < m_choices.Length ) )
+			if ( ( m_choiceTargets != null ) && ( _index >= 0 ) && ( _index < m_choiceTargets.Length ) )
 			{
 				return m_choiceTargets[ _index ];
 			}
@@ -92,17 +92,29 @@ namespace Game
 			}
 			if ( m_okTarget >= 0 )
 			{
-				_retarget.TryGetValue( m_okTarget, out m_okTarget );
+				int retargeted = 0;
+				if ( _retarget.TryGetValue( m_okTarget, out retargeted ) )
+				{
+					m_okTarget = retargeted;
+				}
 			}
 			if ( m_timeTarget >= 0 )
 			{
-				_retarget.TryGetValue( m_timeTarget, out m_timeTarget );
+				int retargeted = 0;
+				if ( _retarget.TryGetValue( m_timeTarget, out retargeted ) )
+				{
+					m_timeTarget = retargeted;
+				}
 			}
 			if ( m_choiceTargets != null )
 			{
 				for ( int i = 0; i < m_choiceTargets.Length; ++i )
 				{
-					_retarget.TryGetValue( m_choiceTargets[ i ], out m_choiceTargets[ i ] );
+					int retargeted = 0;
+					if ( _retarget.TryGetValue( m_choiceTargets[ i ], out retargeted ) )
+					{
+						m_choiceTargets[ i ] = retargeted;
+					}
 				}
 			}
 			m_retargeted = true;

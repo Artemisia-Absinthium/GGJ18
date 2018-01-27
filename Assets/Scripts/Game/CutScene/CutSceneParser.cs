@@ -329,14 +329,21 @@ namespace Game
 				}
 				_attribute.Type = Attribute.AttributeType.CHOICE;
 				_attribute.ValueString = line[ 1 ];
-				try
+				if ( line[ 2 ] == "end" )
 				{
-					_attribute.ValueInt = System.Int32.Parse( line[ 2 ] );
+					_attribute.ValueInt = -1;
 				}
-				catch ( System.Exception )
+				else
 				{
-					Debug.Log( "Syntax error: Argument 1 cannot be converted to integer" );
-					return false;
+					try
+					{
+						_attribute.ValueInt = System.Int32.Parse( line[ 2 ] );
+					}
+					catch ( System.Exception )
+					{
+						Debug.Log( "Syntax error: Argument 1 cannot be converted to integer" );
+						return false;
+					}
 				}
 				break;
 			case "ok":
@@ -379,14 +386,21 @@ namespace Game
 					Debug.Log( "Syntax error: Argument 1 cannot be converted to real" );
 					return false;
 				}
-				try
+				if ( line[ 2 ] == "end" )
 				{
-					_attribute.ValueInt = System.Int32.Parse( line[ 2 ] );
+					_attribute.ValueInt = -1;
 				}
-				catch ( System.Exception )
+				else
 				{
-					Debug.Log( "Syntax error: Argument 2 cannot be converted to integer" );
-					return false;
+					try
+					{
+						_attribute.ValueInt = System.Int32.Parse( line[ 2 ] );
+					}
+					catch ( System.Exception )
+					{
+						Debug.Log( "Syntax error: Argument 2 cannot be converted to integer" );
+						return false;
+					}
 				}
 				break;
 			case "}":
