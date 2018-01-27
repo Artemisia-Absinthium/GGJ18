@@ -27,7 +27,9 @@ namespace Game
 		[SerializeField]
 		private Vector2 m_viewSensibility = new Vector2( 1.0f, 1.0f );
 		[SerializeField]
-		private Camera m_camera = null;
+		private Transform m_camera = null;
+		[SerializeField]
+		private Transform m_interactionCaster = null;
 
 		private Engine.InputAction m_moveForward = null;
 		private Engine.InputAction m_moveBackward = null;
@@ -38,6 +40,8 @@ namespace Game
 		private CharacterController m_characterController = null;
 		private float m_angle = 0.0f;
 		private float m_verticalView = 0.0f;
+
+		private int m_layerMask = 0;
 
 		void Start()
 		{
@@ -56,6 +60,9 @@ namespace Game
 			Debug.Assert( m_interaction != null );
 			Debug.Assert( m_characterController );
 			Debug.Assert( m_camera );
+			Debug.Assert( m_interactionCaster );
+
+			m_layerMask = LayerMask.GetMask( "Trigger" );
 		}
 
 		void Update()
@@ -68,7 +75,7 @@ namespace Game
 			m_angle += motion.x * m_viewSensibility.x;
 			m_verticalView = Mathf.Clamp( m_verticalView + Mathf.Clamp( -motion.y, -160.0f, 160.0f ), -80.0f, 80.0f );
 
-			m_camera.transform.localRotation = Quaternion.Euler( m_verticalView, 0.0f, 0.0f );
+			m_camera.localRotation = Quaternion.Euler( m_verticalView, 0.0f, 0.0f );
 
 			if ( m_moveForward.State )
 			{
@@ -90,6 +97,19 @@ namespace Game
 			transform.localRotation = rotation;
 			speed = rotation * speed;
 			m_characterController.SimpleMove( speed );
+
+			if ( m_interaction.Down )
+			{
+				RaycastHit hitInfo;
+				if ( Physics.Raycast( m_interactionCaster.position, m_interactionCaster.forward, out hitInfo, 1.5f, m_layerMask ) )
+				{
+					Engine.TriggerBase trigger = hitInfo.collider.GetComponent<Engine.TriggerBase>();
+					if ( trigger )
+					{
+						trigger.OnTrigger();
+					}
+				}
+			}
 		}
 	}
 }
