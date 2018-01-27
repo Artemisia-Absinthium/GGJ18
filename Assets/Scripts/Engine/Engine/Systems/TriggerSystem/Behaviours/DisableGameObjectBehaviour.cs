@@ -32,7 +32,7 @@ namespace Engine
 		#region Methods
 		public override void Trigger( TriggerBase _trigger, Object _data )
 		{
-			gameObject.SetActive( true );
+			gameObject.SetActive( false );
 		}
 		#endregion
 	}
