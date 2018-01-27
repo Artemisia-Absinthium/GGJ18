@@ -435,11 +435,11 @@ namespace Game
 						GUILayout.EndHorizontal();
 						++i;
 					}
-					if ( i == 10 )
+					/*if ( i == 10 )
 					{
 						GUILayout.EndVertical();
 						return found;
-					}
+					}*/
 				}
 			}
 			_temp = text;

@@ -1,0 +1,103 @@
+# D1_N1
+0 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_a1
+	choice:D1_N1_c1,1
+	choice:D1_N1_c2,2
+	choice:D1_N1_c3,3
+}
+1 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_a2
+	ok:end
+}
+2 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_a3
+	ok:end
+}
+3 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_a4
+	ok:end
+}
+4 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_a2
+	ok:end
+}
+5 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_b1
+	ok:6
+}
+6 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_b1b
+	choice:D1_N1_c4,end
+}
+7 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_b1b
+	choice:D1_N1_c4,end
+	choice:D1_N1_c5,8
+}
+8 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_b2
+	ok:9
+}
+9 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_b3
+	ok:10
+}
+10 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_b4
+	choice:D1_N1_c6,end
+}
+11 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_b3_1
+	choice:D1_N1_c7,end
+}
+12 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_b3_1
+	choice:D1_N1_c7,end
+	choice:D1_N1_c5,8
+}
+13 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_b4_1
+	ok:end
+}

@@ -37,7 +37,9 @@ namespace Game
 			NOBLE2_GRANDFATHER,
 			NOBLE3_FATHER,
 			NOBLE4_SON,
-			NOBLE5_CHILD
+			NOBLE5_CHILD,
+
+			COUSIN
 		}
 
 		[SerializeField]

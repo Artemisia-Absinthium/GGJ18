@@ -1,0 +1,71 @@
+# D1_P345
+0 {
+	left:none
+	right:none
+	center:none
+	text:D1_P3_b1
+	ok:1
+}
+1 {
+	left:none
+	right:none
+	center:none
+	text:D1_P4_b1
+	ok:2
+}
+2 {
+	left:none
+	right:none
+	center:none
+	text:D1_P3_b2
+	ok:3
+}
+3 {
+	left:none
+	right:none
+	center:none
+	text:D1_P4_b2
+	ok:4
+}
+4 {
+	left:none
+	right:none
+	center:none
+	text:D1_P5_b1
+	ok:5
+}
+5 {
+	left:none
+	right:none
+	center:none
+	text:D1_P3_b3
+	choice:D1_P3_c1,6
+}
+6 {
+	left:none
+	right:none
+	center:none
+	text:D1_P3_b4
+	ok:7
+}
+7 {
+	left:none
+	right:none
+	center:none
+	text:NONE
+	ok:8
+}
+8 {
+	left:none
+	right:none
+	center:none
+	text:D1_P5_b2
+	ok:9
+}
+9 {
+	left:none
+	right:none
+	center:none
+	text:D1_P3_b5
+	ok:end
+}

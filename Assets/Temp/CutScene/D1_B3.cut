@@ -1,0 +1,30 @@
+# D1_B3
+0 {
+	left:none
+	right:none
+	center:none
+	text:D1_B2_a
+	ok:1
+}
+1 {
+	left:none
+	right:none
+	center:none
+	text:D1_B3_a1
+	ok:2
+}
+2 {
+	left:none
+	right:none
+	center:none
+	text:NONE
+	choice:D1_B3_c1,3
+	choice:D1_B3_c2,3
+}
+3 {
+	left:none
+	right:none
+	center:none
+	text:D1_B3_a2
+	choice:D1_B3_ch1,end
+}
