@@ -347,6 +347,7 @@ namespace Game
 		D1_C1_a_3,
 		D1_M4_a_r1,
 		D1_M4_a_r2,
+		D1_C1_2,
 
 		COUNT																																																																																																		  
 	}

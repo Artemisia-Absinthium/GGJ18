@@ -67,6 +67,12 @@ namespace Game
 		private bool D1_N1_c4 = false;
 		private bool D1_N1_c5 = false;
 
+		private bool D1_P = false;
+		private bool D1_B = false;
+		private bool D1_M = false;
+		private bool D1_N = false;
+		private bool D1_R = false;
+
 		void Awake()
 		{
 			if ( s_instance != null )
@@ -135,6 +141,7 @@ namespace Game
 			case Character.Name.NOBLE3_FATHER: N3(); break;
 			case Character.Name.NOBLE4_SON: N4(); break;
 			case Character.Name.NOBLE5_CHILD: N5(); break;
+			case Character.Name.COUSIN: C1(); break;
 			}
 		}
 
@@ -142,6 +149,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
+				D1_P = true;
 				StartCutscene( "D1_P1", GameMusicManager.EGameMusicManagerState.eKozbee );
 			}
 		}
@@ -150,6 +158,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
+				D1_P = true;
 				StartCutscene( "D1_P2", GameMusicManager.EGameMusicManagerState.eNone );
 			}
 		}
@@ -160,11 +169,13 @@ namespace Game
 			{
 				if ( D1_B1_d1 && !D1_P3_b1 )
 				{
+					D1_P = true;
 					StartCutscene( "D1_P345", GameMusicManager.EGameMusicManagerState.eNone );
 					D1_P3_b1 = true;
 				}
 				else
 				{
+					D1_P = true;
 					StartCutscene( "D1_P3", GameMusicManager.EGameMusicManagerState.eNone );
 				}
 			}
@@ -176,11 +187,13 @@ namespace Game
 			{
 				if ( D1_B1_d1 && !D1_P3_b1 )
 				{
+					D1_P = true;
 					StartCutscene( "D1_P345", GameMusicManager.EGameMusicManagerState.eNone );
 					D1_P3_b1 = true;
 				}
 				else
 				{
+					D1_P = true;
 					StartCutscene( "D1_P4", GameMusicManager.EGameMusicManagerState.eNone );
 				}
 			}
@@ -192,11 +205,13 @@ namespace Game
 			{
 				if ( D1_B1_d1 && !D1_P3_b1 )
 				{
+					D1_P = true;
 					StartCutscene( "D1_P345", GameMusicManager.EGameMusicManagerState.eNone );
 					D1_P3_b1 = true;
 				}
 				else
 				{
+					D1_P = true;
 					StartCutscene( "D1_P5", GameMusicManager.EGameMusicManagerState.eNone );
 				}
 			}
@@ -206,6 +221,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
+				D1_P = true;
 				StartCutscene( "D1_P6", GameMusicManager.EGameMusicManagerState.eLapin );
 			}
 		}
@@ -216,6 +232,7 @@ namespace Game
 			{
 				if ( !D1_N5_c8 || D1_B1_c1 )
 				{
+				D1_R = true;
 					StartCutscene( "D1_R0", GameMusicManager.EGameMusicManagerState.eNone );
 				}
 			}
@@ -227,6 +244,7 @@ namespace Game
 			{
 				if ( D1_N5_c8 )
 				{
+					D1_R = true;
 					StartCutscene( "D1_R1", GameMusicManager.EGameMusicManagerState.eNone );
 				}
 			}
@@ -238,6 +256,7 @@ namespace Game
 			{
 				if ( D1_N5_c8 )
 				{
+					D1_R = true;
 					StartCutscene( "D1_R2", GameMusicManager.EGameMusicManagerState.eNone );
 				}
 			}
@@ -247,6 +266,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
+				D1_B = true;
 				StartCutscene( "D1_B1", GameMusicManager.EGameMusicManagerState.eNone );
 			}
 		}
@@ -255,6 +275,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
+				D1_B = true;
 				StartCutscene( "D1_B3", GameMusicManager.EGameMusicManagerState.eLara );
 			}
 		}
@@ -264,6 +285,7 @@ namespace Game
 			if ( m_currentChapter == 1 )
 			{
 				D1_B2_a0 = true;
+				D1_B = true;
 				StartCutscene( "D1_B3", GameMusicManager.EGameMusicManagerState.eLara );
 			}
 		}
@@ -272,6 +294,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
+				D1_B = true;
 				StartCutscene( "D1_B4", GameMusicManager.EGameMusicManagerState.eLara );
 			}
 		}
@@ -280,6 +303,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
+				D1_M = true;
 				StartCutscene( "D1_M1", GameMusicManager.EGameMusicManagerState.eNone );
 			}
 		}
@@ -288,6 +312,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
+				D1_M = true;
 				StartCutscene( "D1_M2", GameMusicManager.EGameMusicManagerState.eNone );
 			}
 		}
@@ -296,6 +321,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
+				D1_M = true;
 				StartCutscene( "D1_M3", GameMusicManager.EGameMusicManagerState.eNone );
 			}
 		}
@@ -304,6 +330,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
+				D1_M = true;
 				StartCutscene( "D1_M4", GameMusicManager.EGameMusicManagerState.eNone );
 			}
 		}
@@ -312,6 +339,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
+				D1_M = true;
 				StartCutscene( "D1_M5", GameMusicManager.EGameMusicManagerState.eLara );
 			}
 		}
@@ -320,6 +348,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
+				D1_N = true;
 				StartCutscene( "D1_N1", GameMusicManager.EGameMusicManagerState.eKozbee );
 			}
 		}
@@ -328,6 +357,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
+				D1_N = true;
 				StartCutscene( "D1_N2", GameMusicManager.EGameMusicManagerState.eKozbee );
 			}
 		}
@@ -336,6 +366,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
+				D1_N = true;
 				StartCutscene( "D1_N3", GameMusicManager.EGameMusicManagerState.eNone );
 			}
 		}
@@ -344,6 +375,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
+				D1_N = true;
 				StartCutscene( "D1_N4", GameMusicManager.EGameMusicManagerState.eNone );
 			}
 		}
@@ -352,12 +384,22 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
+				D1_N = true;
 				StartCutscene( "D1_N5", GameMusicManager.EGameMusicManagerState.eLara );
+			}
+		}
+
+		private void C1()
+		{
+			if ( m_currentChapter == 1 )
+			{
+				StartCutscene( "D1_C1", GameMusicManager.EGameMusicManagerState.eNone );
 			}
 		}
 
 		private void StartCutscene( string _name, GameMusicManager.EGameMusicManagerState _music )
 		{
+			Cursor.visible = true;
 			m_cutSceneInstance = m_csp.Play( _name, this );
 			if ( _music != GameMusicManager.EGameMusicManagerState.eNone )
 			{
@@ -663,6 +705,18 @@ namespace Game
 						}
 					}
 					break;
+				case "D1_C1":
+					{
+						if ( _previousSnapshot == -1 )
+						{
+							if ( D1_P && D1_R && D1_B && D1_M && D1_N )
+							{
+								_nextScene = 1;
+								return true;
+							}
+						}
+					}
+					break;
 				}
 			}
 
@@ -670,6 +724,7 @@ namespace Game
 			{
 				GameMusicManager.Instance.ChangeMusic( GameMusicManager.EGameMusicManagerState.eBaseVillage );
 				m_customSpeakMusic = false;
+				Cursor.visible = false;
 			}
 			return false;
 		}
@@ -680,6 +735,7 @@ namespace Game
 			{
 				GameMusicManager.Instance.ChangeMusic( GameMusicManager.EGameMusicManagerState.eBaseVillage );
 				m_customSpeakMusic = false;
+				Cursor.visible = false;
 			}
 			return false;
 		}
@@ -729,6 +785,7 @@ namespace Game
 			{
 				GameMusicManager.Instance.ChangeMusic( GameMusicManager.EGameMusicManagerState.eBaseVillage );
 				m_customSpeakMusic = false;
+				Cursor.visible = false;
 			}
 			return false;
 		}

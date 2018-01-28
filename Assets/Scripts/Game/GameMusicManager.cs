@@ -66,7 +66,7 @@ public class GameMusicManager : MonoBehaviour {
 		
         if(m_ActualMusic == EGameMusicManagerState.eNone)
         {
-            m_AudioSource.Stop();
+            m_AudioSource.Pause();
         }
 
         if(m_AudioSource.isPlaying == false && m_ActualMusic != EGameMusicManagerState.eNone)
@@ -80,7 +80,7 @@ public class GameMusicManager : MonoBehaviour {
             if(m_AudioSource.volume <= 0.0f)
             {
                 m_SwitchState = EMusicSwitchState.eFadeIn;
-                m_AudioSource.Stop();
+                m_AudioSource.Pause();
                 m_AudioSource.clip = m_Musics[(int)m_NextMusic];
                 m_AudioSource.Play();
                 m_ActualMusic = m_NextMusic;

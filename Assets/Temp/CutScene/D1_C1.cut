@@ -2,14 +2,21 @@
 0 {
 	left:none
 	right:none
-	center:none
-	text:D1_C1_a
-	choice:D1_C1_a_1,1
+	center:CARAVAN
+	text:D1_C1_2
+	ok:end
 }
 1 {
 	left:none
 	right:none
-	center:none
+	center:CARAVAN
+	text:D1_C1_a
+	choice:D1_C1_a_1,2
+}
+2 {
+	left:none
+	right:none
+	center:CARAVAN
 	text:D1_C1_a_2
 	choice:D1_C1_a_3,end
 }
