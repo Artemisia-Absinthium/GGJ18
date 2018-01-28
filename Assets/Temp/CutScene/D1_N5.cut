@@ -130,3 +130,10 @@
 	text:D1_N5_b2
 	ok:end
 }
+18 {
+	left:none
+	right:none
+	center:NOBLE_DAUGHTER
+	text:D1_N5_a2
+	choice:D1_N5_c3,2
+}

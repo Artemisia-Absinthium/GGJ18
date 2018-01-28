@@ -62,6 +62,10 @@ namespace Game
 		private bool D1_B3_a2 = false;
 		private bool D1_B2_a0 = false;
 		private bool D1_B3_a1 = false;
+		private bool D1_N5_a9 = false;
+		private bool D1_N5_c1 = false;
+		private bool D1_N1_c4 = false;
+		private bool D1_N1_c5 = false;
 
 		void Awake()
 		{
@@ -314,27 +318,42 @@ namespace Game
 
 		private void N1()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				StartCutscene( "D1_N1", GameMusicManager.EGameMusicManagerState.eNone );
+			}
 		}
 
 		private void N2()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				StartCutscene( "D1_N2", GameMusicManager.EGameMusicManagerState.eNone );
+			}
 		}
 
 		private void N3()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				StartCutscene( "D1_N3", GameMusicManager.EGameMusicManagerState.eNone );
+			}
 		}
 
 		private void N4()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				StartCutscene( "D1_N4", GameMusicManager.EGameMusicManagerState.eNone );
+			}
 		}
 
 		private void N5()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				StartCutscene( "D1_N5", GameMusicManager.EGameMusicManagerState.eNone );
+			}
 		}
 
 		private void StartCutscene( string _name, GameMusicManager.EGameMusicManagerState _music )
@@ -574,6 +593,76 @@ namespace Game
 						}
 					}
 					break;
+				case "D1_N1":
+					{
+						if ( _previousSnapshot == -1 )
+						{
+							if ( D1_N1_c5 )
+							{
+								_nextScene = 13;
+								return true;
+							}
+							else if ( D1_N1_a1 )
+							{
+								_nextScene = 4;
+								if ( ( D1_N5_c5 || D1_N5_c6 ) && D1_N5_a9 )
+								{
+									_nextScene = 5;
+								}
+								return true;
+							}
+							else
+							{
+								D1_N1_a1 = true;
+							}
+						}
+						else if ( _previousSnapshot == 5 && _newSnapshot == 6 )
+						{
+							if ( D1_N5_c8 && D1_N5_a9 )
+							{
+								_nextScene = 7;
+								return true;
+							}
+						}
+						else if ( _previousSnapshot == 9 )
+						{
+							D1_N1_c5 = true;
+						}
+						else if ( _newSnapshot == 8 )
+						{
+							D1_N5_a9 = true;
+						}
+					}
+					break;
+				case "D1_N5":
+					{
+						if ( _previousSnapshot == -1)
+						{
+							if ( D1_N5_c8 )
+							{
+								_nextScene = 17;
+								return true;
+							}
+							else if ( D1_N5_a9 )
+							{
+								_nextScene = 9;
+							}
+							if ( D1_N5_c1 )
+							{
+								_nextScene = 18;
+								if ( D1_N1_a1 )
+								{
+									_nextScene = 2;
+								}
+								return true;
+							}
+						}
+						else if ( _newSnapshot == 8 )
+						{
+							D1_N5_a9 = true;
+						}
+					}
+					break;
 				}
 			}
 
@@ -619,6 +708,20 @@ namespace Game
 				if ( _previousSnapshot == 0 && _newSnapshot == 1 && _choiceIndex == 1 )
 				{
 					D1_M1_a2 = true;
+				}
+			}
+			else if ( _cutSceneName == "D1_N1")
+			{
+				if ( _previousSnapshot == 6 && _choiceIndex == 0 )
+				{
+					D1_N1_c4 = true;
+				}
+			}
+			else if ( _cutSceneName == "D1_N5" )
+			{
+				if ( _previousSnapshot == 9 && _newSnapshot == 10 && _choiceIndex == 1 )
+				{
+					D1_N5_c8 = true;
 				}
 			}
 
