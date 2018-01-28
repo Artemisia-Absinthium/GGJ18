@@ -54,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4490615183833860}
   - component: {fileID: 212600255300478372}
+  - component: {fileID: 114487216156893090}
   m_Layer: 9
   m_Name: Image
   m_TagString: Untagged
@@ -113,7 +114,7 @@ Transform:
   m_GameObject: {fileID: 1564774099473106}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.075}
+  m_LocalScale: {x: 0.08, y: 0.08, z: 0.075}
   m_Children: []
   m_Father: {fileID: 4457626163690032}
   m_RootOrder: 0
@@ -167,6 +168,21 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114487216156893090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1564774099473106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!114 &114796691111127450
 MonoBehaviour:
   m_ObjectHideFlags: 1
