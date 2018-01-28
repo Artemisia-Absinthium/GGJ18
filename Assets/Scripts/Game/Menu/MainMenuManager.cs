@@ -447,6 +447,8 @@ namespace Game
 
 		public void PlayGame( string _sceneName )
 		{
+            GameMusicManager.Instance.m_ActualMusic = GameMusicManager.EGameMusicManagerState.eNone;
+            GameMusicManager.Instance.m_AudioSource.Stop();
 			SceneManager.LoadScene( _sceneName );
 		}
 		public void QuitGame()
