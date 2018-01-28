@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 136909514333433406}
   - component: {fileID: 114004345821083978}
   m_Layer: 8
-  m_Name: Cousin
+  m_Name: Peasant_Cousin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5026df882a4bce346b937fc7d7c95a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_character: 24
+  m_character: 3
   m_sprite: {fileID: 21300000, guid: 93c1a4cde3be2f648bf61efca40f90ac, type: 3}
 --- !u!136 &136909514333433406
 CapsuleCollider:

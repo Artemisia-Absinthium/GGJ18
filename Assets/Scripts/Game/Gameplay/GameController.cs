@@ -52,6 +52,7 @@ namespace Game
 		private bool D1_N5_c6 = false;
 		private bool D1_M2_c1 = false;
 		private bool D1_M2_c2 = false;
+		private bool D1_M2_c9 = false;
 
 		void Awake()
 		{
@@ -261,29 +262,26 @@ namespace Game
 			{
 				if ( _previousSnapshot == -1 )
 				{
-					if ( D1_P1_b1 )
-					{
-						_nextScene = 5;
-						return true;
-					}
-					if ( D1_N5_c8 )
-					{
-						_nextScene = 4;
-						return true;
-					}
-					if ( D1_P1_a3 )
-					{
-						_nextScene = 3;
-						return true;
-					}
-					if ( haveWateringCan )
-					{
-						_nextScene = 2;
-						return true;
-					}
 					if ( D1_P1_a1 )
 					{
 						_nextScene = 1;
+						if ( haveWateringCan )
+						{
+							_nextScene = 2;
+							haveWateringCan = false;
+						}
+						else if ( D1_N5_c8 )
+						{
+							_nextScene = 4;
+							if ( D1_P1_b1 )
+							{
+								_nextScene = 5;
+							}
+						}
+						else if ( D1_P1_a3 )
+						{
+							_nextScene = 3;
+						}
 						return true;
 					}
 				}
@@ -300,6 +298,17 @@ namespace Game
 					else if ( _previousSnapshot == 4 )
 					{
 						D1_P1_b1 = true;
+					}
+				}
+			}
+			else if ( _cutSceneName == "D1_P2" )
+			{
+				if ( _previousSnapshot == -1 )
+				{
+					if ( D1_M2_c9 )
+					{
+						_nextScene = 1;
+						return true;
 					}
 				}
 			}
