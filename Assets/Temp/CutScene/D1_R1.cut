@@ -1,0 +1,86 @@
+# D1_R1
+0 {
+	left:none
+	right:none
+	center:RELIGIOUS_COMMANDER
+	text:D1_R1_a1
+	choice:D1_R1_c1,end
+}
+1 {
+	left:none
+	right:none
+	center:RELIGIOUS_COMMANDER
+	text:D1_R1_a1
+	choice:D1_R1_c1,end
+	choice:D1_R1_c2,2
+}
+2 {
+	left:none
+	right:none
+	center:RELIGIOUS_COMMANDER
+	text:D1_R1_a2
+	ok:3
+}
+3 {
+	left:none
+	right:none
+	center:RELIGIOUS_COMMANDER
+	text:D1_R1_a3
+	choice:D1_R1_ch1,4
+}
+4 {
+	left:none
+	right:none
+	center:RELIGIOUS_COMMANDER
+	text:D1_R1_a4
+	choice:D1_R1_ch2,5
+}
+5 {
+	left:none
+	right:none
+	center:RELIGIOUS_COMMANDER
+	text:D1_R1_a5
+	choice:D1_R1_ch3,6
+}
+6 {
+	left:none
+	right:none
+	center:RELIGIOUS_COMMANDER
+	text:D1_R1_a6
+	ok:7
+}
+7 {
+	left:none
+	right:none
+	center:RELIGIOUS_COMMANDER
+	text:D1_R1_a7
+	ok:8
+}
+8 {
+	left:none
+	right:none
+	center:RELIGIOUS_COMMANDER
+	text:D1_R1_a8
+	choice:D1_R1_ch4,9
+}
+9 {
+	left:none
+	right:none
+	center:RELIGIOUS_COMMANDER
+	text:D1_R1_a9
+	ok:end
+}
+10 {
+	left:none
+	right:none
+	center:RELIGIOUS_COMMANDER
+	text:D1_R1_a10
+	ok:end
+}
+11 {
+	left:none
+	right:none
+	center:RELIGIOUS_COMMANDER
+	text:D1_R1_d
+	ok:end
+}

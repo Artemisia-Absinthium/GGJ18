@@ -1,0 +1,16 @@
+# D1_B4
+0 {
+	left:none
+	right:none
+	center:none
+	text:D1_B4_a1
+	choice:D1_B4_c1,1
+	choice:D1_B4_c2,end
+}
+1 {
+	left:none
+	right:none
+	center:none
+	text:D1_B4_a2
+	ok:end
+}

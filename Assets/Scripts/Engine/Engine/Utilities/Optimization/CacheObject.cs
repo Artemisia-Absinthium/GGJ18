@@ -43,7 +43,7 @@ namespace Engine
 		#endregion
 
 		#region Methods
-		void Awake()
+		void Awake() // Set me after Cache in script execution order
 		{
 			if ( m_putInCache )
 			{

@@ -67,6 +67,10 @@ namespace Game
 
 		void Update()
 		{
+			if ( GameController.Instance.IsSpeaking )
+			{
+				return;
+			}
 			Vector3 speed = Vector3.zero;
 			Vector2 mouse = Engine.InputManager.Instance.GetMouseDelta();
 			Vector2 joystick = Engine.InputManager.Instance.GetJoystickDelta();

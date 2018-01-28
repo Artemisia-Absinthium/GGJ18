@@ -1,0 +1,66 @@
+# D1_M5
+0 {
+	left:none
+	right:none
+	center:MEDECIN_CHILD
+	text:D1_M5_a1
+	choice:D1_M5_ch1,1
+}
+1 {
+	left:none
+	right:none
+	center:MEDECIN_CHILD
+	text:D1_M5_a1a
+	choice:D1_M5_ch2,2
+	choice:D1_M5_ch4,4
+}
+2 {
+	left:none
+	right:none
+	center:MEDECIN_CHILD
+	text:D1_M5_a1b
+	choice:D1_M5_ch3,3
+}
+3 {
+	left:none
+	right:none
+	center:MEDECIN_CHILD
+	text:D1_M5_a1c
+	ok:end
+}
+4 {
+	left:none
+	right:none
+	center:MEDECIN_CHILD
+	text:D1_M5_a1d
+	choice:D1_M5_ch5,5
+}
+5 {
+	left:none
+	right:none
+	center:MEDECIN_CHILD
+	text:D1_M5_a1e
+	ok:end
+}
+6 {
+	left:none
+	right:none
+	center:MEDECIN_CHILD
+	text:D1_M5_a2
+	choice:D1_M5_ch6,end
+}
+7 {
+	left:none
+	right:none
+	center:MEDECIN_CHILD
+	text:D1_M5_a2
+	choice:D1_M5_ch6,end
+	choice:D1_M5_c1,8
+}
+8 {
+	left:none
+	right:none
+	center:MEDECIN_CHILD
+	text:D1_M5_a3
+	ok:end
+}

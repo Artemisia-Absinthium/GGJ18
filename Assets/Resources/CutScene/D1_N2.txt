@@ -1,0 +1,8 @@
+# D1_N2
+0 {
+	left:none
+	right:none
+	center:none
+	text:D1_N2_a
+	ok:end
+}
