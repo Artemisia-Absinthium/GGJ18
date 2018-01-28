@@ -52,7 +52,7 @@
 }
 7 {
 	left:none
-	right:none
+	right:BARTENDER_TWINS
 	center:BARTENDER_MOTHER
 	text:D1_B3_d1
 	ok:8
