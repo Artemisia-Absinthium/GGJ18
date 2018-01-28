@@ -53,6 +53,12 @@ namespace Game
 		private bool D1_M2_c1 = false;
 		private bool D1_M2_c2 = false;
 		private bool D1_M2_c9 = false;
+		private bool D1_B1_d1 = false;
+		private bool D1_P3_b1 = false;
+		private bool D1_B1_c1 = false;
+		private bool D1_R1_c2 = false;
+		private bool D1_B1_c2 = false;
+		private bool D1_B3_a2 = false;
 
 		void Awake()
 		{
@@ -143,7 +149,15 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
-				m_cutSceneInstance = m_csp.Play( "D1_P3" );
+				if ( D1_B1_d1 && !D1_P3_b1 )
+				{
+					m_cutSceneInstance = m_csp.Play( "D1_P345" );
+					D1_P3_b1 = true;
+				}
+				else
+				{
+					m_cutSceneInstance = m_csp.Play( "D1_P3" );
+				}
 			}
 		}
 
@@ -151,7 +165,15 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
-				m_cutSceneInstance = m_csp.Play( "D1_P4" );
+				if ( D1_B1_d1 && !D1_P3_b1 )
+				{
+					m_cutSceneInstance = m_csp.Play( "D1_P345" );
+					D1_P3_b1 = true;
+				}
+				else
+				{
+					m_cutSceneInstance = m_csp.Play( "D1_P4" );
+				}
 			}
 		}
 
@@ -159,7 +181,15 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
-				m_cutSceneInstance = m_csp.Play( "D1_P5" );
+				if ( D1_B1_d1 && !D1_P3_b1 )
+				{
+					m_cutSceneInstance = m_csp.Play( "D1_P345" );
+					D1_P3_b1 = true;
+				}
+				else
+				{
+					m_cutSceneInstance = m_csp.Play( "D1_P5" );
+				}
 			}
 		}
 
@@ -173,17 +203,35 @@ namespace Game
 
 		private void R0()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				if ( !D1_N5_c8 || D1_B1_c1 )
+				{
+					m_cutSceneInstance = m_csp.Play( "D1_R0" );
+				}
+			}
 		}
 
 		private void R1()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				if ( D1_N5_c8 )
+				{
+					m_cutSceneInstance = m_csp.Play( "D1_R1" );
+				}
+			}
 		}
 
 		private void R2()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				if ( D1_N5_c8 )
+				{
+					m_cutSceneInstance = m_csp.Play( "D1_R2" );
+				}
+			}
 		}
 
 		private void B1()
@@ -203,7 +251,10 @@ namespace Game
 
 		private void B4()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				m_cutSceneInstance = m_csp.Play( "D1_B4" );
+			}
 		}
 
 		private void M1()
@@ -258,59 +309,127 @@ namespace Game
 
 		public bool OnCutSceneTransitionOk( string _cutSceneName, int _previousSnapshot, int _newSnapshot, ref int _nextScene )
 		{
-			if ( _cutSceneName == "D1_P1" )
+			switch( _cutSceneName )
 			{
-				if ( _previousSnapshot == -1 )
+			case "D1_P1":
 				{
-					if ( D1_P1_a1 )
+					if ( _previousSnapshot == -1 )
 					{
-						_nextScene = 1;
-						if ( haveWateringCan )
+						if ( D1_P1_a1 )
 						{
-							_nextScene = 2;
-							haveWateringCan = false;
-						}
-						else if ( D1_N5_c8 )
-						{
-							_nextScene = 4;
-							if ( D1_P1_b1 )
+							_nextScene = 1;
+							if ( haveWateringCan )
 							{
-								_nextScene = 5;
+								_nextScene = 2;
+								haveWateringCan = false;
 							}
+							else if ( D1_N5_c8 )
+							{
+								_nextScene = 4;
+								if ( D1_P1_b1 )
+								{
+									_nextScene = 5;
+								}
+							}
+							else if ( D1_P1_a3 )
+							{
+								_nextScene = 3;
+							}
+							return true;
 						}
-						else if ( D1_P1_a3 )
+					}
+					else if ( _newSnapshot == -1 )
+					{
+						if ( _previousSnapshot == 0 )
 						{
-							_nextScene = 3;
+							D1_P1_a1 = true;
 						}
+						else if ( _previousSnapshot == 2 )
+						{
+							D1_P1_a3 = true;
+						}
+						else if ( _previousSnapshot == 4 )
+						{
+							D1_P1_b1 = true;
+						}
+					}
+				}
+				break;
+			case "D1_P2":
+				{
+					if ( _previousSnapshot == -1 )
+					{
+						if ( D1_M2_c9 )
+						{
+							_nextScene = 1;
+							return true;
+						}
+					}
+				}
+				break;
+			case "D1_P345":
+				{
+					if ( _previousSnapshot == -1 )
+					{
+						D1_P3_b1 = true;
+					}
+				}
+				break;
+			case "D1_P3":
+			case "D1_P4":
+			case "D1_P5":
+				{
+					if ( _previousSnapshot == -1 )
+					{
+						if ( D1_P3_b1 )
+						{
+							_nextScene = 1;
+							return true;
+						}
+					}
+				}
+				break;
+			case "D1_R0":
+				{
+					if ( _previousSnapshot == -1 )
+					{
+						if ( D1_B1_c1 )
+						{
+							_nextScene = 1;
+							return true;
+						}
+					}
+				}
+				break;
+			case "D1_R1":
+				{
+					if ( _previousSnapshot == -1 )
+					{
+						if ( D1_B1_c4 )
+						{
+							_nextScene = 1;
+							if ( D1_R1_c2 )
+							{
+								_nextScene = 10;
+								if ( D1_B1_c2 )
+								{
+									_nextScene = 11;
+								}
+							}
+							return true;
+						}
+					}
+				}
+				break;
+			case "D1_R2":
+				{
+					if ( D1_B3_a2 )
+					{
+						_nextScene = 2;
 						return true;
 					}
 				}
-				else if ( _newSnapshot == -1 )
-				{
-					if ( _previousSnapshot == 0 )
-					{
-						D1_P1_a1 = true;
-					}
-					else if ( _previousSnapshot == 2 )
-					{
-						D1_P1_a3 = true;
-					}
-					else if ( _previousSnapshot == 4 )
-					{
-						D1_P1_b1 = true;
-					}
-				}
-			}
-			else if ( _cutSceneName == "D1_P2" )
-			{
-				if ( _previousSnapshot == -1 )
-				{
-					if ( D1_M2_c9 )
-					{
-						_nextScene = 1;
-						return true;
-					}
-				}
+				break;
 			}
 			return false;
 		}
@@ -323,7 +442,16 @@ namespace Game
 
 		public bool OnCutSceneTransitionChoice( string _cutSceneName, int _previousSnapshot, int _newSnapshot, int _choiceIndex, ref int _nextScene )
 		{
-
+			if ( _cutSceneName == "D1_R1" )
+			{
+				if ( _previousSnapshot == 1 )
+				{
+					if ( _choiceIndex == 1 )
+					{
+						D1_R1_c2 = true;
+					}
+				}
+			}
 			return false;
 		}
 	}
