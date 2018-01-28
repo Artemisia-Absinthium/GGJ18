@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 143757075059214796}
   - component: {fileID: 114178942043621590}
   - component: {fileID: 82998527927263586}
+  - component: {fileID: 114308695308983738}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -41,6 +42,7 @@ GameObject:
   - component: {fileID: 124397416401327822}
   - component: {fileID: 81994973975072564}
   - component: {fileID: 114510776974141518}
+  - component: {fileID: 114375567398413940}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -281,6 +283,34 @@ MonoBehaviour:
   m_interactionCaster: {fileID: 4812439041439424}
   m_StepSound: {fileID: 8300000, guid: 6fed70bca409abf498f5cb167e5e3f76, type: 3}
   m_AudioSource: {fileID: 82998527927263586}
+--- !u!114 &114308695308983738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033808487575042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d425841a79313a0418c227db843ddb67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_cacheValue: 0
+  m_putInCache: 1
+  m_disableAfterAwake: 0
+--- !u!114 &114375567398413940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1258206275802338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d425841a79313a0418c227db843ddb67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_cacheValue: 1
+  m_putInCache: 1
+  m_disableAfterAwake: 0
 --- !u!114 &114510776974141518
 MonoBehaviour:
   m_ObjectHideFlags: 1
