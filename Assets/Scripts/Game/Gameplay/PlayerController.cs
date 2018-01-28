@@ -54,6 +54,8 @@ namespace Game
 
 		void Start()
 		{
+			//Set Cursor to not be visible
+        	Cursor.visible = false;
 
             //
             m_AudioSource = GetComponent<AudioSource>();

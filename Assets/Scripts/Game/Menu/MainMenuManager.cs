@@ -235,6 +235,9 @@ namespace Game
 
 		private void Start()
 		{
+			//Set Cursor to not be visible
+       		Cursor.visible = true;
+
 			// Check references
 			if ( m_graveyardText == null )
 			{
