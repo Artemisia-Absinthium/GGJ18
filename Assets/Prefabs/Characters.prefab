@@ -4409,8 +4409,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5026df882a4bce346b937fc7d7c95a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_character: 0
-  m_sprite: {fileID: 0}
+  m_character: 15
+  m_sprite: {fileID: 21300000, guid: caa0035c75fdbbe41a619ff5c1031846, type: 3}
 --- !u!114 &114139535111490664
 MonoBehaviour:
   m_ObjectHideFlags: 1
