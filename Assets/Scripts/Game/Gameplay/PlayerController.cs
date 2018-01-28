@@ -43,9 +43,19 @@ namespace Game
 
 		private int m_layerMask = 0;
 
+        //SOunds
+        public AudioClip m_StepSound;
+        public AudioSource m_AudioSource;
+        private int m_SoundDeltaPlay = 0;
+
 		void Start()
 		{
-			m_moveForward = Engine.InputManager.Instance.GetAction( m_moveForwardActionName );
+
+            //
+            m_AudioSource = GetComponent<AudioSource>();
+            m_AudioSource.volume = 0.8f;
+
+            m_moveForward = Engine.InputManager.Instance.GetAction( m_moveForwardActionName );
 			m_moveBackward = Engine.InputManager.Instance.GetAction( m_moveBackwardActionName );
 			m_moveLeft = Engine.InputManager.Instance.GetAction( m_moveLeftActionName );
 			m_moveRight = Engine.InputManager.Instance.GetAction( m_moveRightActionName );
@@ -101,6 +111,22 @@ namespace Game
 			transform.localRotation = rotation;
 			speed = rotation * speed;
 			m_characterController.SimpleMove( speed );
+
+            if(speed.sqrMagnitude > m_strafeSpeed / 2.0f)
+            {
+                if(!m_AudioSource.isPlaying)
+                {
+                    if(m_SoundDeltaPlay <= 0)
+                    {
+                        m_AudioSource.clip = m_StepSound;
+                        m_AudioSource.Play();
+                        m_SoundDeltaPlay = 20;
+                    }else
+                    {
+                        m_SoundDeltaPlay--;
+                    }
+                }
+            }
 
 			if ( m_interaction.Down )
 			{
