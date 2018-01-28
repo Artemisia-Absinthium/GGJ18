@@ -2,12 +2,16 @@
  * LICENCE
  */
 using UnityEngine;
+using cakeslice;
 
 namespace Game
 {
 	[System.Serializable]
 	public class PlayerController : MonoBehaviour
 	{
+
+		Engine.TriggerBase triggerObject;
+
 		[SerializeField]
 		private string m_moveForwardActionName = "Move Forward";
 		[SerializeField]
@@ -128,15 +132,45 @@ namespace Game
                 }
             }
 
-			if ( m_interaction.Down )
+			if ( m_interaction.Down || ((int)(Time.time * 10) % 5 == 0))
 			{
 				RaycastHit hitInfo;
 				if ( Physics.Raycast( m_interactionCaster.position, m_interactionCaster.forward, out hitInfo, 1.5f, m_layerMask ) )
 				{
 					Engine.TriggerBase trigger = hitInfo.collider.GetComponent<Engine.TriggerBase>();
+
+					if ( m_interaction.Down)
+					{
+						if ( trigger )
+						{
+							trigger.OnTrigger();
+						}
+					}
+
 					if ( trigger )
 					{
-						trigger.OnTrigger();
+						if(triggerObject != trigger && triggerObject != null)
+						{
+							triggerObject.GetComponentInChildren<Outline>().enabled = false;
+						}
+						trigger.GetComponentInChildren<Outline>().enabled = true;
+						triggerObject = trigger;
+					}
+					else
+					{
+						if(triggerObject != null)
+						{
+							triggerObject.GetComponentInChildren<Outline>().enabled = false;
+							triggerObject = null;
+						}
+					}
+				}
+				else
+				{
+					if(triggerObject != null)
+					{
+						triggerObject.GetComponentInChildren<Outline>().enabled = false;
+						triggerObject = null;
 					}
 				}
 			}
