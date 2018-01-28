@@ -2,7 +2,7 @@
 0 {
 	left:none
 	right:none
-	center:none
+	center:NOBLE_GRANDFATHER
 	text:D1_N2_a
 	ok:end
 }

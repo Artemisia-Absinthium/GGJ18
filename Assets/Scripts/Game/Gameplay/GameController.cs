@@ -33,6 +33,7 @@ namespace Game
 
 		private int m_currentChapter = 1;
 		private int m_cutSceneInstance = -1;
+		private bool m_customSpeakMusic = false;
 
 		private bool D1_P1_a1 = false;
 		private bool haveWateringCan = false;
@@ -53,6 +54,14 @@ namespace Game
 		private bool D1_M2_c1 = false;
 		private bool D1_M2_c2 = false;
 		private bool D1_M2_c9 = false;
+		private bool D1_B1_d1 = false;
+		private bool D1_P3_b1 = false;
+		private bool D1_B1_c1 = false;
+		private bool D1_R1_c2 = false;
+		private bool D1_B1_c2 = false;
+		private bool D1_B3_a2 = false;
+		private bool D1_B2_a0 = false;
+		private bool D1_B3_a1 = false;
 
 		void Awake()
 		{
@@ -83,6 +92,8 @@ namespace Game
 			{
 				if ( !m_csp.IsPlaying() )
 				{
+					Camera c = GameCache.Instance.GetObject( GameCacheObjects.PlayerCamera ).GetComponent<Camera>();
+					c.cullingMask = -1;
 					m_cutSceneInstance = -1;
 				}
 			}
@@ -127,7 +138,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
-				m_cutSceneInstance = m_csp.Play( "D1_P1", this );
+				StartCutscene( "D1_P1", GameMusicManager.EGameMusicManagerState.eNone );
 			}
 		}
 
@@ -135,7 +146,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
-				m_cutSceneInstance = m_csp.Play( "D1_P2" );
+				StartCutscene( "D1_P2", GameMusicManager.EGameMusicManagerState.eNone );
 			}
 		}
 
@@ -143,7 +154,15 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
-				m_cutSceneInstance = m_csp.Play( "D1_P3" );
+				if ( D1_B1_d1 && !D1_P3_b1 )
+				{
+					StartCutscene( "D1_P345", GameMusicManager.EGameMusicManagerState.eNone );
+					D1_P3_b1 = true;
+				}
+				else
+				{
+					StartCutscene( "D1_P3", GameMusicManager.EGameMusicManagerState.eNone );
+				}
 			}
 		}
 
@@ -151,7 +170,15 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
-				m_cutSceneInstance = m_csp.Play( "D1_P4" );
+				if ( D1_B1_d1 && !D1_P3_b1 )
+				{
+					StartCutscene( "D1_P345", GameMusicManager.EGameMusicManagerState.eNone );
+					D1_P3_b1 = true;
+				}
+				else
+				{
+					StartCutscene( "D1_P4", GameMusicManager.EGameMusicManagerState.eNone );
+				}
 			}
 		}
 
@@ -159,7 +186,15 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
-				m_cutSceneInstance = m_csp.Play( "D1_P5" );
+				if ( D1_B1_d1 && !D1_P3_b1 )
+				{
+					StartCutscene( "D1_P345", GameMusicManager.EGameMusicManagerState.eNone );
+					D1_P3_b1 = true;
+				}
+				else
+				{
+					StartCutscene( "D1_P5", GameMusicManager.EGameMusicManagerState.eNone );
+				}
 			}
 		}
 
@@ -167,68 +202,114 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
-				m_cutSceneInstance = m_csp.Play( "D1_P6" );
+				StartCutscene( "D1_P6", GameMusicManager.EGameMusicManagerState.eNone );
 			}
 		}
 
 		private void R0()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				if ( !D1_N5_c8 || D1_B1_c1 )
+				{
+					StartCutscene( "D1_R0", GameMusicManager.EGameMusicManagerState.eNone );
+				}
+			}
 		}
 
 		private void R1()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				if ( D1_N5_c8 )
+				{
+					StartCutscene( "D1_R1", GameMusicManager.EGameMusicManagerState.eNone );
+				}
+			}
 		}
 
 		private void R2()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				if ( D1_N5_c8 )
+				{
+					StartCutscene( "D1_R2", GameMusicManager.EGameMusicManagerState.eNone );
+				}
+			}
 		}
 
 		private void B1()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				StartCutscene( "D1_B1", GameMusicManager.EGameMusicManagerState.eNone );
+			}
 		}
 
 		private void B2()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				StartCutscene( "D1_B3", GameMusicManager.EGameMusicManagerState.eNone );
+			}
 		}
 
 		private void B3()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				D1_B2_a0 = true;
+				StartCutscene( "D1_B3", GameMusicManager.EGameMusicManagerState.eNone );
+			}
 		}
 
 		private void B4()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				StartCutscene( "D1_B4", GameMusicManager.EGameMusicManagerState.eNone );
+			}
 		}
 
 		private void M1()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				StartCutscene( "D1_M1", GameMusicManager.EGameMusicManagerState.eNone );
+			}
 		}
 
 		private void M2()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				StartCutscene( "D1_M2", GameMusicManager.EGameMusicManagerState.eNone );
+			}
 		}
 
 		private void M3()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				StartCutscene( "D1_M3", GameMusicManager.EGameMusicManagerState.eNone );
+			}
 		}
 
 		private void M4()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				StartCutscene( "D1_M4", GameMusicManager.EGameMusicManagerState.eNone );
+			}
 		}
 
 		private void M5()
 		{
-
+			if ( m_currentChapter == 1 )
+			{
+				StartCutscene( "D1_M5", GameMusicManager.EGameMusicManagerState.eNone );
+			}
 		}
 
 		private void N1()
@@ -256,74 +337,296 @@ namespace Game
 
 		}
 
+		private void StartCutscene( string _name, GameMusicManager.EGameMusicManagerState _music )
+		{
+			m_cutSceneInstance = m_csp.Play( _name, this );
+			if ( _music != GameMusicManager.EGameMusicManagerState.eNone )
+			{
+				GameMusicManager.Instance.ChangeMusic( _music );
+				m_customSpeakMusic = true;
+			}
+			Camera c = GameCache.Instance.GetObject( GameCacheObjects.PlayerCamera ).GetComponent<Camera>();
+			c.cullingMask = ~LayerMask.GetMask( "Characters" );
+		}
+
 		public bool OnCutSceneTransitionOk( string _cutSceneName, int _previousSnapshot, int _newSnapshot, ref int _nextScene )
 		{
-			if ( _cutSceneName == "D1_P1" )
+			if ( m_currentChapter == 1 )
 			{
-				if ( _previousSnapshot == -1 )
+				switch ( _cutSceneName )
 				{
-					if ( D1_P1_a1 )
+				case "D1_P1":
 					{
-						_nextScene = 1;
-						if ( haveWateringCan )
+						if ( _previousSnapshot == -1 )
 						{
-							_nextScene = 2;
-							haveWateringCan = false;
-						}
-						else if ( D1_N5_c8 )
-						{
-							_nextScene = 4;
-							if ( D1_P1_b1 )
+							if ( D1_P1_a1 )
 							{
-								_nextScene = 5;
+								_nextScene = 1;
+								if ( haveWateringCan )
+								{
+									_nextScene = 2;
+									haveWateringCan = false;
+								}
+								else if ( D1_N5_c8 )
+								{
+									_nextScene = 4;
+									if ( D1_P1_b1 )
+									{
+										_nextScene = 5;
+									}
+								}
+								else if ( D1_P1_a3 )
+								{
+									_nextScene = 3;
+								}
+								return true;
 							}
 						}
-						else if ( D1_P1_a3 )
+						else if ( _newSnapshot == -1 )
 						{
-							_nextScene = 3;
+							if ( _previousSnapshot == 0 )
+							{
+								D1_P1_a1 = true;
+							}
+							else if ( _previousSnapshot == 2 )
+							{
+								D1_P1_a3 = true;
+							}
+							else if ( _previousSnapshot == 4 )
+							{
+								D1_P1_b1 = true;
+							}
 						}
-						return true;
 					}
-				}
-				else if ( _newSnapshot == -1 )
-				{
-					if ( _previousSnapshot == 0 )
+					break;
+				case "D1_P2":
 					{
-						D1_P1_a1 = true;
+						if ( _previousSnapshot == -1 )
+						{
+							if ( D1_M2_c9 )
+							{
+								_nextScene = 1;
+								return true;
+							}
+						}
 					}
-					else if ( _previousSnapshot == 2 )
+					break;
+				case "D1_P345":
 					{
-						D1_P1_a3 = true;
+						if ( _previousSnapshot == -1 )
+						{
+							D1_P3_b1 = true;
+						}
 					}
-					else if ( _previousSnapshot == 4 )
+					break;
+				case "D1_P3":
+				case "D1_P4":
+				case "D1_P5":
 					{
-						D1_P1_b1 = true;
+						if ( _previousSnapshot == -1 )
+						{
+							if ( D1_P3_b1 )
+							{
+								_nextScene = 1;
+								return true;
+							}
+						}
 					}
+					break;
+				case "D1_R0":
+					{
+						if ( _previousSnapshot == -1 )
+						{
+							if ( D1_B1_c1 )
+							{
+								_nextScene = 1;
+								return true;
+							}
+						}
+					}
+					break;
+				case "D1_R1":
+					{
+						if ( _previousSnapshot == -1 )
+						{
+							if ( D1_B1_c4 )
+							{
+								_nextScene = 1;
+								if ( D1_R1_c2 )
+								{
+									_nextScene = 10;
+									if ( D1_B1_c2 )
+									{
+										_nextScene = 11;
+									}
+								}
+								return true;
+							}
+						}
+					}
+					break;
+				case "D1_R2":
+					{
+						if ( _previousSnapshot == -1 )
+						{
+							if ( D1_B3_a2 )
+							{
+								_nextScene = 2;
+								return true;
+							}
+						}
+					}
+					break;
+				case "D1_B1":
+					{
+						if ( _previousSnapshot == -1 )
+						{
+							if ( D1_P1_b1 )
+							{
+								_nextScene = 2;
+								if ( D1_B3_a2 )
+								{
+									_nextScene = 5;
+								}
+								return true;
+							}
+						}
+					}
+					break;
+				case "D1_B3":
+					{
+						if ( _previousSnapshot == -1 )
+						{
+							if ( D1_B2_a0 )
+							{
+								_nextScene = 1;
+								return true;
+							}
+							else
+							{
+								D1_B2_a0 = true;
+							}
+						}
+					}
+					break;
+				case "D1_M1":
+					{
+						if ( _previousSnapshot == -1 )
+						{
+							if ( D1_M1_a2 )
+							{
+								_nextScene = 5;
+								return true;
+							}
+						}
+					}
+					break;
+				case "D1_M2":
+					{
+						if ( _previousSnapshot == -1 )
+						{
+							if ( D1_M2_a1 )
+							{
+								_nextScene = 3;
+								if ( D1_M5_a1 || D1_M2_c1 || D1_M2_c2 )
+								{
+									_nextScene = 4;
+								}
+								return true;
+							}
+						}
+					}
+					break;
+				case "D1_M4":
+					{
+						if ( _previousSnapshot == -1 )
+						{
+							_nextScene = ( ( int )( Time.time * 100 ) ) % 3;
+							if ( _nextScene != 0 )
+							{
+								return true;
+							}
+						}
+					}
+					break;
+				case "D1_M5":
+					{
+						if ( _previousSnapshot == -1 )
+						{
+							if ( D1_M5_a1 )
+							{
+								_nextScene = 6;
+								if ( D1_M5_c1 )
+								{
+									_nextScene = 6;
+								}
+								else
+								{
+									_nextScene = 7;
+									D1_M5_c1 = true;
+								}
+								return true;
+							}
+							else
+							{
+								D1_M5_a1 = true;
+							}
+						}
+					}
+					break;
 				}
 			}
-			else if ( _cutSceneName == "D1_P2" )
+
+			if ( _newSnapshot == -1 && m_customSpeakMusic )
 			{
-				if ( _previousSnapshot == -1 )
-				{
-					if ( D1_M2_c9 )
-					{
-						_nextScene = 1;
-						return true;
-					}
-				}
+				GameMusicManager.Instance.ChangeMusic( GameMusicManager.EGameMusicManagerState.eBaseVillage );
+				m_customSpeakMusic = false;
 			}
 			return false;
 		}
 
 		public bool OnCutSceneTransitionTime( string _cutSceneName, int _previousSnapshot, int _newSnapshot, ref int _nextScene )
 		{
-
+			if ( _newSnapshot == -1 && m_customSpeakMusic )
+			{
+				GameMusicManager.Instance.ChangeMusic( GameMusicManager.EGameMusicManagerState.eBaseVillage );
+				m_customSpeakMusic = false;
+			}
 			return false;
 		}
 
 		public bool OnCutSceneTransitionChoice( string _cutSceneName, int _previousSnapshot, int _newSnapshot, int _choiceIndex, ref int _nextScene )
 		{
+			if ( _cutSceneName == "D1_R1" )
+			{
+				if ( _previousSnapshot == 1 )
+				{
+					if ( _choiceIndex == 1 )
+					{
+						D1_R1_c2 = true;
+					}
+				}
+			}
+			else if ( _cutSceneName == "D1_B3" )
+			{
+				if ( _previousSnapshot == 2 && _newSnapshot == 3 )
+				{
+					D1_B3_a2 = true;
+				}
+			}
+			else if ( _cutSceneName == "D1_M1" )
+			{
+				if ( _previousSnapshot == 0 && _newSnapshot == 1 && _choiceIndex == 1 )
+				{
+					D1_M1_a2 = true;
+				}
+			}
 
+			if ( _newSnapshot == -1 && m_customSpeakMusic )
+			{
+				GameMusicManager.Instance.ChangeMusic( GameMusicManager.EGameMusicManagerState.eBaseVillage );
+				m_customSpeakMusic = false;
+			}
 			return false;
 		}
 	}

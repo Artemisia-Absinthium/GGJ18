@@ -2,7 +2,7 @@
 0 {
 	left:none
 	right:none
-	center:none
+	center:MEDECIN_SON
 	text:D1_M4_a
 	ok:end
 }

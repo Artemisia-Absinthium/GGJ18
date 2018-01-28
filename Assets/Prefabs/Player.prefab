@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 81994973975072564}
   - component: {fileID: 114510776974141518}
   - component: {fileID: 114375567398413940}
+  - component: {fileID: 114373739833970818}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -297,6 +298,35 @@ MonoBehaviour:
   m_cacheValue: 0
   m_putInCache: 1
   m_disableAfterAwake: 0
+--- !u!114 &114373739833970818
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1258206275802338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a78da3f00f3328541b4526c0b0b5ec5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineThickness: 1.66
+  lineIntensity: 1.7
+  fillAmount: 0
+  lineColor0: {r: 0.19852942, g: 1, b: 1, a: 1}
+  lineColor1: {r: 0, g: 1, b: 0, a: 1}
+  lineColor2: {r: 0, g: 0, b: 1, a: 1}
+  additiveRendering: 0
+  backfaceCulling: 1
+  cornerOutlines: 0
+  addLinesBetweenColors: 0
+  scaleWithScreenSize: 1
+  alphaCutoff: 0.5
+  flipY: 0
+  sourceCamera: {fileID: 0}
+  outlineCamera: {fileID: 0}
+  outlineShaderMaterial: {fileID: 0}
+  renderTexture: {fileID: 0}
+  extraRenderTexture: {fileID: 0}
 --- !u!114 &114375567398413940
 MonoBehaviour:
   m_ObjectHideFlags: 1

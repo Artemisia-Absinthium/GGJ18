@@ -2,7 +2,7 @@
 0 {
 	left:none
 	right:none
-	center:none
+	center:PEASANT_CREEPY
 	text:D1_P6_a
 	ok:end
 }

@@ -149,6 +149,7 @@ namespace Game
 			opt.RefreshRate = m_tempResolution.refreshRate;
 			opt.FullScreen = m_tempFS;
 
+			// Graphics
 			// anisotropicFiltering
 			opt.AnisotropicFiltering = m_tempAF;
 
@@ -213,6 +214,23 @@ namespace Game
 			
 			//IsMute
 			optSound.IsMute = m_tempMute;
+
+			//
+			/// Controles
+			Engine.UserCommandOptions optCtrl = Engine.UserManager.Instance.Current.Options.Command;
+			// MouseXSensibility
+				optCtrl.MouseXSensibility = m_tempSX;
+			// MouseYSensibility
+				optCtrl.MouseYSensibility = m_tempSY;
+			// JoystickXSensibility
+				optCtrl.JoystickXSensibility = m_tempJX;
+			// JoystickYSensibility
+				optCtrl.JoystickYSensibility = m_tempJY;
+			//nInvertJoystickXAxis
+				optCtrl.InvertJoystickXAxis = m_tempIX;
+			//InvertJoystickYAxis
+				optCtrl.InvertJoystickYAxis = m_tempIY;
+			
 		}
 
 		private void Start()

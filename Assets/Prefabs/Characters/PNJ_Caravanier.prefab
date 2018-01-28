@@ -54,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4915492550594884}
   - component: {fileID: 212868479468309126}
+  - component: {fileID: 114741981107591338}
   m_Layer: 9
   m_Name: Image
   m_TagString: Untagged
@@ -112,7 +113,7 @@ Transform:
   m_GameObject: {fileID: 1543296959976380}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.16, y: 0.16, z: 1}
   m_Children: []
   m_Father: {fileID: 4248949864074792}
   m_RootOrder: 0
@@ -193,6 +194,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_character: 24
   m_sprite: {fileID: 21300000, guid: 72411995022697641b7496e3900ffa42, type: 3}
+--- !u!114 &114741981107591338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1543296959976380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!136 &136880257347057560
 CapsuleCollider:
   m_ObjectHideFlags: 1
