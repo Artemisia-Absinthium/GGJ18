@@ -1,0 +1,15 @@
+# D1_P4
+0 {
+	left:none
+	right:none
+	center:none
+	text:D1_P4_a
+	ok:end
+}
+1 {
+	left:none
+	right:none
+	center:none
+	text:D1_P4_b4
+	ok:end
+}

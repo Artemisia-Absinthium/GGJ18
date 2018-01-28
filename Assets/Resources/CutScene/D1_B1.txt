@@ -1,0 +1,80 @@
+# D1_B1
+0 {
+	left:none
+	right:none
+	center:none
+	text:D1_B1_a1
+	choice:D1_B1_c1,1
+	choice:D1_B1_c2,1
+}
+1 {
+	left:none
+	right:none
+	center:none
+	text:D1_B1_a2
+	choice:D1_B1_ch1,end
+}
+2 {
+	left:none
+	right:none
+	center:none
+	text:D1_B1_b1
+	choice:D1_B1_c3,end
+	choice:D1_B1_c4,3
+}
+3 {
+	left:none
+	right:none
+	center:none
+	text:NONE
+	choice:D1_B1_ch1_1,4
+}
+4 {
+	left:none
+	right:none
+	center:none
+	text:D1_B1_b1b
+	choice:D1_B1_ch2,end
+}
+5 {
+	left:none
+	right:none
+	center:none
+	text:D1_B1_d1a
+	choice:D1_B1_c1,6
+}
+6 {
+	left:none
+	right:none
+	center:none
+	text:D1_B1_d1b
+	ok:7
+}
+7 {
+	left:none
+	right:none
+	center:none
+	text:D1_B3_d1
+	ok:8
+}
+8 {
+	left:none
+	right:none
+	center:none
+	text:D1_B1_d1c
+	choice:D1_B1_c3_1,9
+}
+9 {
+	left:none
+	right:none
+	center:none
+	text:D1_B1_d1d
+	ok:end
+}
+10 {
+	left:none
+	right:none
+	center:none
+	text:D1_B1_d1e2
+	ok:end
+}

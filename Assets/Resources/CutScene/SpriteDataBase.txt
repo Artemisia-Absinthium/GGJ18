@@ -1,0 +1,11 @@
+BARTENDER_MOTHER|Assets/Resources/Sprites/Characters/Aubergiste_femme.png
+BARTENDER_TWINS|Assets/Resources/Sprites/Characters/Aubergiste_jumeaux.png
+DOG|Assets/Resources/Sprites/Characters/Chien.png
+PEASANT_GRANDMOTHER|Assets/Resources/Sprites/Characters/Paysan_mamie.png
+PEASANT_CREEPY|Assets/Resources/Sprites/Characters/Paysan_petitcreepy.png
+PEASANT_GRANDFATHER|Assets/Resources/Sprites/Characters/Paysan_vieux.png
+MEDECIN_DAUGTHER|Assets/Resources/Sprites/Characters/Medecin_ado.png
+MEDECIN_CHILD|Assets/Resources/Sprites/Characters/Medecin_enfant.png
+MEDECIN_MOTHER|Assets/Resources/Sprites/Characters/Medecin_femme.png
+MEDECIN_CON|Assets/Resources/Sprites/Characters/Medecin_gars.png
+MEDECIN_FATHER|Assets/Resources/Sprites/Characters/Medecin_homme.png

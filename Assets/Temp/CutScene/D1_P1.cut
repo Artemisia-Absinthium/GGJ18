@@ -1,0 +1,57 @@
+# D1_P1
+0 {
+	left:none
+	right:none
+	center:PEASANT_GRANDMOTHER
+	text:D1_P1_a1
+	ok:end
+}
+1 {
+	left:none
+	right:none
+	center:PEASANT_GRANDMOTHER
+	text:D1_P1_a2
+	ok:end
+}
+2 {
+	left:none
+	right:none
+	center:PEASANT_GRANDMOTHER
+	text:D1_P1_a3
+	ok:end
+}
+3 {
+	left:none
+	right:none
+	center:PEASANT_GRANDMOTHER
+	text:D1_P1_a4
+	ok:end
+}
+4 {
+	left:none
+	right:none
+	center:PEASANT_GRANDMOTHER
+	text:D1_P1_b1_1
+	ok:6
+}
+5 {
+	left:none
+	right:none
+	center:PEASANT_GRANDMOTHER
+	text:D1_P1_b2
+	ok:end
+}
+6 {
+	left:none
+	right:none
+	center:PEASANT_GRANDMOTHER
+	text:D1_P1_b1_2
+	ok:7
+}
+7 {
+	left:none
+	right:none
+	center:PEASANT_GRANDMOTHER
+	text:D1_P1_b1_3
+	ok:end
+}

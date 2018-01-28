@@ -109,7 +109,7 @@ namespace Game
 				Debug.Log( "Syntax error line 0: Expected #" );
 				return null;
 			}
-			string cutsceneName = lines[ 0 ].Substring( 2 );
+			string cutsceneName = lines[ 0 ].Substring( 2 ).Trim();
 			int lineNumber = 1;
 
 			while ( lineNumber < lines.Length )

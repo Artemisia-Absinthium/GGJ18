@@ -1,0 +1,38 @@
+# D1_N1
+0 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_a1
+	choice:D1_N1_c1,1
+	choice:D1_N1_c2,2
+	choice:D1_N1_c3,3
+}
+1 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_a2
+	ok:end
+}
+2 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_a3
+	ok:end
+}
+3 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_a4
+	ok:end
+}
+4 {
+	left:none
+	right:none
+	center:none
+	text:D1_N1_a2
+	ok:end
+}

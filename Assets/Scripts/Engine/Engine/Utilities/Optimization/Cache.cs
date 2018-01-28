@@ -50,12 +50,6 @@ namespace Engine
 		{
 			get
 			{
-				if ( s_instance == null )
-				{
-					s_instance = FindObjectOfType<Cache<T>>();
-					Debug.Assert( s_instance );
-					s_instance.m_cache = new GameObject[ System.Enum.GetValues( typeof( T ) ).Cast<int>().Max() + 1 ];
-				}
 				return s_instance;
 			}
 		}
@@ -71,6 +65,7 @@ namespace Engine
 			}
 			DontDestroyOnLoad( this );
 			s_instance = this;
+			m_cache = new GameObject[ ( int )System.Enum.Parse( typeof( T ), "Count" ) ];
 		}
 
 #if DEBUGGING
