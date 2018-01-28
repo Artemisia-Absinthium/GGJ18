@@ -2,56 +2,56 @@
 0 {
 	left:none
 	right:none
-	center:none
+	center:RELIGIOUS_TEACHER
 	text:D1_R2_a1
 	choice:D1_R2_c1,1
 }
 1 {
 	left:none
 	right:none
-	center:none
+	center:RELIGIOUS_TEACHER
 	text:D1_R2_a2
 	ok:end
 }
 2 {
 	left:none
-	right:none
-	center:none
+	right:BARTENDER_TWINS
+	center:RELIGIOUS_TEACHER
 	text:D1_R2_b
 	ok:3
 }
 3 {
 	left:none
-	right:none
-	center:none
+	right:BARTENDER_TWINS
+	center:RELIGIOUS_TEACHER
 	text:D1_B3_b
 	ok:4
 }
 4 {
-	left:none
-	right:none
-	center:none
+	left:RELIGIOUS_COMMANDER
+	right:BARTENDER_TWINS
+	center:RELIGIOUS_TEACHER
 	text:D1_R1_b1
 	ok:5
 }
 5 {
 	left:none
 	right:none
-	center:none
+	center:RELIGIOUS_TEACHER
 	text:D1_R1_b2
 	choice:D1_R1_ch5,6
 }
 6 {
 	left:none
 	right:none
-	center:none
+	center:RELIGIOUS_TEACHER
 	text:D1_R1_b3
 	choice:D1_R1_ch6,7
 }
 7 {
 	left:none
 	right:none
-	center:none
+	center:RELIGIOUS_TEACHER
 	text:D1_R1_b4
 	ok:end
 }

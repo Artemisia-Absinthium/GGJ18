@@ -1,9 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+/*
+ * LICENCE
+ */
 using UnityEngine;
 
 public class GameMusicManager : MonoBehaviour {
 
+	private static GameMusicManager s_instance = null;
     public float m_SwitchSpeed = 0.01f;
 
     public enum EGameMusicManagerState
@@ -15,6 +17,11 @@ public class GameMusicManager : MonoBehaviour {
         eLapin = 3,
         eFaucheuse = 4
     };
+
+	public static GameMusicManager Instance
+	{
+		get { return s_instance; }
+	}
 
     public EGameMusicManagerState m_StartMusicState = EGameMusicManagerState.eBaseVillage;
 
@@ -36,6 +43,8 @@ public class GameMusicManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		s_instance = this;
 
         m_AudioSource = GetComponent<AudioSource>();
         m_AudioSource.playOnAwake = false;
@@ -94,7 +103,7 @@ public class GameMusicManager : MonoBehaviour {
 	}
 
     //
-    void ChangeMusic(EGameMusicManagerState music)
+    public void ChangeMusic(EGameMusicManagerState music)
     {
         if (m_AudioSource.isPlaying == false)
         {

@@ -2,7 +2,7 @@
 0 {
 	left:none
 	right:none
-	center:none
+	center:MEDECIN_FATHER
 	text:D1_M1_a1
 	choice:D1_M1_ch1,end
 	choice:D1_M1_ch2,1
@@ -10,14 +10,14 @@
 1 {
 	left:none
 	right:none
-	center:none
+	center:MEDECIN_FATHER
 	text:D1_M1_a2
 	choice:D1_M1_ch3,2
 }
 2 {
 	left:none
 	right:none
-	center:none
+	center:MEDECIN_FATHER
 	text:D1_M1_a3
 	choice:D1_M1_ch4,3
 	choice:D1_M1_ch5,4
@@ -25,21 +25,21 @@
 3 {
 	left:none
 	right:none
-	center:none
+	center:MEDECIN_FATHER
 	text:D1_M1_a4
 	ok:end
 }
 4 {
 	left:none
 	right:none
-	center:none
+	center:MEDECIN_FATHER
 	text:D1_M1_a5
 	ok:end
 }
 5 {
 	left:none
 	right:none
-	center:none
+	center:MEDECIN_FATHER
 	text:D1_M2_a1_0
 	ok:end
 }
