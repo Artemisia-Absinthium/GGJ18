@@ -1,9 +1,12 @@
 ﻿/*
  * LICENCE
  */
+#if UNITY_EDITOR
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
+
 
 namespace Game
 {
@@ -57,3 +60,4 @@ namespace Game
 		}
 	}
 }
+ #endif
