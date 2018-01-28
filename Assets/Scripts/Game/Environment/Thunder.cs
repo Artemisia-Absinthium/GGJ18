@@ -28,7 +28,7 @@ public class Thunder : MonoBehaviour {
 
         if(m_LightingTime > 0)
         {
-            m_Light.intensity = 1.0f;
+            m_Light.intensity = 1.7f;
             m_LightingTime--;
         }
 

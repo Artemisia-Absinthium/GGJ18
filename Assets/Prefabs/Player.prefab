@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4971865496558008}
   - component: {fileID: 143757075059214796}
   - component: {fileID: 114178942043621590}
+  - component: {fileID: 82998527927263586}
+  - component: {fileID: 114308695308983738}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -40,6 +42,7 @@ GameObject:
   - component: {fileID: 124397416401327822}
   - component: {fileID: 81994973975072564}
   - component: {fileID: 114510776974141518}
+  - component: {fileID: 114375567398413940}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -125,8 +128,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1033808487575042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 71.59, y: 1.05, z: 57.65}
+  m_LocalScale: {x: 0.7469944, y: 0.7469944, z: 0.7469944}
   m_Children:
   - {fileID: 4780817803693664}
   m_Father: {fileID: 0}
@@ -175,6 +178,87 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1258206275802338}
   m_Enabled: 1
+--- !u!82 &82998527927263586
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033808487575042}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243775312195814394, guid: 356dd2522c040fa49b3e29b6394981c0,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114178942043621590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,12 +275,42 @@ MonoBehaviour:
   m_moveLeftActionName: Strafe Left
   m_moveRightActionName: Strafe Right
   m_interactionActionName: Interaction
-  m_forwardSpeed: 2
-  m_backwardSpeed: 0.75
-  m_strafeSpeed: 1.25
+  m_forwardSpeed: 4
+  m_backwardSpeed: 1.5
+  m_strafeSpeed: 2
   m_viewSensibility: {x: 3, y: 2}
   m_camera: {fileID: 4079996575472702}
   m_interactionCaster: {fileID: 4812439041439424}
+  m_StepSound: {fileID: 8300000, guid: 6fed70bca409abf498f5cb167e5e3f76, type: 3}
+  m_AudioSource: {fileID: 82998527927263586}
+--- !u!114 &114308695308983738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033808487575042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d425841a79313a0418c227db843ddb67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_cacheValue: 0
+  m_putInCache: 1
+  m_disableAfterAwake: 0
+--- !u!114 &114375567398413940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1258206275802338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d425841a79313a0418c227db843ddb67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_cacheValue: 1
+  m_putInCache: 1
+  m_disableAfterAwake: 0
 --- !u!114 &114510776974141518
 MonoBehaviour:
   m_ObjectHideFlags: 1

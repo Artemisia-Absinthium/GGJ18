@@ -1,5 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+/*
+ * LICENCE
+ */
 using UnityEngine;
 
 public class GameMusicManager : MonoBehaviour {

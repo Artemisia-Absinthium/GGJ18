@@ -139,7 +139,80 @@ namespace Game
 
 		public void ResetValues()
 		{
-			Start();
+			// General
+			ApplyGeneral();
+
+			Engine.UserGraphicOptions opt = Engine.UserManager.Instance.Current.Options.Graphic;
+			Screen.SetResolution( m_tempResolution.width, m_tempResolution.height, m_tempFS, m_tempResolution.refreshRate );
+			opt.Width = m_tempResolution.width;
+			opt.Height = m_tempResolution.height;
+			opt.RefreshRate = m_tempResolution.refreshRate;
+			opt.FullScreen = m_tempFS;
+
+			// anisotropicFiltering
+			opt.AnisotropicFiltering = m_tempAF;
+
+			// AntiAliasing
+			QualitySettings.antiAliasing = ( int )m_tempAA;
+			opt.AntiAliasing = m_tempAA;
+			
+			//LevelOfDetails
+			QualitySettings.lodBias = ( float )m_tempLOD * 0.01f;
+			opt.LevelOfDetails = m_tempLOD;
+			
+			//TextureQuality
+			QualitySettings.masterTextureLimit = ( int )m_tempTQ;
+			opt.TextureQuality = m_tempTQ;
+			
+			//ShadersQuality
+			QualitySettings.pixelLightCount = ( int )m_tempSQ;
+			opt.ShadersQuality = m_tempSQ;
+
+			//PhysicParticle
+			QualitySettings.particleRaycastBudget = ( int )m_tempPPQ;
+			opt.PhysicParticle = m_tempPPQ;
+			
+			//RealtimeReflections
+			QualitySettings.realtimeReflectionProbes = m_tempRR;
+			opt.RealtimeReflections = m_tempRR;
+			
+			//ShadowsDistance
+			QualitySettings.shadowDistance = ( float )m_tempDist;
+			opt.ShadowsDistance = m_tempDist;
+
+			//ShadowResolution
+			QualitySettings.shadowResolution = m_tempRes;
+			opt.ShadowResolution = m_tempRes;
+			
+			//ShadowQuality
+			QualitySettings.shadows = m_tempQual;
+			opt.ShadowQuality = m_tempQual;
+
+			//ParticlesQuality
+			QualitySettings.softParticles = m_tempPQ == Engine.ParticlesQualityValue.HighQuality;
+			opt.ParticlesQuality = m_tempPQ;
+
+			//VSync
+			QualitySettings.vSyncCount = ( int )m_tempVS;
+			opt.VSync = m_tempVS;
+
+			//
+			/// Sounds
+			Engine.UserSoundOptions optSound = Engine.UserManager.Instance.Current.Options.Sound;
+
+			//GeneralVolume
+
+			//MusicVolume
+			optSound.MusicVolume = m_tempMusicVolume;
+			
+			//EffectsVolume
+			optSound.EffectsVolume = m_tempEffectsVolume;
+			
+			//VoicesVolum
+			optSound.VoicesVolume = m_tempVoicesVolume;
+			
+			//IsMute
+			optSound.IsMute = m_tempMute;
 		}
 
 		private void Start()
@@ -347,6 +420,8 @@ namespace Game
 			SetEffectsVolume( m_tempEffectsVolume );
 			SetVoicesVolume( m_tempVoicesVolume );
 			SetMute( m_tempMute );
+
+			ResetValues();
 		}
 
 		public void PlayGame( string _sceneName )
