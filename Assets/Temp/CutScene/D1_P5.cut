@@ -2,14 +2,14 @@
 0 {
 	left:none
 	right:none
-	center:none
+	center:PEASANT_INTER
 	text:D1_P5_a
 	ok:end
 }
 1 {
 	left:none
 	right:none
-	center:none
+	center:PEASANT_INTER
 	text:D1_P5_b3
 	ok:end
 }

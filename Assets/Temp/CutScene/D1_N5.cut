@@ -4,7 +4,7 @@
 	right:none
 	center:NOBLE_DAUGHTER
 	text:D1_N5_a1
-	choice:D1_N5_c1,1
+	choice:D1_N5_c1,18
 	choice:D1_N5_c2,end
 }
 1 {
@@ -35,6 +35,7 @@
 	center:NOBLE_DAUGHTER
 	text:D1_N5_a5
 	choice:D1_N5_c5,5
+	choice:D1_N5_c6,7
 }
 5 {
 	left:none
@@ -48,7 +49,7 @@
 	right:none
 	center:NOBLE_DAUGHTER
 	text:D1_N5_a7
-	choice:D1_N5_c6,7
+	ok:end
 }
 7 {
 	left:none
@@ -71,14 +72,13 @@
 	text:D1_N5_b1
 	choice:D1_N5_c7,end
 	choice:D1_N5_c8,10
-	choice:D1_N5_c11,16
 }
 10 {
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
 	text:D1_N5_1
-	choice:D1_N5_ch1,end
+	choice:D1_N5_ch1,11
 }
 11 {
 	left:none
@@ -107,14 +107,14 @@
 	right:none
 	center:NOBLE_DAUGHTER
 	text:D1_N5_7
-	ok:end
+	choice:D1_N5_c11,16
 }
 15 {
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
 	text:D1_N5_8
-	ok:end
+	choice:D1_N5_c11,16
 }
 16 {
 	left:none

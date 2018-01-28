@@ -39,7 +39,12 @@ namespace Game
 			NOBLE4_SON,
 			NOBLE5_CHILD,
 
-			COUSIN
+			COUSIN,
+
+			DOOR1,
+			DOOR2,
+			DOOR3,
+			WATERINGCAN
 		}
 
 		[SerializeField]

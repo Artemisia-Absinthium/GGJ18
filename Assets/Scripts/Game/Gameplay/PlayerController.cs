@@ -42,26 +42,26 @@ namespace Game
 		private Engine.InputAction m_interaction = null;
 
 		private CharacterController m_characterController = null;
-		private float m_angle = 0.0f;
+		private float m_angle = -90.0f;
 		private float m_verticalView = 0.0f;
 
 		private int m_layerMask = 0;
 
-        //SOunds
-        public AudioClip m_StepSound;
-        public AudioSource m_AudioSource;
-        private int m_SoundDeltaPlay = 0;
+		//SOunds
+		public AudioClip m_StepSound;
+		public AudioSource m_AudioSource;
+		private int m_SoundDeltaPlay = 0;
 
 		void Start()
 		{
 			//Set Cursor to not be visible
-        	Cursor.visible = false;
+			Cursor.visible = false;
 
-            //
-            m_AudioSource = GetComponent<AudioSource>();
-            m_AudioSource.volume = 0.8f;
+			//
+			m_AudioSource = GetComponent<AudioSource>();
+			m_AudioSource.volume = 0.8f;
 
-            m_moveForward = Engine.InputManager.Instance.GetAction( m_moveForwardActionName );
+			m_moveForward = Engine.InputManager.Instance.GetAction( m_moveForwardActionName );
 			m_moveBackward = Engine.InputManager.Instance.GetAction( m_moveBackwardActionName );
 			m_moveLeft = Engine.InputManager.Instance.GetAction( m_moveLeftActionName );
 			m_moveRight = Engine.InputManager.Instance.GetAction( m_moveRightActionName );
@@ -118,61 +118,66 @@ namespace Game
 			speed = rotation * speed;
 			m_characterController.SimpleMove( speed );
 
-            if(speed.sqrMagnitude > m_strafeSpeed / 2.0f)
-            {
-                if(!m_AudioSource.isPlaying)
-                {
-                    if(m_SoundDeltaPlay <= 0)
-                    {
-                        m_AudioSource.clip = m_StepSound;
-                        m_AudioSource.Play();
-                        m_SoundDeltaPlay = 20;
-                    }else
-                    {
-                        m_SoundDeltaPlay--;
-                    }
-                }
-            }
-
-			if ( m_interaction.Down || ((int)(Time.time * 10) % 5 == 0))
+			if ( speed.sqrMagnitude > m_strafeSpeed / 2.0f )
 			{
-				RaycastHit hitInfo;
-				if ( Physics.Raycast( m_interactionCaster.position, m_interactionCaster.forward, out hitInfo, 1.5f, m_layerMask ) )
+				if ( !m_AudioSource.isPlaying )
 				{
-					Engine.TriggerBase trigger = hitInfo.collider.GetComponent<Engine.TriggerBase>();
-
-					if ( m_interaction.Down)
+					if ( m_SoundDeltaPlay <= 0 )
 					{
-						if ( trigger )
-						{
-							trigger.OnTrigger();
-						}
-					}
-
-					if ( trigger )
-					{
-						if(triggerObject != trigger && triggerObject != null)
-						{
-							triggerObject.GetComponentInChildren<Outline>().enabled = false;
-						}
-						trigger.GetComponentInChildren<Outline>().enabled = true;
-						triggerObject = trigger;
+						m_AudioSource.clip = m_StepSound;
+						m_AudioSource.Play();
+						m_SoundDeltaPlay = 20;
 					}
 					else
 					{
-						if(triggerObject != null)
+						m_SoundDeltaPlay--;
+					}
+				}
+			}
+
+			if ( !GameController.Instance.IsSpeaking && !GameController.Instance.WasSpeaking )
+			{
+				if ( m_interaction.Down || ( ( int )( Time.time * 10 ) % 5 == 0 ) )
+				{
+					RaycastHit hitInfo;
+					if ( Physics.Raycast( m_interactionCaster.position, m_interactionCaster.forward, out hitInfo, 1.5f, m_layerMask ) )
+					{
+						Engine.TriggerBase trigger = hitInfo.collider.GetComponent<Engine.TriggerBase>();
+
+						if ( m_interaction.Down )
+						{
+							if ( trigger )
+							{
+								m_interaction.Update();
+								trigger.OnTrigger();
+							}
+						}
+
+						if ( trigger )
+						{
+							if ( triggerObject != trigger && triggerObject != null )
+							{
+								triggerObject.GetComponentInChildren<Outline>().enabled = false;
+							}
+							trigger.GetComponentInChildren<Outline>().enabled = true;
+							triggerObject = trigger;
+						}
+						else
+						{
+							if ( triggerObject != null )
+							{
+								triggerObject.GetComponentInChildren<Outline>().enabled = false;
+								triggerObject = null;
+							}
+						}
+					}
+					else
+					{
+						if ( triggerObject != null )
 						{
 							triggerObject.GetComponentInChildren<Outline>().enabled = false;
 							triggerObject = null;
 						}
-					}
-				}
-				else
-				{
-					if(triggerObject != null)
-					{
-						triggerObject.GetComponentInChildren<Outline>().enabled = false;
-						triggerObject = null;
 					}
 				}
 			}
