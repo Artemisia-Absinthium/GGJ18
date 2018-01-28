@@ -64,7 +64,12 @@ public class GameMusicManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-        if(m_AudioSource.isPlaying == false)
+        if(m_ActualMusic == EGameMusicManagerState.eNone)
+        {
+            m_AudioSource.Stop();
+        }
+
+        if(m_AudioSource.isPlaying == false && m_ActualMusic != EGameMusicManagerState.eNone)
         {
             m_AudioSource.Play();
         }
