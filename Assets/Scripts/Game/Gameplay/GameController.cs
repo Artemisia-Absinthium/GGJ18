@@ -142,7 +142,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
-				StartCutscene( "D1_P1", GameMusicManager.EGameMusicManagerState.eNone );
+				StartCutscene( "D1_P1", GameMusicManager.EGameMusicManagerState.eKozbee );
 			}
 		}
 
@@ -206,7 +206,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
-				StartCutscene( "D1_P6", GameMusicManager.EGameMusicManagerState.eNone );
+				StartCutscene( "D1_P6", GameMusicManager.EGameMusicManagerState.eLapin );
 			}
 		}
 
@@ -255,7 +255,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
-				StartCutscene( "D1_B3", GameMusicManager.EGameMusicManagerState.eNone );
+				StartCutscene( "D1_B3", GameMusicManager.EGameMusicManagerState.eLara );
 			}
 		}
 
@@ -264,7 +264,7 @@ namespace Game
 			if ( m_currentChapter == 1 )
 			{
 				D1_B2_a0 = true;
-				StartCutscene( "D1_B3", GameMusicManager.EGameMusicManagerState.eNone );
+				StartCutscene( "D1_B3", GameMusicManager.EGameMusicManagerState.eLara );
 			}
 		}
 
@@ -272,7 +272,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
-				StartCutscene( "D1_B4", GameMusicManager.EGameMusicManagerState.eNone );
+				StartCutscene( "D1_B4", GameMusicManager.EGameMusicManagerState.eLara );
 			}
 		}
 
@@ -312,7 +312,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
-				StartCutscene( "D1_M5", GameMusicManager.EGameMusicManagerState.eNone );
+				StartCutscene( "D1_M5", GameMusicManager.EGameMusicManagerState.eLara );
 			}
 		}
 
@@ -320,7 +320,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
-				StartCutscene( "D1_N1", GameMusicManager.EGameMusicManagerState.eNone );
+				StartCutscene( "D1_N1", GameMusicManager.EGameMusicManagerState.eKozbee );
 			}
 		}
 
@@ -328,7 +328,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
-				StartCutscene( "D1_N2", GameMusicManager.EGameMusicManagerState.eNone );
+				StartCutscene( "D1_N2", GameMusicManager.EGameMusicManagerState.eKozbee );
 			}
 		}
 
@@ -352,7 +352,7 @@ namespace Game
 		{
 			if ( m_currentChapter == 1 )
 			{
-				StartCutscene( "D1_N5", GameMusicManager.EGameMusicManagerState.eNone );
+				StartCutscene( "D1_N5", GameMusicManager.EGameMusicManagerState.eLara );
 			}
 		}
 
