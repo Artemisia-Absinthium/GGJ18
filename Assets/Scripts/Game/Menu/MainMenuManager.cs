@@ -151,20 +151,21 @@ namespace Game
 
 			// Graphics
 			// anisotropicFiltering
+			QualitySettings.anisotropicFiltering = opt.AnisotropicFiltering;
 			opt.AnisotropicFiltering = m_tempAF;
 
 			// AntiAliasing
 			QualitySettings.antiAliasing = ( int )m_tempAA;
 			opt.AntiAliasing = m_tempAA;
-			
+
 			//LevelOfDetails
 			QualitySettings.lodBias = ( float )m_tempLOD * 0.01f;
 			opt.LevelOfDetails = m_tempLOD;
-			
+
 			//TextureQuality
 			QualitySettings.masterTextureLimit = ( int )m_tempTQ;
 			opt.TextureQuality = m_tempTQ;
-			
+
 			//ShadersQuality
 			QualitySettings.pixelLightCount = ( int )m_tempSQ;
 			opt.ShadersQuality = m_tempSQ;
@@ -172,11 +173,11 @@ namespace Game
 			//PhysicParticle
 			QualitySettings.particleRaycastBudget = ( int )m_tempPPQ;
 			opt.PhysicParticle = m_tempPPQ;
-			
+
 			//RealtimeReflections
 			QualitySettings.realtimeReflectionProbes = m_tempRR;
 			opt.RealtimeReflections = m_tempRR;
-			
+
 			//ShadowsDistance
 			QualitySettings.shadowDistance = ( float )m_tempDist;
 			opt.ShadowsDistance = m_tempDist;
@@ -184,7 +185,7 @@ namespace Game
 			//ShadowResolution
 			QualitySettings.shadowResolution = m_tempRes;
 			opt.ShadowResolution = m_tempRes;
-			
+
 			//ShadowQuality
 			QualitySettings.shadows = m_tempQual;
 			opt.ShadowQuality = m_tempQual;
@@ -205,13 +206,13 @@ namespace Game
 
 			//MusicVolume
 			optSound.MusicVolume = m_tempMusicVolume;
-			
+
 			//EffectsVolume
 			optSound.EffectsVolume = m_tempEffectsVolume;
-			
+
 			//VoicesVolum
 			optSound.VoicesVolume = m_tempVoicesVolume;
-			
+
 			//IsMute
 			optSound.IsMute = m_tempMute;
 
@@ -219,24 +220,24 @@ namespace Game
 			/// Controles
 			Engine.UserCommandOptions optCtrl = Engine.UserManager.Instance.Current.Options.Command;
 			// MouseXSensibility
-				optCtrl.MouseXSensibility = m_tempSX;
+			optCtrl.MouseXSensibility = m_tempSX;
 			// MouseYSensibility
-				optCtrl.MouseYSensibility = m_tempSY;
+			optCtrl.MouseYSensibility = m_tempSY;
 			// JoystickXSensibility
-				optCtrl.JoystickXSensibility = m_tempJX;
+			optCtrl.JoystickXSensibility = m_tempJX;
 			// JoystickYSensibility
-				optCtrl.JoystickYSensibility = m_tempJY;
+			optCtrl.JoystickYSensibility = m_tempJY;
 			//nInvertJoystickXAxis
-				optCtrl.InvertJoystickXAxis = m_tempIX;
+			optCtrl.InvertJoystickXAxis = m_tempIX;
 			//InvertJoystickYAxis
-				optCtrl.InvertJoystickYAxis = m_tempIY;
-			
+			optCtrl.InvertJoystickYAxis = m_tempIY;
+
 		}
 
 		private void Start()
 		{
 			//Set Cursor to not be visible
-       		Cursor.visible = true;
+			Cursor.visible = true;
 
 			// Check references
 			if ( m_graveyardText == null )
@@ -346,16 +347,45 @@ namespace Game
 			f_english.isOn = m_tempLanguage == Engine.LocalizedString.Lang.ENGLISH;
 			f_french.isOn = m_tempLanguage == Engine.LocalizedString.Lang.FRENCH;
 			f_resolution.wholeNumbers = true;
-			f_resolution.minValue = 0;
+			f_resolution.minValue = -1;
 			f_resolution.maxValue = Screen.resolutions.Length - 1;
 			f_resolution.value = 0;
 			for ( int i = 0; i < Screen.resolutions.Length; ++i )
 			{
-				if ( ( Screen.resolutions[ i ].width == m_tempResolution.width ) &&
-					( Screen.resolutions[ i ].height == m_tempResolution.height ) &&
-					( Screen.resolutions[ i ].refreshRate == m_tempResolution.refreshRate ) )
+				if ( ( f_resolution.minValue < 0.0f ) &&
+					( Screen.resolutions[ i ].width >= 800 ) &&
+						( Screen.resolutions[ i ].height >= 600 ) )
 				{
-					f_resolution.value = i;
+					f_resolution.minValue = i;
+					if ( ( go.Width < Screen.resolutions[ i ].width ) || ( go.Height < Screen.resolutions[ i ].height ) )
+					{
+						go.Width = Screen.resolutions[ i ].width;
+						go.Height = Screen.resolutions[ i ].height;
+						go.RefreshRate = Screen.resolutions[ i ].refreshRate;
+						f_resolution.value = i;
+						break;
+					}
+					else if ( ( Screen.resolutions[ i ].width == m_tempResolution.width ) &&
+						( Screen.resolutions[ i ].height == m_tempResolution.height ) &&
+						( Screen.resolutions[ i ].refreshRate == m_tempResolution.refreshRate ) )
+					{
+						f_resolution.value = i;
+						break;
+					}
+				}
+			}
+			if ( f_resolution.minValue < 0.0f )
+			{
+				f_resolution.minValue = 0;
+				for ( int i = 0; i < Screen.resolutions.Length; ++i )
+				{
+					if ( ( Screen.resolutions[ i ].width == m_tempResolution.width ) &&
+							( Screen.resolutions[ i ].height == m_tempResolution.height ) &&
+							( Screen.resolutions[ i ].refreshRate == m_tempResolution.refreshRate ) )
+					{
+						f_resolution.value = i;
+						break;
+					}
 				}
 			}
 			f_fullscreen.isOn = m_tempFS;
@@ -447,8 +477,8 @@ namespace Game
 
 		public void PlayGame( string _sceneName )
 		{
-            GameMusicManager.Instance.m_ActualMusic = GameMusicManager.EGameMusicManagerState.eNone;
-            GameMusicManager.Instance.m_AudioSource.Stop();
+			GameMusicManager.Instance.m_ActualMusic = GameMusicManager.EGameMusicManagerState.eNone;
+			GameMusicManager.Instance.m_AudioSource.Stop();
 			SceneManager.LoadScene( _sceneName );
 		}
 		public void QuitGame()

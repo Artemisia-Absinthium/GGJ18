@@ -137,7 +137,7 @@ namespace Engine
 		#region Methods
 		public void New()
 		{
-			m_resolution = Screen.resolutions[ 0 ];
+			m_resolution = Screen.resolutions[ Screen.resolutions.Length - 1 ];
 			m_fullscreen = true;
 			m_anisotropicFiltering = UnityEngine.AnisotropicFiltering.Enable;
 			m_antiAliasing = AntiAliasingValue.X4;

@@ -33,6 +33,7 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 
 [Files]
 Source: "{#SourcesPath}\UneSimpleChronique.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SourcesPath}\UnityPlayer.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SourcesPath}\UneSimpleChronique_Data\*"; DestDir: "{app}\CieloSegreto_Data"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
