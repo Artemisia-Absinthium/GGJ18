@@ -17,6 +17,15 @@ namespace Game
 		EXIT,
 		BACK,
 
+		PAUSE,
+		RESUME,
+
+		SAVE,
+		LOAD,
+		OVERRIDE,
+		YES,
+		NO,
+
 		GENERAL_OPTIONS,
 		GRAPHICS_OPTIONS,
 		SOUND_OPTIONS,

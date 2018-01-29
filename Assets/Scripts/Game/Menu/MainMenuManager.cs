@@ -12,6 +12,8 @@ namespace Game
 	{
 		#region Fields
 		[SerializeField]
+		private bool m_inGame = false;
+		[SerializeField]
 		private Toggle f_english;
 		[SerializeField]
 		private Toggle f_french;
@@ -96,6 +98,10 @@ namespace Game
 		private TMPro.TextMeshProUGUI t_effectsVolume;
 		[SerializeField]
 		private TMPro.TextMeshProUGUI t_voicesVolume;
+		[SerializeField]
+		private GameObject m_pauseMenu;
+		[SerializeField]
+		private GameObject m_resumeButton;
 		#endregion
 
 		// General
@@ -136,6 +142,9 @@ namespace Game
 		private Slider m_graveyardSlider;
 		private Toggle m_graveyardToggle;
 		private TextSwitcherGroup m_graveyardTextSwitcherGroup;
+
+		private static MainMenuManager s_instance = null;
+		private bool m_isInGameMenuOpen = false;
 
 		public void ResetValues()
 		{
@@ -234,8 +243,15 @@ namespace Game
 
 		}
 
+		public static MainMenuManager Instance
+		{
+			get { return s_instance; }
+		}
+		public bool IsInMenu { get { return m_isInGameMenuOpen; } }
+
 		private void Start()
 		{
+			s_instance = this;
 			//Set Cursor to not be visible
 			Cursor.visible = true;
 
@@ -475,6 +491,26 @@ namespace Game
 			ResetValues();
 		}
 
+		public void Pause()
+		{
+			Cursor.visible = true;
+			UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject( m_resumeButton );
+			m_isInGameMenuOpen = true;
+			m_pauseMenu.SetActive( true );
+		}
+		public void Resume()
+		{
+			Cursor.visible = false;
+			m_isInGameMenuOpen = false;
+			m_pauseMenu.SetActive( false );
+			Engine.InputManager.Instance.GetAction( "Pause" ).Update();
+		}
+		public void BackToMainMenu()
+		{
+			GameMusicManager.Instance.m_ActualMusic = GameMusicManager.EGameMusicManagerState.eNone;
+			GameMusicManager.Instance.m_AudioSource.Stop();
+			SceneManager.LoadScene( "MainMenu" );
+		}
 		public void PlayGame( string _sceneName )
 		{
 			GameMusicManager.Instance.m_ActualMusic = GameMusicManager.EGameMusicManagerState.eNone;

@@ -23,6 +23,8 @@ namespace Game
 		[SerializeField]
 		private string m_interactionActionName = "Interaction";
 		[SerializeField]
+		private string m_pauseActionName = "Pause";
+		[SerializeField]
 		private float m_forwardSpeed = 2.0f;
 		[SerializeField]
 		private float m_backwardSpeed = 0.75f;
@@ -40,6 +42,7 @@ namespace Game
 		private Engine.InputAction m_moveLeft = null;
 		private Engine.InputAction m_moveRight = null;
 		private Engine.InputAction m_interaction = null;
+		private Engine.InputAction m_menuAction = null;
 
 		private CharacterController m_characterController = null;
 		private float m_angle = -90.0f;
@@ -66,6 +69,7 @@ namespace Game
 			m_moveLeft = Engine.InputManager.Instance.GetAction( m_moveLeftActionName );
 			m_moveRight = Engine.InputManager.Instance.GetAction( m_moveRightActionName );
 			m_interaction = Engine.InputManager.Instance.GetAction( m_interactionActionName );
+			m_menuAction = Engine.InputManager.Instance.GetAction( m_pauseActionName );
 
 			m_characterController = GetComponent<CharacterController>();
 
@@ -74,6 +78,7 @@ namespace Game
 			Debug.Assert( m_moveLeft != null );
 			Debug.Assert( m_moveRight != null );
 			Debug.Assert( m_interaction != null );
+			Debug.Assert( m_menuAction != null );
 			Debug.Assert( m_characterController );
 			Debug.Assert( m_camera );
 			Debug.Assert( m_interactionCaster );
@@ -83,8 +88,13 @@ namespace Game
 
 		void Update()
 		{
-			if ( GameController.Instance.IsSpeaking )
+			if ( GameController.Instance.IsSpeaking || MainMenuManager.Instance.IsInMenu )
 			{
+				return;
+			}
+			if ( !MainMenuManager.Instance.IsInMenu && m_menuAction.Down )
+			{
+				MainMenuManager.Instance.Pause();
 				return;
 			}
 			Vector3 speed = Vector3.zero;
