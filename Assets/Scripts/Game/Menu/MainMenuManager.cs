@@ -364,6 +364,8 @@ namespace Game
 			if ( t_effectsVolume == null ) { t_effectsVolume = m_graveyardText; }
 			if ( t_voicesVolume == null ) { t_voicesVolume = m_graveyardText; }
 
+			m_backAction = Engine.InputManager.Instance.GetAction( "Cancel" );
+			Debug.Assert( m_backAction != null );
 
 			Engine.User u = Engine.UserManager.Instance.Current;
 			Engine.UserGraphicOptions go = u.Options.Graphic;

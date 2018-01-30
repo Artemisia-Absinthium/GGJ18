@@ -36,6 +36,16 @@ namespace Game
 		private Transform m_camera = null;
 		[SerializeField]
 		private Transform m_interactionCaster = null;
+		[SerializeField]
+		private float m_bobbingSpeed = 1.0f;
+		[SerializeField]
+		private float m_bobbingAmplitude = 0.05f;
+		[SerializeField]
+		private float m_bobbingHeight = 0.05f;
+		[SerializeField]
+		private Transform m_bobbing = null;
+		[SerializeField]
+		private float m_bobbingLerpSpeed = 0.75f;
 
 		private Engine.InputAction m_moveForward = null;
 		private Engine.InputAction m_moveBackward = null;
@@ -47,13 +57,17 @@ namespace Game
 		private CharacterController m_characterController = null;
 		private float m_angle = -90.0f;
 		private float m_verticalView = 0.0f;
+		private float m_bobbingHeightBase = 1.6f;
 
 		private int m_layerMask = 0;
 
-		//SOunds
-		public AudioClip m_StepSound;
-		public AudioSource m_AudioSource;
-		private int m_SoundDeltaPlay = 0;
+		//Sounds
+		[SerializeField]
+		private AudioClip m_StepSound;
+		[SerializeField]
+		private AudioSource m_AudioSource;
+
+		private bool m_previousStepPositive = false;
 
 		void Start()
 		{
@@ -82,11 +96,14 @@ namespace Game
 			Debug.Assert( m_characterController );
 			Debug.Assert( m_camera );
 			Debug.Assert( m_interactionCaster );
+			Debug.Assert( m_bobbing );
 
 			m_layerMask = LayerMask.GetMask( "Trigger" );
 
 			m_angle = transform.localRotation.eulerAngles.y;
 			transform.localRotation = Quaternion.Euler( 0.0f, m_angle, 0.0f );
+
+			m_bobbingHeightBase = m_bobbing.localPosition.y;
 		}
 
 		void Update()
@@ -135,17 +152,28 @@ namespace Game
 			{
 				if ( !m_AudioSource.isPlaying )
 				{
-					if ( m_SoundDeltaPlay <= 0 )
+					if ( ( m_bobbing.localPosition.x > 0.0f && !m_previousStepPositive ) ||
+						( m_bobbing.localPosition.x < 0.0f && m_previousStepPositive ) )
 					{
+						m_previousStepPositive = !m_previousStepPositive;
 						m_AudioSource.clip = m_StepSound;
 						m_AudioSource.Play();
-						m_SoundDeltaPlay = 20;
-					}
-					else
-					{
-						m_SoundDeltaPlay--;
 					}
 				}
+				float t = 2.0f * Time.time * Mathf.PI * m_bobbingSpeed;
+				float bobbingAmplitude = Mathf.Sin( t ) * m_bobbingAmplitude;
+				float bobbingHeight = Mathf.Cos( 2.0f * t) * m_bobbingHeight;
+				m_bobbing.localPosition = Vector3.Lerp(
+					m_bobbing.localPosition,
+					new Vector3( bobbingAmplitude, m_bobbingHeightBase + bobbingHeight),
+					Time.deltaTime * m_bobbingLerpSpeed );
+			}
+			else if ( !Mathf.Approximately( m_bobbing.localPosition.x, 0.0f ) )
+			{
+				m_bobbing.localPosition = Vector3.Lerp(
+					m_bobbing.localPosition,
+					new Vector3( 0.0f, m_bobbingHeightBase, 0.0f ),
+					Time.deltaTime * m_bobbingLerpSpeed );
 			}
 
 			if ( !GameController.Instance.IsSpeaking && !GameController.Instance.WasSpeaking )
