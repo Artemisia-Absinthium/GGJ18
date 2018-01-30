@@ -102,6 +102,20 @@ namespace Game
 		private GameObject m_pauseMenu;
 		[SerializeField]
 		private GameObject m_resumeButton;
+		[SerializeField]
+		private string m_cancel;
+		[SerializeField]
+		private GameObject m_backOptionsMenu;
+		[SerializeField]
+		private GameObject m_backCreditsMenu;
+		[SerializeField]
+		private GameObject m_backGeneralMenu;
+		[SerializeField]
+		private GameObject m_backGraphicsMenu;
+		[SerializeField]
+		private GameObject m_backSoundMenu;
+		[SerializeField]
+		private GameObject m_backControlMenu;
 		#endregion
 
 		// General
@@ -145,6 +159,7 @@ namespace Game
 
 		private static MainMenuManager s_instance = null;
 		private bool m_isInGameMenuOpen = false;
+		private Engine.InputAction m_backAction = null;
 
 		public void ResetValues()
 		{

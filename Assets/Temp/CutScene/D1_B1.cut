@@ -47,11 +47,12 @@
 	center:BARTENDER_MOTHER
 	speaker:2
 	text:D1_B1_d1a
-	choice:D1_B1_c1,6
+	choice:D1_B1_c1_1,6
+	choice:D1_B1_c2_1,11
 }
 6 {
 	left:none
-	right:none
+	right:BARTENDER_TWINS_3
 	center:BARTENDER_MOTHER
 	speaker:2
 	text:D1_B1_d1b
@@ -59,9 +60,9 @@
 }
 7 {
 	left:none
-	right:BARTENDER_TWINS
+	right:BARTENDER_TWINS_2
 	center:BARTENDER_MOTHER
-	speaker:1
+	speaker:2
 	text:D1_B3_d1
 	ok:8
 }
@@ -86,5 +87,13 @@
 	right:none
 	center:none
 	text:D1_B1_d1e2
+	ok:end
+}
+11 {
+	left:none
+	right:none
+	center:BARTENDER_MOTHER
+	speaker:2
+	text:D1_B1_d1e
 	ok:end
 }

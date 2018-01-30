@@ -102,8 +102,7 @@ namespace Game
 		D1_P1_b1_3,
 		D1_P1_b2,
 
-		D1_P2_b1_1,
-		D1_P2_b1_2,
+		D1_P2_b1,
 		D1_P2_c1,
 		D1_P2_b2,
 		D1_P2_c2,
@@ -357,6 +356,9 @@ namespace Game
 		D1_M4_a_r1,
 		D1_M4_a_r2,
 		D1_C1_2,
+
+		D1_DOG_EASTER_A,
+		D1_DOG_EASTER_B,
 
 		COUNT																																																																																																		  
 	}

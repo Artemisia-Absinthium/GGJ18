@@ -20,3 +20,4 @@ CARAVAN|Assets/Resources/Sprites/Characters/PNJ_caravanier.png|Sam|0.9
 PEASANT_NIECE|Assets/Resources/Sprites/Characters/PNJ_cousine.png|Niece|0.9
 PEASANT_INTER|Assets/Resources/Sprites/Characters/PNJ_interimaire.png|Lia|0.9
 BARTENDER_TWINS_2|Assets/Resources/Sprites/Characters/Aubergiste_jumeaux.png|Raziel|0.5
+BARTENDER_TWINS_3|Assets/Resources/Sprites/Characters/Aubergiste_jumeaux.png|Raziel et Zekiel|0.5

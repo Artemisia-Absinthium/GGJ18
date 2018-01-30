@@ -78,34 +78,36 @@ namespace Game
 		private int m_cutSceneInstance = -1;
 		private bool m_customSpeakMusic = false;
 		private int m_wasSpeaking = 0;
+		private int m_dogCount = 0;
 
-		private bool D1_P1_a1 = false;
-		private bool haveWateringCan = false;
-		private bool D1_P1_a3 = false;
-		private bool D1_N5_c8 = false;
-		private bool D1_B1_c4 = false;
-		private bool D1_P1_b1 = false;
-		private bool D1_M1_a2 = false;
-		private bool D1_M2_a1 = false;
-		private bool D1_M5_a1 = false;
-		private bool D1_M5_c1 = false;
-		private bool D1_N1_a1 = false;
-		private bool D1_N5_c5 = false;
-		private bool D1_N5_c6 = false;
-		private bool D1_M2_c1 = false;
-		private bool D1_M2_c2 = false;
-		private bool D1_M2_c9 = false;
-		private bool D1_B1_d1 = false;
-		private bool D1_P3_b1 = false;
-		private bool D1_B1_c1 = false;
-		private bool D1_R1_c2 = false;
-		private bool D1_B1_c2 = false;
-		private bool D1_B3_a2 = false;
-		private bool D1_B2_a0 = false;
-		private bool D1_N5_a9 = false;
-		private bool D1_N5_c1 = false;
-		private bool D1_N1_c5 = false;
-		private bool D1_B1_a1 = false;
+		public bool D1_P1_a1 = false;
+		public bool haveWateringCan = false;
+		public bool D1_P1_a3 = false;
+		public bool D1_N5_c8 = false;
+		public bool D1_B1_c4 = false;
+		public bool D1_P1_b1 = false;
+		public bool D1_M1_a2 = false;
+		public bool D1_M5_a1 = false;
+		public bool D1_M5_c1 = false;
+		public bool D1_N1_a1 = false;
+		public bool D1_N5_c5 = false;
+		public bool D1_N5_c6 = false;
+		public bool D1_M2_c1 = false;
+		public bool D1_M2_c2 = false;
+		public bool D1_M2_c9 = false;
+		public bool D1_B1_d1 = false;
+		public bool D1_P3_b1 = false;
+		public bool D1_B1_c1 = false;
+		public bool D1_R1_c2 = false;
+		public bool D1_B1_c2 = false;
+		public bool D1_B3_a2 = false;
+		public bool D1_B2_a0 = false;
+		public bool D1_N5_a9 = false;
+		public bool D1_N5_c1 = false;
+		public bool D1_N1_c5 = false;
+		public bool D1_B1_a1 = false;
+		public bool D1_M2_a4 = false;
+		public bool D1_B1_d1a = false;
 
 		private bool D1_P = false;
 		private bool D1_B = false;
@@ -547,9 +549,13 @@ namespace Game
 					{
 						if ( _previousSnapshot == -1 )
 						{
-							if ( D1_M2_c9 )
+							if ( D1_B1_d1a )
 							{
 								_nextScene = 1;
+								if ( D1_M2_c9 )
+								{
+									_nextScene = 2;
+								}
 								return true;
 							}
 						}
@@ -645,6 +651,7 @@ namespace Game
 									m_p5_1.SetActive( false );
 									m_p5_2.SetActive( true );
 									m_b1.SetActive( false );
+									D1_B1_d1a = true;
 									_nextScene = 5;
 								}
 								D1_B1_a1 = true;
@@ -690,7 +697,7 @@ namespace Game
 					{
 						if ( _previousSnapshot == -1 )
 						{
-							if ( D1_M2_a1 )
+							if ( D1_M2_a4 )
 							{
 								_nextScene = 3;
 								if ( D1_M5_a1 || D1_M2_c1 || D1_M2_c2 )
@@ -699,6 +706,10 @@ namespace Game
 								}
 								return true;
 							}
+						}
+						if ( _previousSnapshot == 3 && _newSnapshot == -1 )
+						{
+							D1_M2_a4 = true;
 						}
 					}
 					break;
@@ -874,6 +885,13 @@ namespace Game
 					}
 				}
 			}
+			else if ( _cutSceneName == "D1_B1" )
+			{
+				if ( _previousSnapshot == 2 && _newSnapshot == 3 )
+				{
+					D1_B1_c4 = true;
+				}
+			}
 			else if ( _cutSceneName == "D1_B3" )
 			{
 				if ( _previousSnapshot == 2 && _newSnapshot == 3 )
@@ -881,6 +899,22 @@ namespace Game
 					m_dog_1.SetActive( false );
 					m_twins.SetActive( false );
 					D1_B3_a2 = true;
+				}
+			}
+			else if ( _cutSceneName == "D1_B4" )
+			{
+				if ( _previousSnapshot == 0 && _newSnapshot == 1 )
+				{
+					++m_dogCount;
+					if ( m_dogCount >= 12 )
+					{
+						_nextScene = 2;
+						if ( m_dogCount == 15 )
+						{
+							_nextScene = 3;
+						}
+						return true;
+					}
 				}
 			}
 			else if ( _cutSceneName == "D1_M1" )

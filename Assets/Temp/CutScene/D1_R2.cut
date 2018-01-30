@@ -4,95 +4,62 @@
 	right:none
 	center:RELIGIOUS_TEACHER
 	speaker:2
-	text:D1_R1_a1
-	choice:D1_R1_c1,end
+	text:D1_R2_a1
+	choice:D1_R2_c1,1
 }
 1 {
 	left:none
 	right:none
 	center:RELIGIOUS_TEACHER
 	speaker:2
-	text:D1_R1_a1
-	choice:D1_R1_c1,end
-	choice:D1_R1_c2,2
+	text:D1_R2_a2
+	ok:end
 }
 2 {
 	left:none
-	right:none
+	right:BARTENDER_TWINS
 	center:RELIGIOUS_TEACHER
 	speaker:2
-	text:D1_R1_a2
+	text:D1_R2_b
 	ok:3
 }
 3 {
 	left:none
-	right:none
+	right:BARTENDER_TWINS
 	center:RELIGIOUS_TEACHER
 	speaker:2
-	text:D1_R1_a3
-	choice:D1_R1_ch1,4
+	text:D1_B3_b
+	ok:4
 }
 4 {
-	left:none
-	right:none
+	left:RELIGIOUS_COMMANDER
+	right:BARTENDER_TWINS
 	center:RELIGIOUS_TEACHER
-	speaker:2
-	text:D1_R1_a4
-	choice:D1_R1_ch2,5
+	speaker:0
+	text:D1_R1_b1
+	ok:5
 }
 5 {
 	left:none
 	right:none
-	center:RELIGIOUS_TEACHER
+	center:RELIGIOUS_COMMANDER
 	speaker:2
-	text:D1_R1_a5
-	choice:D1_R1_ch3,6
+	text:D1_R1_b2
+	choice:D1_R1_ch5,6
 }
 6 {
 	left:none
 	right:none
-	center:RELIGIOUS_TEACHER
+	center:RELIGIOUS_COMMANDER
 	speaker:2
-	text:D1_R1_a6
-	ok:7
+	text:D1_R1_b3
+	choice:D1_R1_ch6,7
 }
 7 {
 	left:none
 	right:none
-	center:RELIGIOUS_TEACHER
+	center:RELIGIOUS_COMMANDER
 	speaker:2
-	text:D1_R1_a7
-	ok:8
-}
-8 {
-	left:none
-	right:none
-	center:RELIGIOUS_TEACHER
-	speaker:2
-	text:D1_R1_a8
-	choice:D1_R1_ch4,9
-}
-9 {
-	left:none
-	right:none
-	center:RELIGIOUS_TEACHER
-	speaker:2
-	text:D1_R1_a9
-	ok:end
-}
-10 {
-	left:none
-	right:none
-	center:RELIGIOUS_TEACHER
-	speaker:2
-	text:D1_R1_a10
-	ok:end
-}
-11 {
-	left:none
-	right:none
-	center:RELIGIOUS_TEACHER
-	speaker:2
-	text:D1_R1_d
+	text:D1_R1_b4
 	ok:end
 }
