@@ -108,7 +108,9 @@ namespace Game
 
 		void Update()
 		{
-			if ( GameController.Instance.IsSpeaking || MainMenuManager.Instance.IsInMenu )
+			if ( GameController.Instance.IsSpeaking || 
+				MainMenuManager.Instance.IsInMenu ||
+				Cinematics.Instance.Playing )
 			{
 				return;
 			}

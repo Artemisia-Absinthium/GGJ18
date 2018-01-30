@@ -148,6 +148,13 @@ namespace Game
 
 		void Update()
 		{
+			if ( !Cinematics.Instance.StartCinematicFinished )
+			{
+				if ( !Cinematics.Instance.StartCinematicPlaying )
+				{
+					StartCoroutine( Cinematics.Instance.BeginStartCinematic() );
+				}
+			}
 			if ( IsSpeaking )
 			{
 				if ( !m_csp.IsPlaying() )
