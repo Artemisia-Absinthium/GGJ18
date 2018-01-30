@@ -3,6 +3,7 @@
 	left:none
 	right:none
 	center:PEASANT_INTER
+	speaker:2
 	text:D1_P5_a
 	ok:end
 }
@@ -10,6 +11,7 @@
 	left:none
 	right:none
 	center:PEASANT_INTER
+	speaker:2
 	text:D1_P5_b3
 	ok:end
 }

@@ -3,6 +3,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_a1
 	choice:D1_N5_c1,18
 	choice:D1_N5_c2,end
@@ -11,6 +12,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_a2
 	choice:D1_N5_c3,2
 	choice:D1_N5_c4,4
@@ -19,6 +21,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_a3
 	choice:D1_N5_c3a,3
 }
@@ -26,6 +29,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_a4
 	ok:end
 }
@@ -33,6 +37,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_a5
 	choice:D1_N5_c5,5
 	choice:D1_N5_c6,7
@@ -41,6 +46,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_a6
 	ok:6
 }
@@ -48,6 +54,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_a7
 	ok:end
 }
@@ -55,6 +62,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_a8
 	ok:8
 }
@@ -62,6 +70,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_a9
 	ok:end
 }
@@ -69,6 +78,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_b1
 	choice:D1_N5_c7,end
 	choice:D1_N5_c8,10
@@ -77,6 +87,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_1
 	choice:D1_N5_ch1,11
 }
@@ -84,6 +95,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_2
 	choice:D1_N5_ch2,12
 }
@@ -91,6 +103,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_3
 	choice:D1_N5_ch3,13
 }
@@ -98,6 +111,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_5
 	choice:D1_N5_c9,14
 	choice:D1_N5_c10,15
@@ -106,6 +120,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_7
 	choice:D1_N5_c11,16
 }
@@ -113,6 +128,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_8
 	choice:D1_N5_c11,16
 }
@@ -120,6 +136,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_9
 	ok:end
 }
@@ -127,6 +144,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_b2
 	ok:end
 }
@@ -134,6 +152,7 @@
 	left:none
 	right:none
 	center:NOBLE_DAUGHTER
+	speaker:2
 	text:D1_N5_a2
 	choice:D1_N5_c3,2
 }

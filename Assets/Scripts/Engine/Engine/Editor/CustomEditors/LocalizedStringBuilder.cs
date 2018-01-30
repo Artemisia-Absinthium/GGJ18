@@ -102,6 +102,7 @@ namespace Engine
 			for ( int lang = 0; lang < ( int )LocalizedString.Lang.COUNT; ++lang )
 			{
 				string path = kTempPath + System.Enum.GetName( typeof( LocalizedString.Lang ), ( ( LocalizedString.Lang )lang ) ) + ".str";
+#pragma warning disable 162
 				if ( kLoadBinary )
 				{
 					BinLoad( lang, path );
@@ -110,6 +111,7 @@ namespace Engine
 				{
 					TxtLoad( lang, path );
 				}
+#pragma warning restore 162
 			}
 		}
 		private void Save()
@@ -117,6 +119,7 @@ namespace Engine
 			for ( int lang = 0; lang < ( int )LocalizedString.Lang.COUNT; ++lang )
 			{
 				string path = kTempPath + System.Enum.GetName( typeof( LocalizedString.Lang ), ( ( LocalizedString.Lang )lang ) ) + ".str";
+#pragma warning disable 162
 				if ( kSaveBinary )
 				{
 					BinSave( lang, path );
@@ -125,6 +128,7 @@ namespace Engine
 				{
 					TxtSave( lang, path );
 				}
+#pragma warning restore 162
 			}
 			AssetDatabase.Refresh( ImportAssetOptions.ForceUpdate );
 		}

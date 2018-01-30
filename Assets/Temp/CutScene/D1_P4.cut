@@ -3,6 +3,7 @@
 	left:none
 	right:none
 	center:PEASANT_NIECE
+	speaker:2
 	text:D1_P4_a
 	ok:end
 }
@@ -10,6 +11,7 @@
 	left:none
 	right:none
 	center:PEASANT_NIECE
+	speaker:2
 	text:D1_P4_b4
 	ok:end
 }

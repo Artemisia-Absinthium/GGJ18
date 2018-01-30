@@ -12,8 +12,6 @@ namespace Game
 	{
 		#region Fields
 		[SerializeField]
-		private bool m_inGame = false;
-		[SerializeField]
 		private Toggle f_english;
 		[SerializeField]
 		private Toggle f_french;

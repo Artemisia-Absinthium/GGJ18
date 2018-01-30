@@ -3,6 +3,7 @@
 	left:none
 	right:none
 	center:PEASANT_FATHER
+	speaker:2
 	text:D1_P2_a
 	ok:end
 }
@@ -10,6 +11,7 @@
 	left:none
 	right:none
 	center:PEASANT_FATHER
+	speaker:2
 	text:D1_P2_b1_1
 	ok:2
 }
@@ -17,6 +19,7 @@
 	left:none
 	right:none
 	center:PEASANT_FATHER
+	speaker:2
 	text:D1_P2_b1_2
 	choice:D1_P2_c1,3
 	choice:D1_P2_c2,4
@@ -25,6 +28,7 @@
 	left:none
 	right:none
 	center:PEASANT_FATHER
+	speaker:2
 	text:D1_P2_b2
 	ok:end
 }
@@ -32,6 +36,7 @@
 	left:none
 	right:none
 	center:PEASANT_FATHER
+	speaker:2
 	text:D1_P2_b3_1
 	choice:D1_P2_c3,5
 	choice:D1_P2_c4,5
@@ -40,6 +45,7 @@
 	left:none
 	right:none
 	center:PEASANT_FATHER
+	speaker:2
 	text:D1_P2_b3_2
 	ok:6
 }
@@ -47,6 +53,7 @@
 	left:none
 	right:none
 	center:PEASANT_FATHER
+	speaker:2
 	text:D1_P2_b4_1
 	choice:D1_P2_b4_2,7
 }
@@ -54,6 +61,7 @@
 	left:none
 	right:none
 	center:PEASANT_FATHER
+	speaker:2
 	text:D1_P2_b4_3
 	choice:D1_P2_c5,8
 	choice:D1_P2_c6,9
@@ -63,6 +71,7 @@
 	left:none
 	right:none
 	center:PEASANT_FATHER
+	speaker:2
 	text:D1_P2_b5
 	ok:end
 }
@@ -70,6 +79,7 @@
 	left:none
 	right:none
 	center:PEASANT_FATHER
+	speaker:2
 	text:D1_P2_b6_1
 	choice:D1_P2_b6_2,10
 }
@@ -77,6 +87,7 @@
 	left:none
 	right:none
 	center:PEASANT_FATHER
+	speaker:2
 	text:D1_P2_b6_3
 	choice:D1_P2_b6_4,11
 }
@@ -84,6 +95,7 @@
 	left:none
 	right:none
 	center:PEASANT_FATHER
+	speaker:2
 	text:D1_P2_b7_1
 	choice:D1_P2_b7_2,12
 }
@@ -91,6 +103,7 @@
 	left:none
 	right:none
 	center:PEASANT_FATHER
+	speaker:2
 	text:D1_P2_b7_3
 	time:3.000,13
 }
@@ -98,6 +111,7 @@
 	left:none
 	right:none
 	center:PEASANT_FATHER
+	speaker:2
 	text:D1_P2_b7_4
 	choice:D1_P2_b7_5,end
 }

@@ -84,6 +84,9 @@ namespace Game
 			Debug.Assert( m_interactionCaster );
 
 			m_layerMask = LayerMask.GetMask( "Trigger" );
+
+			m_angle = transform.localRotation.eulerAngles.y;
+			transform.localRotation = Quaternion.Euler( 0.0f, m_angle, 0.0f );
 		}
 
 		void Update()

@@ -90,9 +90,6 @@ namespace Game
 		private bool D1_M5_a1 = false;
 		private bool D1_M5_c1 = false;
 		private bool D1_N1_a1 = false;
-		private bool D1_N4_a1 = false;
-		private bool D1_N5_c2 = false;
-		private bool D1_N5_c3 = false;
 		private bool D1_N5_c5 = false;
 		private bool D1_N5_c6 = false;
 		private bool D1_M2_c1 = false;
@@ -105,10 +102,8 @@ namespace Game
 		private bool D1_B1_c2 = false;
 		private bool D1_B3_a2 = false;
 		private bool D1_B2_a0 = false;
-		private bool D1_B3_a1 = false;
 		private bool D1_N5_a9 = false;
 		private bool D1_N5_c1 = false;
-		private bool D1_N1_c4 = false;
 		private bool D1_N1_c5 = false;
 		private bool D1_B1_a1 = false;
 
@@ -894,13 +889,6 @@ namespace Game
 				{
 					m_m2.SetActive( true );
 					D1_M1_a2 = true;
-				}
-			}
-			else if ( _cutSceneName == "D1_N1" )
-			{
-				if ( _previousSnapshot == 6 && _choiceIndex == 0 )
-				{
-					D1_N1_c4 = true;
 				}
 			}
 			else if ( _cutSceneName == "D1_N5" )

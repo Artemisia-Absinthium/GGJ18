@@ -3,6 +3,7 @@
 	left:none
 	right:none
 	center:NOBLE_GRANDFATHER
+	speaker:2
 	text:D1_N2_a
 	ok:end
 }

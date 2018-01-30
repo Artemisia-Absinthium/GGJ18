@@ -8,7 +8,7 @@ namespace Game
 	public interface ICutSceneAdapterBase
 	{
 		void SetText( string _text, bool _forChoice );
-		void SetSprite( Sprite _sprite, int _position );
+		void SetSprite( Sprite _sprite, int _position, string _name, bool _speaker, float _size );
 		void SetChoices( string[] _choices );
 		bool ReceiveChoice( out int _choice );
 		bool ReceiveOk();

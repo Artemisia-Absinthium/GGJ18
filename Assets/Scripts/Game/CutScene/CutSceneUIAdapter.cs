@@ -21,6 +21,18 @@ namespace Game
 		private Image m_rightSprite = null;
 		[SerializeField]
 		private Image m_centerSprite = null;
+		[SerializeField]
+		private GameObject m_leftName = null;
+		[SerializeField]
+		private GameObject m_rightName = null;
+		[SerializeField]
+		private GameObject m_centerName = null;
+		[SerializeField]
+		private TMPro.TextMeshProUGUI m_leftText = null;
+		[SerializeField]
+		private TMPro.TextMeshProUGUI m_rightText = null;
+		[SerializeField]
+		private TMPro.TextMeshProUGUI m_centerText = null;
 
 		[SerializeField]
 		private TMPro.TextMeshProUGUI m_text = null;
@@ -30,6 +42,8 @@ namespace Game
 		private Button[] m_choiceButtons = null;
 		[SerializeField]
 		private string m_okActionName = null;
+		[SerializeField]
+		private Color m_speakerColor = Color.cyan;
 #pragma warning restore 649
 
 		private bool m_okPressed = false;
@@ -85,7 +99,7 @@ namespace Game
 			}
 		}
 
-		public void SetSprite( Sprite _sprite, int _position )
+		public void SetSprite( Sprite _sprite, int _position, string _name, bool _speaker, float _size )
 		{
 			switch ( _position )
 			{
@@ -93,39 +107,66 @@ namespace Game
 				if ( _sprite == null )
 				{
 					m_leftSprite.enabled = false;
+					m_leftName.SetActive( false );
 				}
 				else
 				{
 					m_leftSprite.enabled = true;
 					m_leftSprite.sprite = _sprite;
 					m_leftSprite.SetNativeSize();
-					m_leftSprite.rectTransform.anchoredPosition = new Vector2( 300, 540 );
+					Rect rect = m_leftSprite.rectTransform.rect;
+					float ratio = rect.width / rect.height;
+					m_leftSprite.rectTransform.sizeDelta = new Vector2(700.0f * ratio, 700.0f ) * _size;
+					m_leftSprite.rectTransform.anchoredPosition = new Vector2( 320, 380 );
+
+					m_leftName.SetActive( true );
+					m_leftText.text = _name;
+					m_leftText.color = _speaker ? m_speakerColor : Color.black;
+					m_leftSprite.color = _speaker ? Color.white : Color.gray * 1.5f;
 				}
 				break;
 			case 1:
 				if ( _sprite == null )
 				{
 					m_rightSprite.enabled = false;
+					m_rightName.SetActive( false );
 				}
 				else
 				{
 					m_rightSprite.enabled = true;
 					m_rightSprite.sprite = _sprite;
 					m_rightSprite.SetNativeSize();
-					m_rightSprite.rectTransform.anchoredPosition = new Vector2( -300, 540 );
+					Rect rect = m_rightSprite.rectTransform.rect;
+					float ratio = rect.width / rect.height;
+					m_rightSprite.rectTransform.sizeDelta = new Vector2( 700.0f * ratio, 700.0f ) * _size;
+					m_rightSprite.rectTransform.anchoredPosition = new Vector2( -320, 380 );
+
+					m_rightName.SetActive( true );
+					m_rightText.text = _name;
+					m_rightText.color = _speaker ? m_speakerColor : Color.black;
+					m_rightSprite.color = _speaker ? Color.white : Color.gray * 1.5f;
 				}
 				break;
 			case 2:
 				if ( _sprite == null )
 				{
 					m_centerSprite.enabled = false;
+					m_centerName.SetActive( false );
 				}
 				else
 				{
 					m_centerSprite.enabled = true;
 					m_centerSprite.sprite = _sprite;
 					m_centerSprite.SetNativeSize();
-					m_centerSprite.rectTransform.anchoredPosition = new Vector2( 0, 540 );
+					Rect rect = m_centerSprite.rectTransform.rect;
+					float ratio = rect.width / rect.height;
+					m_centerSprite.rectTransform.sizeDelta = new Vector2( 700.0f * ratio, 700.0f ) * _size;
+					m_centerSprite.rectTransform.anchoredPosition = new Vector2( 0, 380 );
+
+					m_centerName.SetActive( true );
+					m_centerText.text = _name;
+					m_centerText.color = _speaker ? m_speakerColor : Color.black;
+					m_centerSprite.color = _speaker ? Color.white : Color.gray * 1.5f;
 				}
 				break;
 			}
@@ -173,9 +214,9 @@ namespace Game
 			m_cutSceneMaster.SetActive( true );
 			SetChoices( null );
 			SetText( "", false );
-			SetSprite( null, 0 );
-			SetSprite( null, 1 );
-			SetSprite( null, 2 );
+			SetSprite( null, 0, null, false, 1.0f );
+			SetSprite( null, 1, null, false, 1.0f );
+			SetSprite( null, 2, null, false, 1.0f );
 		}
 
 		public void EndCutScene()

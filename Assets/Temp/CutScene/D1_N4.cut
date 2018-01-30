@@ -3,6 +3,7 @@
 	left:none
 	right:none
 	center:NOBLE_SON
+	speaker:2
 	text:D1_N4_a1
 	choice:D1_N4_c1,1
 	choice:D1_N4_c2,2
@@ -11,6 +12,7 @@
 	left:none
 	right:none
 	center:NOBLE_SON
+	speaker:2
 	text:D1_N4_a2
 	ok:end
 }
@@ -18,6 +20,7 @@
 	left:none
 	right:none
 	center:NOBLE_SON
+	speaker:2
 	text:D1_N4_a3
 	choice:D1_N4_c3,3
 }
@@ -25,6 +28,7 @@
 	left:none
 	right:none
 	center:NOBLE_SON
+	speaker:2
 	text:D1_N4_a4
 	ok:end
 }
@@ -32,6 +36,7 @@
 	left:none
 	right:none
 	center:NOBLE_SON
+	speaker:2
 	text:D1_N4_a4_1
 	ok:end
 }

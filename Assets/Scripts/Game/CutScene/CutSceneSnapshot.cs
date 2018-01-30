@@ -8,10 +8,18 @@ namespace Game
 {
 	public class CutSceneSnapshot
 	{
+		public class SpriteData
+		{
+			public Sprite Sprite;
+			public string Name;
+			public bool Speaker;
+			public float Size;
+		}
 		private CutScene m_cutscene = null;
-		private Sprite m_left = null;
-		private Sprite m_right = null;
-		private Sprite m_center = null;
+		private SpriteData m_left = null;
+		private SpriteData m_right = null;
+		private SpriteData m_center = null;
+		private int m_speaker = -1;
 		private Strings m_text = 0;
 		private Strings[] m_choices = null;
 		private bool m_outOk = false;
@@ -22,9 +30,10 @@ namespace Game
 		private bool m_retargeted = false;
 
 		public CutScene CutScene { get { return m_cutscene; } }
-		public Sprite LeftPicture { get { return m_left; } }
-		public Sprite RightPicture { get { return m_right; } }
-		public Sprite CenterPicture { get { return m_center; } }
+		public SpriteData LeftPicture { get { return m_left; } }
+		public SpriteData RightPicture { get { return m_right; } }
+		public SpriteData CenterPicture { get { return m_center; } }
+		public int Speaker { get { return m_speaker; } }
 		public string Text { get { return GameLocalizedStringManager.Instance.Get( m_text ); } }
 		public bool IsChoice { get { return m_choices != null; } }
 		public int ChoiceCount { get { return ( m_choices == null ) ? 0 : m_choices.Length; } }
@@ -49,7 +58,7 @@ namespace Game
 			return -1;
 		}
 
-		public CutSceneSnapshot( Sprite[] _pictures, Strings _text, Strings[] _choices, bool _ok, float _time, int _okTarget, int _timeTarget, int[] _choiceTargets )
+		public CutSceneSnapshot( SpriteData[] _pictures, int _speaker, Strings _text, Strings[] _choices, bool _ok, float _time, int _okTarget, int _timeTarget, int[] _choiceTargets )
 		{
 			if ( _pictures != null )
 			{
@@ -66,6 +75,7 @@ namespace Game
 					}
 				}
 			}
+			m_speaker = _speaker;
 			m_text = _text;
 			if ( _choices != null )
 			{

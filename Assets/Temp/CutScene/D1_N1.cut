@@ -3,6 +3,7 @@
 	left:none
 	right:none
 	center:NOBLE_GRANDMOTHER
+	speaker:2
 	text:D1_N1_a1
 	choice:D1_N1_c1,1
 	choice:D1_N1_c2,2
@@ -12,6 +13,7 @@
 	left:none
 	right:none
 	center:NOBLE_GRANDMOTHER
+	speaker:2
 	text:D1_N1_a2
 	ok:end
 }
@@ -19,6 +21,7 @@
 	left:none
 	right:none
 	center:NOBLE_GRANDMOTHER
+	speaker:2
 	text:D1_N1_a3
 	ok:end
 }
@@ -26,6 +29,7 @@
 	left:none
 	right:none
 	center:NOBLE_GRANDMOTHER
+	speaker:2
 	text:D1_N1_a4
 	ok:end
 }
@@ -33,6 +37,7 @@
 	left:none
 	right:none
 	center:NOBLE_GRANDMOTHER
+	speaker:2
 	text:D1_N1_a2_1
 	ok:end
 }
@@ -40,6 +45,7 @@
 	left:none
 	right:none
 	center:NOBLE_GRANDMOTHER
+	speaker:2
 	text:D1_N1_b1
 	ok:6
 }
@@ -47,6 +53,7 @@
 	left:none
 	right:none
 	center:NOBLE_GRANDMOTHER
+	speaker:2
 	text:D1_N1_b1b
 	choice:D1_N1_c4,end
 }
@@ -54,6 +61,7 @@
 	left:none
 	right:none
 	center:NOBLE_GRANDMOTHER
+	speaker:2
 	text:D1_N1_b1b
 	choice:D1_N1_c4,end
 	choice:D1_N1_c5,8
@@ -62,6 +70,7 @@
 	left:none
 	right:none
 	center:NOBLE_GRANDMOTHER
+	speaker:2
 	text:D1_N1_b2
 	ok:9
 }
@@ -69,6 +78,7 @@
 	left:none
 	right:none
 	center:NOBLE_GRANDMOTHER
+	speaker:2
 	text:D1_N1_b3
 	ok:10
 }
@@ -76,6 +86,7 @@
 	left:none
 	right:none
 	center:NOBLE_GRANDMOTHER
+	speaker:2
 	text:D1_N1_b4
 	choice:D1_N1_c6,end
 }
@@ -83,6 +94,7 @@
 	left:none
 	right:none
 	center:NOBLE_GRANDMOTHER
+	speaker:2
 	text:D1_N1_b3_1
 	choice:D1_N1_c7,end
 }
@@ -90,6 +102,7 @@
 	left:none
 	right:none
 	center:NOBLE_GRANDMOTHER
+	speaker:2
 	text:D1_N1_b3_1
 	choice:D1_N1_c7,end
 	choice:D1_N1_c5,8
@@ -98,6 +111,7 @@
 	left:none
 	right:none
 	center:NOBLE_GRANDMOTHER
+	speaker:2
 	text:D1_N1_b4_1
 	ok:end
 }

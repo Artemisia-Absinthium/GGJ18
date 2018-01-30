@@ -31,11 +31,15 @@ namespace Game
 			public string Name;
 			public string Path;
 			public Sprite Sprite;
+			public string DisplayName;
+			public float Size;
 			public CachedSprite( object _o )
 			{
 				Name = "none";
 				Path = "";
 				Sprite = null;
+				DisplayName = "";
+				Size = 1.0f;
 			}
 		}
 
@@ -64,7 +68,11 @@ namespace Game
 			System.IO.StreamWriter writer = new System.IO.StreamWriter( stream );
 			foreach ( CachedSprite cs in s_sprites )
 			{
-				writer.WriteLine( ( cs.Name == null ? "" : cs.Name ) + "|" + ( cs.Path == null ? "" : cs.Path ) );
+				writer.WriteLine(
+					( cs.Name == null ? "" : cs.Name ) + "|" +
+					( cs.Path == null ? "" : cs.Path ) + "|" +
+					( cs.DisplayName == null ? "" : cs.DisplayName ) + "|" +
+					cs.Size.ToString() );
 			}
 			writer.Close();
 		}
@@ -99,7 +107,7 @@ namespace Game
 					CachedSprite cs = new CachedSprite();
 					string line = reader.ReadLine();
 					string[] nameAndSprite = line.Split( '|' );
-					if ( nameAndSprite.Length != 2 )
+					if ( nameAndSprite.Length != 4 )
 					{
 						Debug.Log( "Error!" );
 						return;
@@ -107,6 +115,8 @@ namespace Game
 					cs.Name = nameAndSprite[ 0 ];
 					s_spriteNames.Add( cs.Name );
 					cs.Path = nameAndSprite[ 1 ];
+					cs.DisplayName = nameAndSprite[ 2 ];
+					cs.Size = float.Parse( nameAndSprite[ 3 ] );
 					if ( cs.Path != null && cs.Path.Length > 0 )
 					{
 						cs.Sprite = AssetDatabase.LoadAssetAtPath<Sprite>( cs.Path );
@@ -236,6 +246,17 @@ namespace Game
 										return;
 									}
 									break;
+								case "speaker":
+									if ( line.Length == 2 )
+									{
+										csse.Speaker = int.Parse( line[ 1 ] );
+									}
+									else
+									{
+										Debug.Log( "Error!" );
+										return;
+									}
+									break;
 								case "text":
 									if ( line.Length == 2 )
 									{
@@ -354,6 +375,10 @@ namespace Game
 				writer.WriteLine( "\tleft:" + csse.Left );
 				writer.WriteLine( "\tright:" + csse.Right );
 				writer.WriteLine( "\tcenter:" + csse.Center );
+				if ( csse.Speaker >= 0 )
+				{
+					writer.WriteLine( "\tspeaker:" + csse.Speaker );
+				}
 				writer.WriteLine( "\ttext:" + csse.Text );
 				if ( ( csse.Choices != null ) &&
 					( csse.ChoiceTargets != null ) &&
@@ -578,7 +603,7 @@ namespace Game
 			rescued.Show();
 		}
 
-		private void DrawSnapshotSprite( ref string _spriteName, ref string _tempName, string _name, float _width, float _height )
+		private void DrawSnapshotSprite( ref string _spriteName, ref string _tempName, ref bool _speaker, string _name, float _width, float _height )
 		{
 			GUILayout.BeginVertical();
 			CachedSprite spritePath = new CachedSprite();
@@ -619,6 +644,7 @@ namespace Game
 			{
 				GUILayoutUtility.GetRect( _width, _height );
 			}
+			_speaker = GUILayout.Toggle( _speaker, "Speaker" );
 			GUILayout.EndVertical();
 		}
 
@@ -806,6 +832,10 @@ namespace Game
 					s_spriteNames[ i ] = spriteName;
 					cached.Name = spriteName;
 				}
+				GUILayout.Label( "Display name" );
+				cached.DisplayName = EditorGUILayout.TextField( cached.DisplayName, maxWidth );
+				GUILayout.Label( "Size" );
+				cached.Size = EditorGUILayout.FloatField( cached.Size, maxWidth );
 
 				Sprite sprite = ( Sprite )EditorGUILayout.ObjectField( cached.Sprite, typeof( Sprite ), false, maxWidth );
 				if ( sprite != cached.Sprite )
@@ -988,9 +1018,19 @@ namespace Game
 					float sizeW = ( position.width - 104 ) / 3.0f;
 					float sizeH = sizeW * 0.75f;
 					GUILayout.BeginHorizontal();
-					DrawSnapshotSprite( ref m_tabs[ m_currentTab ].Left, ref m_searchLeft, "Left", sizeW, sizeH );
-					DrawSnapshotSprite( ref m_tabs[ m_currentTab ].Center, ref m_searchCenter, "Center", sizeW, sizeH );
-					DrawSnapshotSprite( ref m_tabs[ m_currentTab ].Right, ref m_searchRight, "Right", sizeW, sizeH );
+
+					bool speaker = m_tabs[ m_currentTab ].Speaker == 0;
+					DrawSnapshotSprite( ref m_tabs[ m_currentTab ].Left, ref m_searchLeft, ref speaker, "Left", sizeW, sizeH );
+					if ( speaker ) { m_tabs[ m_currentTab ].Speaker = 0; }
+
+					speaker = m_tabs[ m_currentTab ].Speaker == 2;
+					DrawSnapshotSprite( ref m_tabs[ m_currentTab ].Center, ref m_searchCenter, ref speaker, "Center", sizeW, sizeH );
+					if ( speaker ) { m_tabs[ m_currentTab ].Speaker = 1; }
+
+					speaker = m_tabs[ m_currentTab ].Speaker == 1;
+					DrawSnapshotSprite( ref m_tabs[ m_currentTab ].Right, ref m_searchRight, ref speaker, "Right", sizeW, sizeH );
+					if ( speaker ) { m_tabs[ m_currentTab ].Speaker = 2; }
+
 					GUILayout.EndHorizontal();
 
 					// Text

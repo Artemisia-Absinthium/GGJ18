@@ -3,6 +3,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_a1
 	choice:D1_M2_ch1,1
 }
@@ -10,6 +11,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_a2
 	choice:D1_M2_ch2,2
 }
@@ -17,6 +19,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_a3
 	choice:D1_M2_ch3,3
 	choice:D1_M2_ch4,3
@@ -25,6 +28,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_a4
 	ok:end
 }
@@ -32,6 +36,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1
 	choice:D1_M2_ch1_1,5
 }
@@ -39,6 +44,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1a
 	ok:6
 }
@@ -46,6 +52,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1b
 	choice:D1_M2_ch2_1,7
 }
@@ -53,6 +60,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1c
 	choice:D1_M2_c1,8
 	choice:D1_M2_c2,end
@@ -62,6 +70,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1d
 	ok:end
 }
@@ -69,6 +78,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1d_1
 	choice:D1_M2_c4,8
 	choice:D1_M2_c5,10
@@ -77,6 +87,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1e
 	ok:11
 }
@@ -84,6 +95,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1f
 	choice:D1_M2_c6,12
 	choice:D1_M2_c7,13
@@ -92,6 +104,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1g
 	ok:end
 }
@@ -99,6 +112,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1h
 	ok:14
 }
@@ -106,6 +120,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1i
 	ok:15
 }
@@ -113,6 +128,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1j
 	ok:16
 }
@@ -120,6 +136,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1k
 	ok:17
 }
@@ -127,6 +144,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1l
 	ok:18
 }
@@ -134,6 +152,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1m
 	choice:D1_M2_ch3_1,19
 }
@@ -141,6 +160,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1n
 	ok:20
 }
@@ -148,6 +168,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1o
 	ok:21
 }
@@ -155,6 +176,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1p
 	choice:D1_M2_ch4_1,22
 }
@@ -162,6 +184,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1q
 	ok:23
 }
@@ -169,6 +192,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1r
 	ok:24
 }
@@ -176,6 +200,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1s
 	choice:D1_M2_ch5,25
 }
@@ -183,6 +208,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1t
 	choice:D1_M2_c8,26
 	choice:D1_M2_c9,26
@@ -191,6 +217,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1u
 	choice:D1_M2_ch6,27
 }
@@ -198,6 +225,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1v
 	time:3.000,28
 }
@@ -205,6 +233,7 @@
 	left:none
 	right:none
 	center:MEDECIN_MOTHER
+	speaker:2
 	text:D1_M2_b1w
 	ok:end
 }

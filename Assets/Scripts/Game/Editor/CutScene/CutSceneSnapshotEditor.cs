@@ -9,6 +9,7 @@ namespace Game
 	public class CutSceneSnapshotEditor
 	{
 		public string Left = "none", Right = "none", Center = "none";
+		public int Speaker = -1;
 		public string Text = "NONE";
 		public List<string> Choices = new List<string>();
 		public bool Ok = true;

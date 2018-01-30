@@ -3,6 +3,7 @@
 	left:none
 	right:none
 	center:PEASANT_CREEPY
+	speaker:2
 	text:D1_P6_a
 	ok:end
 }

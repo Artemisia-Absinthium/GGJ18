@@ -3,6 +3,7 @@
 	left:none
 	right:none
 	center:COUSIN
+	speaker:2
 	text:D1_P3_a
 	ok:end
 }
@@ -10,6 +11,7 @@
 	left:none
 	right:none
 	center:COUSIN
+	speaker:2
 	text:D1_P3_b6
 	ok:end
 }

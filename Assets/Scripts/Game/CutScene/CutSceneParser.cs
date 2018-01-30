@@ -15,11 +15,15 @@ namespace Game
 			public string Path;
 			public System.WeakReference Sprite;
 			public float Timer;
-			public SpriteInfo( string _path )
+			public string Name;
+			public float Size;
+			public SpriteInfo( string _path, string _name, float _size )
 			{
 				Path = _path;
 				Sprite = null;
 				Timer = 0.0f;
+				Name = _name;
+				Size = _size;
 			}
 		}
 
@@ -34,7 +38,7 @@ namespace Game
 		{
 			public enum AttributeType
 			{
-				LEFT, RIGHT, CENTER, TEXT, CHOICE, OK, TIME, EOB
+				LEFT, RIGHT, CENTER, SPEAKER, TEXT, CHOICE, OK, TIME, EOB
 			}
 			public AttributeType Type;
 			public string ValueString;
@@ -42,17 +46,17 @@ namespace Game
 			public float ValueFloat;
 		}
 
-		public bool AddPicture( string _name, string _spritePath )
+		public bool AddPicture( string _name, string _spritePath, string _displayName, float _size )
 		{
 			if ( m_sprites.ContainsKey( _name ) )
 			{
 				return false;
 			}
-			m_sprites[ _name ] = new SpriteInfo( _spritePath );
+			m_sprites[ _name ] = new SpriteInfo( _spritePath, _displayName, _size );
 			return true;
 		}
 
-		private bool TryGetPicture( string _name, out Sprite _sprite )
+		private bool TryGetPicture( string _name, out CutSceneSnapshot.SpriteData _sprite )
 		{
 			_sprite = null;
 			SpriteInfo si;
@@ -70,7 +74,10 @@ namespace Game
 				si.Sprite = new System.WeakReference( s );
 				si.Timer = 100.0f;
 			}
-			_sprite = ( Sprite )si.Sprite.Target;
+			_sprite = new CutSceneSnapshot.SpriteData();
+			_sprite.Sprite = ( Sprite )si.Sprite.Target;
+			_sprite.Name = si.Name;
+			_sprite.Size = si.Size;
 			return true;
 		}
 
@@ -173,7 +180,7 @@ namespace Game
 
 		private bool ParseBlock( string[] _lines, ref int _thisLine, out CutSceneSnapshot _snapshot )
 		{
-			Sprite[] pictures = new Sprite[ 3 ];
+			CutSceneSnapshot.SpriteData[] pictures = new CutSceneSnapshot.SpriteData[ 3 ];
 			Strings text = 0;
 			List<Strings> choices = new List<Strings>();
 			List<int> choicesNext = new List<int>();
@@ -181,6 +188,7 @@ namespace Game
 			float time = -1.0f;
 			int okNext = -1;
 			int timeNext = -1;
+			int speaker = -1;
 			_snapshot = null;
 
 			bool reading = true;
@@ -205,6 +213,9 @@ namespace Game
 							Debug.Log( "Unable to find  picture '" + att.ValueString + "' at line " + _thisLine );
 							return false;
 						}
+						break;
+					case Attribute.AttributeType.SPEAKER:
+						speaker = att.ValueInt;
 						break;
 					case Attribute.AttributeType.TEXT:
 						try
@@ -255,9 +266,14 @@ namespace Game
 					return false;
 				}
 			}
+			if ( speaker >= 0 && speaker < 3 && pictures[ speaker ] != null )
+			{
+				pictures[ speaker ].Speaker = true;
+			}
 
 			_snapshot = new CutSceneSnapshot(
 				pictures,
+				speaker,
 				text,
 				( choices.Count > 0 ) ? choices.ToArray() : null,
 				ok,
@@ -312,6 +328,23 @@ namespace Game
 				_attribute.Type = Attribute.AttributeType.CENTER;
 				_attribute.ValueString = line[ 1 ];
 				break;
+			case "speaker":
+				if ( line.Length != 2 )
+				{
+					Debug.Log( "Syntax error: speaker instruction expects 1 argument" );
+					return false;
+				}
+				try
+				{
+					_attribute.ValueInt = System.Int32.Parse( line[ 1 ] );
+				}
+				catch ( System.Exception )
+				{
+					Debug.Log( "Syntax error: Argument 1 cannot be converted to integer" );
+					return false;
+				}
+				_attribute.Type = Attribute.AttributeType.SPEAKER;
+				break;
 			case "text":
 				if ( line.Length != 2 )
 				{
@@ -341,7 +374,7 @@ namespace Game
 					}
 					catch ( System.Exception )
 					{
-						Debug.Log( "Syntax error: Argument 1 cannot be converted to integer" );
+						Debug.Log( "Syntax error: Argument 2 cannot be converted to integer" );
 						return false;
 					}
 				}

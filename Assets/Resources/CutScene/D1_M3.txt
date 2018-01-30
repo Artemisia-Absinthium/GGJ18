@@ -3,6 +3,7 @@
 	left:none
 	right:none
 	center:MEDECIN_DAUGTHER
+	speaker:2
 	text:D1_M3_a
 	ok:end
 }
