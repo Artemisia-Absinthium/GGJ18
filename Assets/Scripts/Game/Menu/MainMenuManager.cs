@@ -12,6 +12,8 @@ namespace Game
 	{
 		#region Fields
 		[SerializeField]
+		private bool m_inGame = false;
+		[SerializeField]
 		private Toggle f_english;
 		[SerializeField]
 		private Toggle f_french;
@@ -164,6 +166,33 @@ namespace Game
 			// AntiAliasing
 			QualitySettings.antiAliasing = ( int )m_tempAA;
 			opt.AntiAliasing = m_tempAA;
+			if ( m_inGame )
+			{
+				GameObject playerCamera = GameCache.Instance.GetObject( GameCacheObjects.PlayerCamera );
+				Debug.Assert( playerCamera );
+				UnityEngine.PostProcessing.PostProcessingBehaviour pp = playerCamera.GetComponent<UnityEngine.PostProcessing.PostProcessingBehaviour>();
+				Debug.Assert( pp );
+				UnityEngine.PostProcessing.AntialiasingModel aam = pp.profile.antialiasing;
+				aam.enabled = m_tempAA > 0;
+				UnityEngine.PostProcessing.AntialiasingModel.Settings aas = aam.settings;
+				aas.method = UnityEngine.PostProcessing.AntialiasingModel.Method.Fxaa;
+				switch ( m_tempAA )
+				{
+				case Engine.AntiAliasingValue.X2:
+					aas.fxaaSettings.preset = UnityEngine.PostProcessing.AntialiasingModel.FxaaPreset.ExtremePerformance;
+					break;
+				case Engine.AntiAliasingValue.X4:
+					aas.fxaaSettings.preset = UnityEngine.PostProcessing.AntialiasingModel.FxaaPreset.Performance;
+					break;
+				case Engine.AntiAliasingValue.X8:
+					aas.fxaaSettings.preset = UnityEngine.PostProcessing.AntialiasingModel.FxaaPreset.Quality;
+					break;
+				case Engine.AntiAliasingValue.X16:
+					aas.fxaaSettings.preset = UnityEngine.PostProcessing.AntialiasingModel.FxaaPreset.ExtremeQuality;
+					break;
+				}
+				aam.settings = aas;
+			}
 
 			//LevelOfDetails
 			QualitySettings.lodBias = ( float )m_tempLOD * 0.01f;
@@ -410,6 +439,7 @@ namespace Game
 			case Engine.AntiAliasingValue.X2: f_antiAliasing.value = 1.0f; break;
 			case Engine.AntiAliasingValue.X4: f_antiAliasing.value = 2.0f; break;
 			case Engine.AntiAliasingValue.X8: f_antiAliasing.value = 3.0f; break;
+			case Engine.AntiAliasingValue.X16: f_antiAliasing.value = 4.0f; break;
 			}
 			switch ( m_tempLOD )
 			{
@@ -684,6 +714,33 @@ namespace Game
 				changes = true;
 				QualitySettings.antiAliasing = ( int )m_tempAA;
 				opt.AntiAliasing = m_tempAA;
+				if ( m_inGame )
+				{
+					GameObject playerCamera = GameCache.Instance.GetObject( GameCacheObjects.PlayerCamera );
+					Debug.Assert( playerCamera );
+					UnityEngine.PostProcessing.PostProcessingBehaviour pp = playerCamera.GetComponent<UnityEngine.PostProcessing.PostProcessingBehaviour>();
+					Debug.Assert( pp );
+					UnityEngine.PostProcessing.AntialiasingModel aam = pp.profile.antialiasing;
+					aam.enabled = m_tempAA > 0;
+					UnityEngine.PostProcessing.AntialiasingModel.Settings aas = aam.settings;
+					aas.method = UnityEngine.PostProcessing.AntialiasingModel.Method.Fxaa;
+					switch ( m_tempAA )
+					{
+					case Engine.AntiAliasingValue.X2:
+						aas.fxaaSettings.preset = UnityEngine.PostProcessing.AntialiasingModel.FxaaPreset.ExtremePerformance;
+						break;
+					case Engine.AntiAliasingValue.X4:
+						aas.fxaaSettings.preset = UnityEngine.PostProcessing.AntialiasingModel.FxaaPreset.Performance;
+						break;
+					case Engine.AntiAliasingValue.X8:
+						aas.fxaaSettings.preset = UnityEngine.PostProcessing.AntialiasingModel.FxaaPreset.Quality;
+						break;
+					case Engine.AntiAliasingValue.X16:
+						aas.fxaaSettings.preset = UnityEngine.PostProcessing.AntialiasingModel.FxaaPreset.ExtremeQuality;
+						break;
+					}
+					aam.settings = aas;
+				}
 			}
 			if ( opt.LevelOfDetails != m_tempLOD )
 			{

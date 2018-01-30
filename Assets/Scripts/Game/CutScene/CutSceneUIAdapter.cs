@@ -122,7 +122,7 @@ namespace Game
 					m_leftName.SetActive( true );
 					m_leftText.text = _name;
 					m_leftText.color = _speaker ? m_speakerColor : Color.black;
-					m_leftSprite.color = _speaker ? Color.white : Color.gray * 1.5f;
+					m_leftSprite.color = _speaker ? Color.white : Color.gray;
 				}
 				break;
 			case 1:
@@ -144,7 +144,7 @@ namespace Game
 					m_rightName.SetActive( true );
 					m_rightText.text = _name;
 					m_rightText.color = _speaker ? m_speakerColor : Color.black;
-					m_rightSprite.color = _speaker ? Color.white : Color.gray * 1.5f;
+					m_rightSprite.color = _speaker ? Color.white : Color.gray;
 				}
 				break;
 			case 2:
@@ -166,7 +166,7 @@ namespace Game
 					m_centerName.SetActive( true );
 					m_centerText.text = _name;
 					m_centerText.color = _speaker ? m_speakerColor : Color.black;
-					m_centerSprite.color = _speaker ? Color.white : Color.gray * 1.5f;
+					m_centerSprite.color = _speaker ? Color.white : Color.gray;
 				}
 				break;
 			}
