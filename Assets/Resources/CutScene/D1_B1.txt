@@ -62,7 +62,7 @@
 	left:none
 	right:BARTENDER_TWINS_2
 	center:BARTENDER_MOTHER
-	speaker:2
+	speaker:1
 	text:D1_B3_d1
 	ok:8
 }

@@ -1025,11 +1025,11 @@ namespace Game
 
 					speaker = m_tabs[ m_currentTab ].Speaker == 2;
 					DrawSnapshotSprite( ref m_tabs[ m_currentTab ].Center, ref m_searchCenter, ref speaker, "Center", sizeW, sizeH );
-					if ( speaker ) { m_tabs[ m_currentTab ].Speaker = 1; }
+					if ( speaker ) { m_tabs[ m_currentTab ].Speaker = 2; }
 
 					speaker = m_tabs[ m_currentTab ].Speaker == 1;
 					DrawSnapshotSprite( ref m_tabs[ m_currentTab ].Right, ref m_searchRight, ref speaker, "Right", sizeW, sizeH );
-					if ( speaker ) { m_tabs[ m_currentTab ].Speaker = 2; }
+					if ( speaker ) { m_tabs[ m_currentTab ].Speaker = 1; }
 
 					GUILayout.EndHorizontal();
 

@@ -27,7 +27,7 @@
 	left:none
 	right:BARTENDER_TWINS
 	center:RELIGIOUS_TEACHER
-	speaker:2
+	speaker:1
 	text:D1_B3_b
 	ok:4
 }

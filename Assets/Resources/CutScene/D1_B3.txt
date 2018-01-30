@@ -10,7 +10,7 @@
 1 {
 	left:none
 	right:none
-	center:BARTENDER_TWINS
+	center:BARTENDER_TWINS_2
 	speaker:2
 	text:D1_B3_a1
 	ok:2
@@ -18,7 +18,7 @@
 2 {
 	left:none
 	right:none
-	center:BARTENDER_TWINS
+	center:BARTENDER_TWINS_2
 	speaker:2
 	text:NONE
 	choice:D1_B3_c1,3
@@ -27,7 +27,7 @@
 3 {
 	left:none
 	right:none
-	center:BARTENDER_TWINS
+	center:BARTENDER_TWINS_2
 	speaker:2
 	text:D1_B3_a2
 	choice:D1_B3_ch1,end

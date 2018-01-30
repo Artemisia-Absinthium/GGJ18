@@ -14,6 +14,7 @@
 	speaker:2
 	text:D1_C1_a
 	choice:D1_C1_a_1,2
+	choice:D1_C1_a_3,end
 }
 2 {
 	left:none
@@ -21,5 +22,5 @@
 	center:CARAVAN
 	speaker:2
 	text:D1_C1_a_2
-	choice:D1_C1_a_3,end
+	ok:end
 }
