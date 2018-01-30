@@ -39,12 +39,6 @@ namespace Game
 
 		void Awake()
 		{
-			if ( s_instance != null )
-			{
-				Destroy( this );
-				return;
-			}
-			DontDestroyOnLoad( this );
 			s_instance = this;
 
 			m_parser = new CutSceneParser();

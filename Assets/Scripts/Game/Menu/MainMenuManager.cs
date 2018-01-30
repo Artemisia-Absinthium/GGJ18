@@ -295,7 +295,10 @@ namespace Game
 		{
 			s_instance = this;
 			//Set Cursor to not be visible
-			Cursor.visible = true;
+			if ( !m_inGame )
+			{
+				Cursor.visible = true;
+			}
 
 			// Check references
 			if ( m_graveyardText == null )

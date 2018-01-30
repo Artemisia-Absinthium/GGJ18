@@ -360,6 +360,12 @@ namespace Game
 		D1_DOG_EASTER_A,
 		D1_DOG_EASTER_B,
 
+		CINEMATIC_INTRO_1,
+		CINEMATIC_INTRO_2,
+		CINEMATIC_INTRO_3,
+		CINEMATIC_INTRO_4,
+		CINEMATIC_INTRO_5,
+
 		COUNT																																																																																																		  
 	}
 }

@@ -55,7 +55,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6d713d5921836d743bfd1e8cdc938a6f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -259,6 +259,16 @@ MonoBehaviour:
       m_axisDeadZone: 0
       m_rawAxis: 0
     m_policy: 2
+  - m_id: Pause
+    m_keyboardKey: 27
+    m_joystickInput:
+      m_isAxis: 0
+      m_button: 335
+      m_axis: 
+      m_isAxisPositive: 0
+      m_axisDeadZone: 0
+      m_rawAxis: 0
+    m_policy: 2
   m_joystickHorizontalName: AxisX
   m_joystickHorizontalDeadZone: 0.2
   m_joystickHorizontalIsInverted: 0
@@ -311,8 +321,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ff0aac99f272a4a9bf60b2eaa50dc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_showCachedObjects: 0
-  m_debugObjects: []
 --- !u!114 &114870490577754772
 MonoBehaviour:
   m_ObjectHideFlags: 1
