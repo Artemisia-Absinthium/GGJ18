@@ -13,13 +13,16 @@ namespace Game
 		[SerializeField]
 		private Image m_background;
 		[SerializeField]
-		private TMPro.TextMeshProUGUI m_caravanText;
+		private TMPro.TextMeshProUGUI m_caravanText = null;
 		[SerializeField]
-		private TMPro.TextMeshProUGUI m_characterText;
+		private TMPro.TextMeshProUGUI m_characterText = null;
+		[SerializeField]
+		private TMPro.TextMeshProUGUI m_centerText = null;
 		[SerializeField]
 		private float m_textFadeSpeed = 1.0f;
 
 		private static Cinematics s_instance = null;
+		private static Color s_transparent = new Color( 0.0f, 0.0f, 0.0f, 0.0f );
 
 		private bool m_startCinematicFinished = false;
 		private bool m_chapter1to2TransitionFinished = false;
@@ -50,12 +53,22 @@ namespace Game
 			Debug.Assert( m_background );
 			Debug.Assert( m_caravanText );
 			Debug.Assert( m_characterText );
+			Debug.Assert( m_centerText );
 
 			m_interaction = Engine.InputManager.Instance.GetAction( "Interaction" );
 		}
 
+		private IEnumerator WaitForClick()
+		{
+			while ( !m_interaction.Down )
+			{
+				yield return null;
+			}
+		}
+
 		private IEnumerator SetText( TMPro.TextMeshProUGUI _target, string _text )
 		{
+			Debug.Assert( m_textFadeSpeed > 0.0f );
 			_target.text = _text;
 			float time = Time.time;
 			float targetTime = Time.time + m_textFadeSpeed;
@@ -65,12 +78,24 @@ namespace Game
 				yield return null;
 			}
 			_target.color = Color.white;
-			while ( !m_interaction.Down ) { yield return null; }
+			yield return WaitForClick();
 			time = Time.time;
 			targetTime = Time.time + m_textFadeSpeed;
 			while ( Time.time < targetTime )
 			{
 				_target.color = Color32.Lerp( Color.white, Color.black, ( Time.time - time ) / m_textFadeSpeed );
+				yield return null;
+			}
+		}
+
+		private IEnumerator FadeBackground( Color _start, Color _end, float _time )
+		{
+			Debug.Assert( _time > 0.0f );
+			float time = Time.time;
+			float targetTime = Time.time + _time;
+			while ( Time.time < targetTime )
+			{
+				m_background.color = Color32.Lerp( _start, _end, ( Time.time - time ) / _time );
 				yield return null;
 			}
 		}
@@ -86,10 +111,13 @@ namespace Game
 			m_background.gameObject.SetActive( true );
 			m_caravanText.gameObject.SetActive( true );
 			m_characterText.gameObject.SetActive( true );
+			m_centerText.gameObject.SetActive( false );
 
 			m_background.color = Color.black;
 			m_caravanText.color = Color.black;
 			m_characterText.color = Color.black;
+			m_caravanText.text = "";
+			m_characterText.text = "";
 
 			yield return new WaitForSeconds( 2.0f );
 			yield return SetText( m_caravanText, GameLocalizedStringManager.Instance.Get( Strings.CINEMATIC_INTRO_1 ) );
@@ -105,14 +133,7 @@ namespace Game
 			m_caravanText.gameObject.SetActive( false );
 			m_characterText.gameObject.SetActive( false );
 
-			float time = Time.time;
-			float targetTime = Time.time + 2.0f;
-			Color endColor = new Color( 0.0f, 0.0f, 0.0f, 0.0f );
-			while ( Time.time < targetTime )
-			{
-				m_background.color = Color32.Lerp( Color.black, endColor, ( Time.time - time ) / m_textFadeSpeed );
-				yield return null;
-			}
+			yield return FadeBackground( Color.black, s_transparent, 2.0f );
 			m_background.gameObject.SetActive( false );
 
 			m_playing = false;
@@ -126,6 +147,36 @@ namespace Game
 			{
 				yield return null;
 			}
+			m_playing = true;
+			m_chapter1to2TransitionPlaying = true;
+			
+			// --------------------------------------------------------------------
+			// THIS IS TEMPORARY END OF GAME / DEMO
+			// --------------------------------------------------------------------
+			m_background.gameObject.SetActive( true );
+			m_centerText.gameObject.SetActive( true );
+
+			m_background.color = s_transparent;
+			m_centerText.color = Color.black;
+			m_centerText.text = "";
+
+			yield return FadeBackground( s_transparent, Color.black, 2.0f );
+			m_background.color = Color.black;
+
+			yield return new WaitForSeconds( 2.0f );
+			yield return SetText( m_centerText, GameLocalizedStringManager.Instance.Get( Strings.DEMO_END_1 ) );
+			yield return new WaitForSeconds( 0.5f );
+			yield return SetText( m_centerText, GameLocalizedStringManager.Instance.Get( Strings.DEMO_END_2 ) );
+			yield return new WaitForSeconds( 2.0f );
+
+			GameMusicManager.Instance.ChangeMusic( GameMusicManager.EGameMusicManagerState.eNone );
+			UnityEngine.SceneManagement.SceneManager.LoadScene( "MainMenu" );
+			// --------------------------------------------------------------------
+			// --------------------------------------------------------------------
+
+			m_playing = false;
+			m_chapter1to2TransitionPlaying = false;
+			m_chapter1to2TransitionFinished = true;
 		}
 
 		public IEnumerator BeginChapter2To3Transition()

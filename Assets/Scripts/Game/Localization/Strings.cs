@@ -366,6 +366,13 @@ namespace Game
 		CINEMATIC_INTRO_4,
 		CINEMATIC_INTRO_5,
 
+		DEMO_END_1,
+		DEMO_END_2,
+
+		CARAVAN_CONFIRM,
+		CARAVAN_CONFIRM_YES,
+		CARAVAN_CONFIRM_NO,
+
 		COUNT																																																																																																		  
 	}
 }

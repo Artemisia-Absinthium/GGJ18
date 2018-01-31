@@ -14,7 +14,7 @@
 	speaker:2
 	text:D1_C1_a
 	choice:D1_C1_a_1,2
-	choice:D1_C1_a_3,end
+	choice:D1_C1_a_3,3
 }
 2 {
 	left:none
@@ -23,4 +23,13 @@
 	speaker:2
 	text:D1_C1_a_2
 	ok:end
+}
+3 {
+	left:none
+	right:none
+	center:CARAVAN
+	speaker:2
+	text:CARAVAN_CONFIRM
+	choice:CARAVAN_CONFIRM_NO,end
+	choice:CARAVAN_CONFIRM_YES,end
 }

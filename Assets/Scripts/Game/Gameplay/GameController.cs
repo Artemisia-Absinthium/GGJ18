@@ -109,11 +109,11 @@ namespace Game
 		public bool D1_M2_a4 = false;
 		public bool D1_B1_d1a = false;
 
-		private bool D1_P = false;
-		private bool D1_B = false;
-		private bool D1_M = false;
-		private bool D1_N = false;
-		private bool D1_R = false;
+		public bool D1_P = false;
+		public bool D1_B = false;
+		public bool D1_M = false;
+		public bool D1_N = false;
+		public bool D1_R = false;
 
 		void Awake()
 		{
@@ -934,6 +934,13 @@ namespace Game
 					m_r1.SetActive( true );
 					m_r2.SetActive( true );
 					D1_N5_c8 = true;
+				}
+			}
+			else if ( _cutSceneName == "D1_C1" )
+			{
+				if ( _previousSnapshot == 3 && _newSnapshot == -1 && _choiceIndex == 1 )
+				{
+					StartCoroutine( Cinematics.Instance.BeginChapter1To2Transition() );
 				}
 			}
 
