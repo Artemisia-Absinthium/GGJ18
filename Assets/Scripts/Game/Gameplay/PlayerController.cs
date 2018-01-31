@@ -58,6 +58,7 @@ namespace Game
 		private float m_angle = -90.0f;
 		private float m_verticalView = 0.0f;
 		private float m_bobbingHeightBase = 1.6f;
+		private float m_minSpeed = 0.0005f;
 
 		private int m_layerMask = 0;
 
@@ -104,6 +105,8 @@ namespace Game
 			transform.localRotation = Quaternion.Euler( 0.0f, m_angle, 0.0f );
 
 			m_bobbingHeightBase = m_bobbing.localPosition.y;
+
+			m_minSpeed = Mathf.Min( m_forwardSpeed, m_backwardSpeed, m_strafeSpeed );
 		}
 
 		private void RecenterBobbing()
@@ -158,9 +161,13 @@ namespace Game
 			Quaternion rotation = Quaternion.Euler( 0.0f, m_angle, 0.0f );
 			transform.localRotation = rotation;
 			speed = rotation * speed;
+			Vector3 moveDelta = transform.position;
 			m_characterController.SimpleMove( speed );
+			moveDelta = transform.position - moveDelta;
+			float minSpeed = m_minSpeed * Time.deltaTime;
+			minSpeed *= minSpeed;
 
-			if ( speed.sqrMagnitude > m_strafeSpeed / 2.0f )
+			if ( moveDelta.sqrMagnitude > minSpeed * 0.5f )
 			{
 				if ( !m_AudioSource.isPlaying )
 				{
