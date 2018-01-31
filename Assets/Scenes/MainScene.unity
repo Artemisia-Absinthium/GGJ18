@@ -2382,6 +2382,37 @@ MeshFilter:
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: a034032118ee8ae42ae5f22672f18a09, type: 3}
   m_PrefabInternal: {fileID: 838263907}
+--- !u!84 &54208356
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 1134
+  m_Height: 638
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &54693892
 GameObject:
   m_ObjectHideFlags: 0
@@ -7902,6 +7933,37 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 181810471}
+--- !u!84 &185027833
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 1134
+  m_Height: 638
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &185338244
 Prefab:
   m_ObjectHideFlags: 0
@@ -12369,37 +12431,6 @@ CapsuleCollider:
   m_Height: 19.235931
   m_Direction: 1
   m_Center: {x: -0.78808546, y: -2.864916, z: -0.9100022}
---- !u!84 &328828163
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 1134
-  m_Height: 638
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &333735223 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 1ec7148d8e74a864e827db0c85f41d94, type: 3}
@@ -12881,7 +12912,7 @@ Prefab:
         type: 2}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 328828163}
+      objectReference: {fileID: 54208356}
     - target: {fileID: 20470849787307772, guid: 9d13b38dfc15d994599e5e0b132c0674,
         type: 2}
       propertyPath: m_TargetTexture
@@ -56855,37 +56886,6 @@ Transform:
   m_Father: {fileID: 958388451}
   m_RootOrder: 70
   m_LocalEulerAnglesHint: {x: 0.141, y: -168.479, z: -0.202}
---- !u!84 &1378472034
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 1134
-  m_Height: 638
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &1378550729
 Prefab:
   m_ObjectHideFlags: 0
@@ -61880,6 +61880,34 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 397a1bc3035a4b041af7833636a7bf9e, type: 3}
   m_PrefabInternal: {fileID: 1505289966}
+--- !u!1 &1506036749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1506036750}
+  m_Layer: 0
+  m_Name: PlayerForestBack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1506036750
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1506036749}
+  m_LocalRotation: {x: -0, y: 0.7141743, z: -0, w: 0.6999679}
+  m_LocalPosition: {x: 14.38, y: 0.252, z: 57.66}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 91.151, z: 0}
 --- !u!1001 &1506267309
 Prefab:
   m_ObjectHideFlags: 0
@@ -63514,6 +63542,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.50000006, y: 2.2, z: 3}
   m_Center: {x: -0.2500076, y: 1.1, z: -1.5}
+--- !u!1 &1546622862 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1033808487575042, guid: 9d13b38dfc15d994599e5e0b132c0674,
+    type: 2}
+  m_PrefabInternal: {fileID: 347758354}
+--- !u!54 &1546622868
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1546622862}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1549977991 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1035324338980166, guid: aed9142f50b13b34ba67c82e98280f94,
@@ -66440,6 +66488,78 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.30000007, y: 1.9156202, z: 1.22228}
   m_Center: {x: 0.15000194, y: 0.9578101, z: -0.61114}
+--- !u!1 &1666380561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1666380563}
+  - component: {fileID: 1666380562}
+  - component: {fileID: 1666380565}
+  - component: {fileID: 1666380564}
+  m_Layer: 0
+  m_Name: ForestTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1666380562
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1666380561}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1666380563
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1666380561}
+  m_LocalRotation: {x: 0, y: -0.6636521, z: 0, w: 0.7480414}
+  m_LocalPosition: {x: 11.422, y: 1.333, z: 57.376}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: -83.158, z: 0}
+--- !u!114 &1666380564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1666380561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d3cd6926835c04f9d2eda46c94efd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_script: {fileID: 1692453707}
+  m_method: OnForestTrigger
+  m_invokeDelay: 0
+--- !u!114 &1666380565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1666380561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c4678e992f40144cabb1c47c1e975af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_behaviour: {fileID: 1666380564}
+  m_allowExternalTriggering: 1
+  m_onExit: 0
+  m_triggeringTag: 
 --- !u!1 &1666757113
 GameObject:
   m_ObjectHideFlags: 0
@@ -67053,6 +67173,9 @@ MonoBehaviour:
   m_dog_2: {fileID: 179765337}
   m_b1: {fileID: 179765359}
   m_characters: {fileID: 179765358}
+  m_characterForestBackPosition: {fileID: 1506036750}
+  m_backgroundImage: {fileID: 717981396}
+  m_forestTrigger: {fileID: 1666380561}
   D1_P1_a1: 0
   haveWateringCan: 0
   D1_P1_a3: 0

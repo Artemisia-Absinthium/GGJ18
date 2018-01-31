@@ -63,7 +63,7 @@ namespace Game
 
 		//Sounds
 		[SerializeField]
-		private AudioClip m_StepSound;
+		private AudioClip m_StepSound = null;
 		[SerializeField]
 		private AudioSource m_AudioSource;
 
@@ -106,16 +106,26 @@ namespace Game
 			m_bobbingHeightBase = m_bobbing.localPosition.y;
 		}
 
+		private void RecenterBobbing()
+		{
+			m_bobbing.localPosition = Vector3.Lerp(
+				m_bobbing.localPosition,
+				new Vector3( 0.0f, m_bobbingHeightBase, 0.0f ),
+				Time.deltaTime * m_bobbingLerpSpeed );
+		}
+
 		void Update()
 		{
 			if ( GameController.Instance.IsSpeaking || 
 				MainMenuManager.Instance.IsInMenu ||
 				Cinematics.Instance.Playing )
 			{
+				RecenterBobbing();
 				return;
 			}
 			if ( !MainMenuManager.Instance.IsInMenu && m_menuAction.Down )
 			{
+				RecenterBobbing();
 				MainMenuManager.Instance.Pause();
 				return;
 			}
@@ -172,10 +182,7 @@ namespace Game
 			}
 			else if ( !Mathf.Approximately( m_bobbing.localPosition.x, 0.0f ) )
 			{
-				m_bobbing.localPosition = Vector3.Lerp(
-					m_bobbing.localPosition,
-					new Vector3( 0.0f, m_bobbingHeightBase, 0.0f ),
-					Time.deltaTime * m_bobbingLerpSpeed );
+				RecenterBobbing();
 			}
 
 			if ( !GameController.Instance.IsSpeaking && !GameController.Instance.WasSpeaking )
@@ -224,6 +231,15 @@ namespace Game
 					}
 				}
 			}
+		}
+
+		public void SetAngle( float _angle )
+		{
+			m_angle = _angle;
+		}
+		public void SetVerticalView( float _angle )
+		{
+			m_verticalView = _angle;
 		}
 	}
 }

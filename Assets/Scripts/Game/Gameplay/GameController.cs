@@ -22,6 +22,8 @@
  * SOFTWARE.
  */
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 namespace Game
 {
@@ -70,6 +72,12 @@ namespace Game
 		private GameObject m_b1;
 		[SerializeField]
 		private GameObject m_characters;
+		[SerializeField]
+		private Transform m_characterForestBackPosition;
+		[SerializeField]
+		private Image m_backgroundImage;
+		[SerializeField]
+		private GameObject m_forestTrigger;
 
 		private static GameController s_instance = null;
 		private CutScenePlayer m_csp = null;
@@ -79,35 +87,48 @@ namespace Game
 		private bool m_customSpeakMusic = false;
 		private int m_wasSpeaking = 0;
 		private int m_dogCount = 0;
+		private bool m_overrideSpeaking = false;
 
-		public bool D1_P1_a1 = false;
 		public bool haveWateringCan = false;
-		public bool D1_P1_a3 = false;
-		public bool D1_N5_c8 = false;
+
+		// Mathilda
+		public bool D1_B1_a1 = false;
+		public bool D1_B1_c1 = false;
+		public bool D1_B1_c2 = false;
 		public bool D1_B1_c4 = false;
-		public bool D1_P1_b1 = false;
+		public bool D1_B1_d1 = false;
+		public bool D1_B1_d2 = false;
+		// Zekiel
+		public bool D1_B2_a0 = false;
+		// Raziel
+		public bool D1_B3_a2 = false;
+		// Alex
 		public bool D1_M1_a2 = false;
-		public bool D1_M5_a1 = false;
-		public bool D1_M5_c1 = false;
-		public bool D1_N1_a1 = false;
-		public bool D1_N5_c5 = false;
-		public bool D1_N5_c6 = false;
+		// Lucie
+		public bool D1_M2_a4 = false;
 		public bool D1_M2_c1 = false;
 		public bool D1_M2_c2 = false;
 		public bool D1_M2_c9 = false;
-		public bool D1_B1_d1 = false;
-		public bool D1_P3_b1 = false;
-		public bool D1_B1_c1 = false;
-		public bool D1_R1_c2 = false;
-		public bool D1_B1_c2 = false;
-		public bool D1_B3_a2 = false;
-		public bool D1_B2_a0 = false;
+		// Neo
+		public bool D1_M5_a1 = false;
+		public bool D1_M5_c1 = false;
+		// Annika
+		public bool D1_N1_a1 = false;
+		public bool D1_N1_c5 = false;
+		// Lara
 		public bool D1_N5_a9 = false;
 		public bool D1_N5_c1 = false;
-		public bool D1_N1_c5 = false;
-		public bool D1_B1_a1 = false;
-		public bool D1_M2_a4 = false;
-		public bool D1_B1_d1a = false;
+		public bool D1_N5_c5 = false;
+		public bool D1_N5_c6 = false;
+		public bool D1_N5_c8 = false;
+		// Kozbee
+		public bool D1_P1_a1 = false;
+		public bool D1_P1_a3 = false;
+		public bool D1_P1_b1 = false;
+		// Cousin
+		public bool D1_P3_b1 = false;
+		// Ada
+		public bool D1_R1_c2 = false;
 
 		public bool D1_P = false;
 		public bool D1_B = false;
@@ -121,7 +142,7 @@ namespace Game
 		}
 
 		public bool WasSpeaking { get { return m_wasSpeaking > 0; } }
-		public bool IsSpeaking { get { return m_cutSceneInstance >= 0; } }
+		public bool IsSpeaking { get { return ( m_cutSceneInstance >= 0 ) || m_overrideSpeaking; } }
 		public static GameController Instance
 		{
 			get { return s_instance; }
@@ -484,6 +505,47 @@ namespace Game
 			}
 		}
 
+		public void OnForestTrigger()
+		{
+			StartCutscene( "D1_F0", GameMusicManager.EGameMusicManagerState.eNone );
+		}
+
+		private IEnumerator ForestBack()
+		{
+			m_backgroundImage.gameObject.SetActive( true );
+			Color transparent = new Color( 0.0f, 0.0f, 0.0f, 0.0f );
+			m_backgroundImage.color = transparent;
+			float time = Time.time;
+			float timeTarget = time + 1.0f;
+			while ( Time.time < timeTarget )
+			{
+				m_backgroundImage.color = Color32.Lerp( transparent, Color.black, ( Time.time - time ) );
+				yield return null;
+			}
+			m_backgroundImage.color = Color.black;
+			yield return new WaitForSeconds( 1.0f );
+			GameObject playerGO = GameCache.Instance.GetObject( GameCacheObjects.Player );
+			PlayerController pc = playerGO.GetComponent<PlayerController>();
+			GameObject playerCamera = GameCache.Instance.GetObject( GameCacheObjects.PlayerCamera );
+			pc.transform.position = m_characterForestBackPosition.position;
+			pc.transform.rotation = m_characterForestBackPosition.rotation;
+			pc.SetAngle( pc.transform.rotation.eulerAngles.y );
+			pc.SetVerticalView( 0.0f );
+			playerCamera.transform.localRotation = Quaternion.identity;
+			time = Time.time;
+			timeTarget = time + 1.0f;
+			while ( Time.time < timeTarget )
+			{
+				m_backgroundImage.color = Color32.Lerp( Color.black, transparent, ( Time.time - time ) );
+				yield return null;
+			}
+			m_backgroundImage.color = transparent;
+			m_backgroundImage.gameObject.SetActive( false );
+
+			yield return null;
+			m_overrideSpeaking = false;
+		}
+
 		private void StartCutscene( string _name, GameMusicManager.EGameMusicManagerState _music )
 		{
 			Cursor.visible = true;
@@ -550,7 +612,7 @@ namespace Game
 					{
 						if ( _previousSnapshot == -1 )
 						{
-							if ( D1_B1_d1a )
+							if ( D1_B1_d2 )
 							{
 								_nextScene = 1;
 								if ( D1_M2_c9 )
@@ -652,7 +714,7 @@ namespace Game
 									m_p5_1.SetActive( false );
 									m_p5_2.SetActive( true );
 									m_b1.SetActive( false );
-									D1_B1_d1a = true;
+									D1_B1_d2 = true;
 									_nextScene = 5;
 								}
 								D1_B1_a1 = true;
@@ -843,6 +905,15 @@ namespace Game
 						}
 					}
 					break;
+				case "D1_F0":
+					{
+						if ( _newSnapshot == -1 )
+						{
+							m_overrideSpeaking = true;
+							StartCoroutine( ForestBack() );
+						}
+					}
+					break;
 				}
 			}
 
@@ -882,6 +953,7 @@ namespace Game
 				{
 					if ( _choiceIndex == 1 )
 					{
+						m_forestTrigger.SetActive( false );
 						D1_R1_c2 = true;
 					}
 				}
