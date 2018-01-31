@@ -86,6 +86,7 @@ namespace Game
 				_target.color = Color32.Lerp( Color.white, Color.black, ( Time.time - time ) / m_textFadeSpeed );
 				yield return null;
 			}
+			_target.color = Color.black;
 		}
 
 		private IEnumerator FadeBackground( Color _start, Color _end, float _time )
@@ -98,6 +99,7 @@ namespace Game
 				m_background.color = Color32.Lerp( _start, _end, ( Time.time - time ) / _time );
 				yield return null;
 			}
+			m_background.color = _end;
 		}
 
 		public IEnumerator BeginStartCinematic()

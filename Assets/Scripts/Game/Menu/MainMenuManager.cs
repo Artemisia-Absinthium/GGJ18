@@ -425,6 +425,9 @@ namespace Game
 						go.Width = Screen.resolutions[ i ].width;
 						go.Height = Screen.resolutions[ i ].height;
 						go.RefreshRate = Screen.resolutions[ i ].refreshRate;
+						m_tempResolution.width = go.Width;
+						m_tempResolution.height = go.Height;
+						m_tempResolution.refreshRate = go.RefreshRate;
 						f_resolution.value = i;
 						break;
 					}
@@ -435,6 +438,13 @@ namespace Game
 						f_resolution.value = i;
 						break;
 					}
+				}
+				else if ( ( Screen.resolutions[ i ].width == m_tempResolution.width ) &&
+						( Screen.resolutions[ i ].height == m_tempResolution.height ) &&
+						( Screen.resolutions[ i ].refreshRate == m_tempResolution.refreshRate ) )
+				{
+					f_resolution.value = i;
+					break;
 				}
 			}
 			if ( f_resolution.minValue < 0.0f )
@@ -712,9 +722,9 @@ namespace Game
 			bool changes = false;
 			Engine.UserGraphicOptions opt = Engine.UserManager.Instance.Current.Options.Graphic;
 			if ( ( opt.Width != m_tempResolution.width ) ||
-				( opt.Width != m_tempResolution.width ) ||
-				( opt.Width != m_tempResolution.width ) ||
-				( opt.Width != m_tempResolution.width ) )
+				( opt.Height != m_tempResolution.height ) ||
+				( opt.RefreshRate != m_tempResolution.refreshRate ) ||
+				( opt.FullScreen != m_tempFS ) )
 			{
 				changes = true;
 				Screen.SetResolution( m_tempResolution.width, m_tempResolution.height, m_tempFS, m_tempResolution.refreshRate );
